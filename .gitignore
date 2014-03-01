@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/config/secrets.yml
+/config/initializers/secret_token.rb
+
+.DS_Store
+.#*
