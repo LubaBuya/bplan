@@ -9,9 +9,9 @@
 #  end_at      :datetime
 #  location    :string(255)
 #  description :text
-#  department  :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  group_id    :integer
 #
 
 class Event < ActiveRecord::Base
