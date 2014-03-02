@@ -1,129 +1,148 @@
-<html>
+<%= render 'layouts/header' %>
 
-<head>
-<title> Bplan </title>
-<link rel="stylesheet" type="text/css" href="/Users/Luba/Desktop/bplan/style.css">
-</head>
 
-<body>
-
-<div id="title">
-<span id="bplan">
-	Bplan
-</span>
-<span id="see">
-	See all events at one place
-</span>
-</div>
-
-<span id="today">
-	 Events for Today 
-	</span>
-	<span id="upcoming">
-	Upcoming Events
-</span>
-
-<div class="row">
-
+<div class="row content">
   <div class="col-md-6 eventColumn">
-	<li>
-		<div class="bigEvent">
+    <span id="today">
+      Events for Today 
+    </span>
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+    <div class="eventList">
+      
+      <li>
+	    <div class="bigEvent blueEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+  	  <li>
+  	    <div class="bigEvent redEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
+
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
+
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+      </li>
+    </div>
   </div>
 
   <div class="col-md-6 eventColumn" >
-<li>
-  		<div class="bigEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+    <span id="upcoming">
+      Upcoming Events
+    </span>
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+    <div class="eventList">
+      <li>
+  	    <div class="bigEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
-  	<li>
-  		<div class="bigEvent">
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
 
-  		<div class="events"> Event1 </div>
-  		<div class="date">Date: </div>
-  		<div class="location">location:</div>
-  		<div class="desc">Description:</div>
-  		</div>
-  	</li>
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
+
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+  	  <li>
+  	    <div class="bigEvent">
+
+  		  <div class="events"> Event1 </div>
+  		  <div class="dateloc">
+  		    <span class="date">Date:</span><span>...</span>
+  		    <span class="loc">location:</span><span>...</span> 
+  		  </div>
+  	      
+  		  <div class="desc">Description:</div>
+  	    </div>
+  	  </li>
+    </div>
   </div>
 </div>
 
-	
 
 
-</body>
-</html>
