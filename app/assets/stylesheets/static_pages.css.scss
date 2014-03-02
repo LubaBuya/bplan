@@ -79,6 +79,7 @@
 .eventColumn{
 	font-size: 150%;
 	padding-left: 40px;
+	padding-right: 40px;
     text-align: center;
 }
 #bplan{
@@ -88,19 +89,29 @@
 #see{
 	text-align: right;
 	font-size: 150%;}
-.events{font-size: 90%;
+
+.events{
+		font-size: 100%;
 		padding-left: auto;
 		padding-right: auto;
 		text-align: center;
-	}
+		color: white;
+		font-weight: bold;
+		margin-bottom: -10px;
+		}
 .desc{
 	font-size: 70%;
 	padding-left: 40px;
-	color: #FF00CC}
+	color: white;
+	font-weight: bold;
+}
+
 .bigEvent{
+	border-radius: 20px;
 	margin-bottom: 10px;
 	text-align: left;
-	
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 .dateloc{
 	font-size: 100%;
@@ -110,12 +121,12 @@
 .date{
 	font-size: 70%;
 	color: white;
-	color: #FF00CC;
+	font-weight: bold;
 	}
 .loc{
 	font-size: 70%;
 	padding-left: 40px;
-	color: #FF00CC;
+	font-weight: bold;
 	color: white;
 }
 
@@ -123,8 +134,24 @@ li{
 	list-style-type: none;
 }
 .blueEvent{
-	background-color: blue;
+	background-color: #E69F00;
 }
 .redEvent{
-	background-color: red;
+	background-color: #56B4E9;
 }
+/*
+
+orange #E69F00
+
+sky blue #56B4E9
+
+bluish green #009E73
+
+yellow #F0E442
+
+blue #0072B2
+
+vermillion #D55E00
+
+pink  #CC79A7
+*/
