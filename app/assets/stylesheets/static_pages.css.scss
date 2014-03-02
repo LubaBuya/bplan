@@ -138,6 +138,10 @@
   background-color: #0072B2;
   padding-left: 10px;
   padding-right: 10px;
+
+  &:hover {
+    cursor: pointer; cursor: hand; 
+  }
 }
 /* .dateloc{ */
 /*   font-size: 100%; */
@@ -150,7 +154,7 @@
 
 .loc{
   //padding-left: 40px;
-  float: right;
+  //float: right;
   //font-weight: bold;
 }
 
@@ -170,20 +174,27 @@ li{
   list-style-type: none;
 }
 
-.blueEvent{
-  background-color: #0072B2;
-}
+/* .blueEvent{ */
+/*   background-color: #0072B2; */
+/* } */
 
-.orangeEvent{
-  background-color: #D55E00;
-}
+/* .orangeEvent{ */
+/*   background-color: #D55E00; */
+/* } */
 
-.redEvent {
-  background-color: #C92D2A;
-}
+/* .redEvent { */
+/*   background-color: #C92D2A; */
+/* } */
 
-.purpleEvent {
-  background-color: #D50075;
+/* .purpleEvent { */
+/*   background-color: #A6005B; */
+/* } */
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 
 /*

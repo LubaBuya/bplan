@@ -4,145 +4,72 @@
 <div class="row content">
   <div class="col-md-6 eventColumn">
     <span id="today">
-      Events for Today 
+      Today
     </span>
 
     <div class="eventList">
       
+      <% for e in @events_today %>
       <li>
-	    <div class="bigEvent blueEvent">
+	    <div class="bigEvent" style="background-color: <%= e.group.color %>">
 
-  		  <div class="events">A Reassessment of Hebbian Mechanisms in Visual System Development by in vivo Imaging</div>
+  		  <div class="events"><%= e.title %></div>
   		  <div class="dateloc">
-  		    <span class="date"><span class="eventColon">Time:</span> 2pm</span>
-  		    <span class="loc"><span class="eventColon">Location:</span> 370 Soda</span> 
+  		    <span class="date"><!-- <span class="eventColon">Time:</span> -->
+              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+
+            </span>
+  		    <div class="loc" style="<%= 'float: right;'  if e.location.length <= 20 %>">
+                  <!-- <span class="eventColon">Location:</span> -->
+                  <%= e.location  %></span> 
   		  </div>
 
-          <div class="desc">
+          <% if not e.description.blank? %>
+          <div class="desc ellipsis">
   		    <span class="eventColon">Description:</span>
-              Blah blah blah....
+              <%= e.description %>
+            </span>
           </div>
+          <% end %>
   	    </div>
   	  </li>
+      <% end %>
 
-  	  <li>
-  	    <div class="bigEvent redEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span> ...</span>
-  		    <span class="loc">location:</span><span> ...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-      </li>
     </div>
   </div>
 
   <div class="col-md-6 eventColumn" >
 
     <span id="upcoming">
-      Upcoming Events
+      Upcoming
     </span>
 
     <div class="eventList">
+<% for e in @events_upcoming %>
       <li>
-  	    <div class="bigEvent">
+	    <div class="bigEvent" style="background-color: <%= e.group.color %>">
 
-  		  <div class="events"> Event1 </div>
+  		  <div class="events"><%= e.title %></div>
   		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
+  		    <span class="date"><!-- <span class="eventColon">Time:</span> -->
+              <%= e.start_at.strftime('%b %e | %I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+
+            </span>
+  		    <div class="loc" style="<%= 'float: right;'  if e.location.length <= 20 %>">
+                  <!-- <span class="eventColon">Location:</span> -->
+                  <%= e.location  %></span> 
   		  </div>
-  	      
-  		  <div class="desc">Description:</div>
+
+          <% if not e.description.blank? %>
+          <div class="desc ellipsis">
+  		    <span class="eventColon">Description:</span>
+              <%= e.description %>
+            </span>
+          </div>
+          <% end %>
   	    </div>
   	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
-  	  <li>
-  	    <div class="bigEvent">
-
-  		  <div class="events"> Event1 </div>
-  		  <div class="dateloc">
-  		    <span class="date">Date:</span><span>...</span>
-  		    <span class="loc">location:</span><span>...</span> 
-  		  </div>
-  	      
-  		  <div class="desc">Description:</div>
-  	    </div>
-  	  </li>
+      <% end %>
     </div>
   </div>
 </div>

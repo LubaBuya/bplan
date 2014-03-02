@@ -12,7 +12,7 @@
 
   
   <%= form_for(@user, url: users_path(@user), html: { id: 'userLoginForm' }) do |f| %>
-  <%= f.email_field :email, placeholder: "Email" %>
+  <%= f.email_field :email, placeholder: "Username" %>
   <br />
   <%= f.password_field :password, placeholder: "Password" %>
   <br />
