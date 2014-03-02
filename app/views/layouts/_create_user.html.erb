@@ -1,0 +1,26 @@
+<div class='NewUser' id='newUser'>
+
+  <div id="formError" class="alert alert-danger Hidden">
+    <% # rendered using react (via signup.js) %>
+  </div>
+
+
+  <div id="formSuccess" class="alert alert-success Hidden">
+    <% # rendered using react (via signup.js) %>
+  </div>
+
+  
+  <%= form_for(@user, url: users_path(@user), html: { id: 'userCreateForm' }) do |f| %>
+  <%= f.email_field :email, placeholder: "Email" %>
+  <br />
+  <%= f.password_field :password, placeholder: "Password" %>
+  <br />
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+  <br />
+
+  <% end %>
+
+  <%= button_tag "Login", class: "btn btn-large btn-primary", id: "joinButton" %>
+
+</div>
+

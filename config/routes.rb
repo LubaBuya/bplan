@@ -8,6 +8,7 @@ Bplan::Application.routes.draw do
   resources :users
 
   get '/login' => 'users#login'
+  post '/login' => 'users#login_post'
   
   # Example of regular route:
   # get 'products/:id' => 'catalog#view'
