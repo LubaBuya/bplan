@@ -17,6 +17,8 @@ namespace :admin do
       group = Group.find_by_name(e['group'])
 
       puts e['title']
+
+      Time.zone = 'Pacific Time (US & Canada)' 
       
       v = {
         title: e['title'],
