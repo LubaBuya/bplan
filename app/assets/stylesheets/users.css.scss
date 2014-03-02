@@ -1,3 +1,55 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.Hidden {
+  display: none;
+}
+
+.loginContainer {
+
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  
+}
+
+.middleLoginContainer {
+  display: table-cell;
+  vertical-align: middle
+}
+
+
+.LoginBox {
+  margin-left: auto;
+  margin-right: auto; 
+  width: 400px;
+  text-align: center;
+  font-size: 16px;
+  vertical-align: middle;
+  padding-bottom: 150px;
+  padding-top: 100px;
+  background: rgb(30,30,30);
+  color: white;
+  border-radius: 40px;
+  
+  input {
+    margin-bottom: 3px;
+    color: black;
+  }
+  
+  .Login {
+
+    
+    #loginButton {
+      width: 180px;
+      margin-top: 5px;
+      font-size: 16px;
+      font-weight:bold;
+      border-radius: 10px;
+    }
+  }
+}
+
