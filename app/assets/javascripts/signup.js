@@ -55,6 +55,8 @@ function handle_signup_form(form, url, successHandler) {
         request.abort();
     }
 
+
+    
     // # setup some local variables
     // # let's select and cache all the fields
     var inputs = form.find("input, select, button, textarea");
@@ -64,6 +66,10 @@ function handle_signup_form(form, url, successHandler) {
 
     // # let's disable the inputs for the duration of the ajax request
     inputs.prop("disabled", true);
+
+    $('#formSuccess').addClass("Hidden");
+    $('#formError').addClass("Hidden");
+
 
     // # fire off the request to url
     request = $.ajax({

@@ -8,6 +8,15 @@
 #title {background-color: #004FC7;
 		color:white;
 		margin-bottom: 20px;
+
+        a {
+          color: white;
+          &:hover {
+            color: skyblue;
+            text-decoration: none;
+          }
+        }
+        
 			}
 
 /*#frame{background-color: yellow;
@@ -45,7 +54,7 @@ text-align: center;
 .row{
 	border-top: solid;
 }
-.eventColumn{font-size: 150%;
+.event { backgroundfont-size: 150%;
 	padding-left: 40px;}
 #bplan{
 	font-size: 200%;

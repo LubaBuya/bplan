@@ -12,13 +12,20 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: #C6E0E1;
   
 }
 
 .middleLoginContainer {
   display: table-cell;
   vertical-align: middle
+}
+
+.alert {
+  width: 300px;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 5px;
 }
 
 
@@ -31,17 +38,21 @@
   vertical-align: middle;
   padding-bottom: 150px;
   padding-top: 100px;
-  background: rgb(30,30,30);
+  
   color: white;
   border-radius: 40px;
+
+  background-color: #1375B2;
+
   
   input {
     margin-bottom: 3px;
     color: black;
+    width: 180px;
   }
   
   .Login {
-
+    text-align: center;
     
     #loginButton {
       width: 180px;
@@ -49,6 +60,8 @@
       font-size: 16px;
       font-weight:bold;
       border-radius: 10px;
+      color: black;
+      background-color: #A5DCFF;
     }
   }
 }

@@ -9,6 +9,8 @@ Bplan::Application.routes.draw do
 
   get '/login' => 'users#login'
   post '/login' => 'users#login_post'
+
+  get '/subscriptions' => 'users#subscriptions'
   
   # Example of regular route:
   # get 'products/:id' => 'catalog#view'
