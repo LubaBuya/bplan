@@ -1,3 +1,75 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*body{background: blue}*/
+
+
+#title {background-color: #004FC7;
+		color:white;
+		margin-bottom: 20px;
+			}
+
+/*#frame{background-color: yellow;
+		margin-left:auto;
+		margin-right: auto;
+	
+		}*/
+
+#today{font-size: 150%;
+		text-align: center;
+		margin-left:auto;
+		margin-right: auto;
+		background-color: white;
+		width: 50%;
+		padding-right: 180px;
+		padding-left: 180px;
+		text-align: center;
+		border: normal;
+		position: relative;
+	}
+#upcoming{font-size: 150%;
+text-align: center;
+		margin-left:auto;
+		margin-right: auto;
+		background-color: white;
+		width: 50%;
+		padding-right: 180px;
+		padding-left: 180px;
+		text-align: center;
+		border: normal;
+		position: relative;
+	}
+
+
+.row{
+	border-top: solid;
+}
+.eventColumn{font-size: 150%;
+	padding-left: 40px;}
+#bplan{
+	font-size: 200%;
+	padding-left: 25px;
+	padding-right: 700px;}
+#see{text-align: right;
+	font-size: 150%;}
+.events{font-size: 90%;
+	}
+.desc{font-size: 70%;
+		padding-left: 40px;
+		color: #FF00CC}
+.bigEvent{
+	background-color: yellow;
+	border: solid;
+	border-color:red;
+}
+.date{
+	font-size: 70%;
+		padding-left: 40px;
+		color: #FF00CC;
+	}
+.location{
+	font-size: 70%;
+		padding-left: 40px;
+		color: #FF00CC;
+}
