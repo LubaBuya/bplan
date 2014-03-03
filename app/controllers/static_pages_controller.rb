@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def index
     Time.zone = 'Pacific Time (US & Canada)'
     #d = Time.new(2014, 03, 1)
-    d = Time.now
+    d = Time.now.in_time_zone(Time.zone)
     # d = d.at_beginning_of_day + 2
     
     @events_today = Event.all.select {|x| x.end_at > d && x.end_at <= d.at_end_of_day }.sort {|a,b| a.start_at <=> b.start_at }

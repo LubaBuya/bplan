@@ -23,8 +23,8 @@ namespace :admin do
       v = {
         title: e['title'],
         event_type: e['event_type'],
-        start_at: Time.parse(e['start_at']),
-        end_at: Time.parse(e['end_at']),
+        start_at: Time.parse(e['start_at'] + '-0800').in_time_zone(Time.zone),
+        end_at: Time.parse(e['end_at'] + '-0800').in_time_zone(Time.zone),
         location: e['location'],
         description: e['details'],
         group_id: group.id
