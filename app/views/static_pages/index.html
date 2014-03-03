@@ -52,7 +52,8 @@
   		  <div class="events"><%= e.title %></div>
   		  <div class="dateloc">
   		    <span class="date"><!-- <span class="eventColon">Time:</span> -->
-              <%= e.start_at.strftime('%b %e | %I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+              <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
+              <%= e.end_at.strftime('%I:%M %P') %>
 
             </span>
   		    <div class="loc" style="<%= 'float: right;'  if e.location.length <= 20 %>">
