@@ -2,16 +2,28 @@ require 'csv'
 require 'json'
 
 namespace :admin do
-  desc "Populate venues with CSV data from Songkick and Google"
-  task :load_csv_events => :environment do
-
+  desc "Populate groups from data/group_colors.json"
+  task :load_groups => :environment do
     L = JSON.parse(open('data/group_colors.json').read)
-    L.each do |name, color| Group.create(name: name, color: color); end
     
-    count = 0
+    L.each do |name, color|
+      g = Group.find_by_name(name)
+      if g.blank?
+        Group.create(name: name, color: color)
+      else
+        g.color = color
+        g.save
+      end
+    end
+  end
+  
+  desc "Populate events from data/events.csv"
+  task :load_events => :environment do
+    Rake::Task["admin:load_groups"].invoke
+    
+    Event.all.map(&:delete)
+
     CSV.foreach('data/events.csv', headers: true) do |row|
-      break if count > 1000
-      count += 1
       e = row.to_hash
 
       group = Group.find_by_name(e['group'])
