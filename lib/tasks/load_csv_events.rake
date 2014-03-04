@@ -21,13 +21,18 @@ namespace :admin do
   task :load_events => :environment do
     Rake::Task["admin:load_groups"].invoke
     
+    #deleting all events previously in db. Map is a function
+    #for an enumerable. This is Event.all.map {|x| x.delete }
     Event.all.map(&:delete)
 
+
     CSV.foreach('data/events.csv', headers: true) do |row|
+
       e = row.to_hash
 
       group = Group.find_by_name(e['group'])
 
+      # just prinitng everything on console
       puts e['title']
 
       Time.zone = 'Pacific Time (US & Canada)' 

@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   include UsersHelper
   
+  def new
+    @user = User.new
+  end
+
   def login
     @user = User.new
   end
