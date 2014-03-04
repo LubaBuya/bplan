@@ -6,11 +6,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def login
     @user = User.new
   end
 
-  def create_post
+  def create
     params = user_params
     # params[:password_confirmation] = params[:password]
     @user = User.new(params)
@@ -19,15 +23,16 @@ class UsersController < ApplicationController
     # @user created in create_beta_user
     if @user.errors.empty?
       @success = true
+      redirect_to root_path
     else
       @success = false
+      render json: {
+        errors: @user.nice_messages,
+        success: @success
+      }
     end
+
     save_user_to_cookie(@user) if @success
-    
-    render json: {
-      errors: @user.nice_messages,
-      success: @success
-    }
   end
 
   def login_post
@@ -51,7 +56,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
   

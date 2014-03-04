@@ -7,6 +7,9 @@ Bplan::Application.routes.draw do
 
   resources :users
 
+  # sign up link
+  match '/signup', to: 'users#new', via: 'get'
+
   get '/login' => 'users#login'
   post '/login' => 'users#login_post'
 

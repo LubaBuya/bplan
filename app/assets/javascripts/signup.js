@@ -33,7 +33,6 @@ var SuccessAlert = React.createClass({
 
 
 // for logging in
-
 $(document).ready(function() {
     $('#loginButton').on('click', function(event) {
         event.preventDefault();

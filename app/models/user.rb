@@ -8,6 +8,7 @@
 #  updated_at      :datetime
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  name            :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -20,6 +21,11 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
    
   DISPLAY_FIELDS = {fname: "First name", lname: "Last name", name: "Name", email: "Email", password: "Password" }
+
+  # E-mail regex
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+  uniqueness: { case_sensitive: false }
 
   def nice_messages
     out = []
