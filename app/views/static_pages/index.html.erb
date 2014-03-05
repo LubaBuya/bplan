@@ -7,10 +7,12 @@
     </span>
 
     <div class="eventList">
-     
+
       <% for e in @events_today %>
       <li>
        <div class="bigEvent" style="<%= big_event_style(e) %>">
+
+        <span class="tagger" style="background-color: <%= e.group.color %>;"> <%= e.group.name %> </span>
 
         <div class="events"><%= e.title %></div>
         <div class="dateloc">
@@ -18,13 +20,12 @@
           <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
 
         </span>
-        <div class="loc" style="<%= 'float: right;'  if e.location.length <= 20 %>">
-          <!-- <span class="eventColon">Location:</span> -->
+        <div class="loc" style="<%= 'float: right;' %>">
           <%= e.location  %></span> 
         </div>
-
+        
         <% if not e.description.blank? %>
-        <div class="desc ellipsis">
+        <div class="desc ellipsis itallic">
           <span class="eventColon">Description:</span>
           <%= e.description %>
         </span>
@@ -48,6 +49,7 @@
     <li>
       <div class="bigEvent" style="<%= big_event_style(e) %>">
 
+        <span class="tagger" style="background-color: <%= e.group.color %>;"> <%= e.group.name %> </span>
 
         <div class="events"><%= e.title %></div>
         <div class="dateloc">
@@ -56,13 +58,13 @@
           <%= e.end_at.strftime('%I:%M %P') %>
 
         </span>
-        <div class="loc" style="<%= 'float: right;'  if e.location.length <= 20 %>">
+        <div class="loc" style="<%= 'float: right;' %>">
           <!-- <span class="eventColon">Location:</span> -->
           <%= e.location  %></span> 
         </div>
 
         <% if not e.description.blank? %>
-        <div class="desc ellipsis">
+        <div class="desc ellipsis itallic">
           <span class="eventColon">Description:</span>
           <%= e.description %>
         </span>
@@ -72,6 +74,6 @@
   </li>
   <% end %>
 
-  <!-- <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %> -->
+  <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
 
 </div>

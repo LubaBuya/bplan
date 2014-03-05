@@ -1,3 +1,39 @@
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+
+  /* also accepts left, right, top, bottom coordinates; not required, but a good idea for styling */
+  -webkit-transform-origin: 100% 0%;
+  -moz-transform-origin: 100% 0%;
+  -ms-transform-origin: 100% 0%;
+  -o-transform-origin: 100% 0%;
+  transform-origin: 100%  0%;
+
+  /* Should be unset in IE9+ I think. */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.vertical {
+  float:left;
+}
+
+.tagger {
+  position: relative;
+  top: -6px;
+  left: -12px;
+  border-top-left-radius: inherit;
+  padding: 3px 6px;
+  font-size: 12px;
+  color: white
+}
+
+.itallic {
+  font-style: italic;
+}
+
 .content {
   margin-top: 20px;
 }
@@ -34,6 +70,7 @@
   //margin-bottom: -10px;
   line-height: 24px;
   text-align: center;
+  margin-bottom: 10px;  
 }
 
 .white {
@@ -61,29 +98,20 @@
   margin-bottom: 10px;
   text-align: left;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 17px;
   color: black;
   font-size: 14px;
-  //max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-
-  //background-color: #0072B2;
   background-color: #FDFFF0;
-  /* border-top: 2px solid white; */
-  /* border-bottom: 2px solid white; */
   padding-left: 10px;
   padding-right: 10px;
-  //border: 1px solid;
   
   &:hover {
     cursor: pointer; cursor: hand;
     background-color: #ECF2C7;
   }
 }
-
-
-
 
 .ellipsis {
   white-space: nowrap;
