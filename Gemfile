@@ -7,6 +7,9 @@ gem 'react-rails'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 
+#font gem
+gem 'font-kit-rails'
+
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'

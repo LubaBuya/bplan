@@ -1,48 +1,29 @@
-// Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-/*body{background: blue}*/
-
-
 #title {
   background-color: #004FC7;
   color:white;
-  //padding-bottom: 20px;
+}
 
-  a {
-    color: white;
-    &:hover {
-      color: skyblue;
-      text-decoration: none;
-    }
-    margin-right: 10px;
+a {
+  color: white;
+  &:hover {
+    color: skyblue;
+    text-decoration: none;
   }
+  margin-right: 10px;
+}
 
-  font-size: 20px;
+#rightLinks {
+  float: right;
+  margin-top: 6px;
+} 
 
-  #rightLinks {
-    float: right;
-    margin-top: 6px;
-  }
-
-  padding-left: 10px;
-  padding-right: 10px;
-
-  #bplan {
-    font-size: 30px;
-  }
+#bplan {
+  font-size: 30px;
 }
 
 .content {
   margin-top: 20px;
 }
-
-/*#frame{background-color: yellow;
-  margin-left:auto;
-  margin-right: auto;
-  
-  }*/
 
 #today {
   text-align: center;
@@ -52,42 +33,33 @@
   text-align: center;
 }
 
-/* #today{font-size: 150%; */
-/* 		text-align: center; */
-/* 		margin-left:auto; */
-/* 		margin-right: auto; */
-/* 		background-color: white; */
-/* 		//width: 50%; */
-/* 		padding-right: 180px; */
-/* 		padding-left: 180px; */
-/* 		text-align: center; */
-/* 		border: normal; */
-/* 		position: relative; */
-/* 	} */
-/* #upcoming{ */
-/* 	font-size: 150%; */
-/* 	text-align: center; */
-/* 	margin-left:auto; */
-/* 	margin-right: auto; */
-/* 	background-color: white;		 */
-/* 	//width: 50%; */
-/* 	padding-right: 180px;	 */
-/* 	padding-left: 180px; */
-/* 	text-align: center; */
-/* 	border: normal; */
-/* 	position: relative; */
-/* 	} */
-
-
-/* .row{ */
-/* 	border-top: solid; */
-/* 	margin-top: 10px; */
-/* } */
-
 .eventList {
   border-top: solid;
   padding-top: 10px;
   margin-top: 10px;
+}
+
+/**
+.sample {
+  height: 60px;
+  width: auto; 
+}
+*/
+
+.event_title{
+  font-size: 16px;
+  //font-weight: bold;
+  //margin-bottom: -10px;
+  line-height: 24px;
+  //  text-align: center;
+}
+
+.white {
+  background-color: white;
+  width: auto;
+  padding: 0px 3px;
+  color: black;
+  float: left;
 }
 
 .eventColumn{
@@ -96,28 +68,7 @@
   padding-right: 40px;
   text-align: center;
 }
-/* #bplan{ */
-/*   font-size: 200%; */
-/*   padding-left: 25px; */
-/*   padding-right: 700px;} */
-/* #see{ */
-/*   text-align: right; */
-/*   font-size: 150%;} */
 
-.events{
-  font-size: 16px;
-  padding-left: auto;
-  padding-right: auto;
-  text-align: center;
-  font-weight: bold;
-  //margin-bottom: -10px;
-  line-height: 1em;
-}
-
-.desc {
-  //font-size: 70%;
-  //padding-left: 40px;
-}
 
 .eventColon {
   font-weight: bold;
@@ -127,8 +78,7 @@
   border-radius: 15px;
   margin-bottom: 10px;
   text-align: left;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 15px;
   color: white;
   font-size: 14px;
   max-width: 400px;
@@ -143,73 +93,16 @@
     cursor: pointer; cursor: hand; 
   }
 }
-/* .dateloc{ */
-/*   font-size: 100%; */
-/*   //padding-left: 40px; */
-/* } */
-
-.date{
-  //font-weight: bold;
-}
-
-.loc{
-  //padding-left: 40px;
-  //float: right;
-  //font-weight: bold;
-}
-
-.dateText {
-  //font-size: 80%;
-}
-
-.locText {
-  //font-size: 80%;
-}
-
-.descText {
-
-}
 
 li{
   list-style-type: none;
 }
 
-/* .blueEvent{ */
-/*   background-color: #0072B2; */
-/* } */
 
-/* .orangeEvent{ */
-/*   background-color: #D55E00; */
-/* } */
-
-/* .redEvent { */
-/*   background-color: #C92D2A; */
-/* } */
-
-/* .purpleEvent { */
-/*   background-color: #A6005B; */
-/* } */
 
 .ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-}
-
-/*
-
-orange #E69F00
-
-sky blue #56B4E9
-
-bluish green #009E73
-
-yellow #F0E442
-
-blue #0072B2 
-
-vermillion #D55E00
-
-pink  #CC79A7
-*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+} 
