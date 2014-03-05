@@ -23,7 +23,7 @@ class StaticPagesController < ApplicationController
     #@events_today = @events_today.paginate(page: params[:page])
     
     
-    @events_upcoming = Event.order(:start_at).select {|x| x.end_at > d.at_end_of_day }.paginate(page: params[:page])
+    @events_upcoming = Event.order(:start_at).select {|x| x.end_at > d.at_end_of_day }.paginate(page: params[:page], per_page: 20)
   # @events = Event.paginate(page: params[:page])
   end
 
