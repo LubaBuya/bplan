@@ -17,7 +17,9 @@ Bplan::Application.routes.draw do
 
   
   get '/subscriptions' => 'users#subscriptions', as: :groups
+  post '/subscriptions' => 'users#update_subscriptions', as: :update_groups
 
+  get '/user_groups' => 'users#user_groups'
 
   
   # Example of regular route:

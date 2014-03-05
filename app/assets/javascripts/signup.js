@@ -4,7 +4,7 @@ var ErrorAlertItem = React.createClass({
         return (
             React.DOM.li(null, this.props.message)
             // <li> { this.props.message } </li>
-            );
+        );
     }
 });
 
@@ -21,13 +21,13 @@ var ErrorAlert = React.createClass({
             // <ul>
             //     { errors }
             // </ul>
-            );
+        );
     }
 });
 
 var SuccessAlert = React.createClass({
     render: function() {
-        return( React.DOM.div(null, "Success! We've added you to our beta users list!"));
+        return( React.DOM.div(null, this.props.message));
     }
 });
 
@@ -49,6 +49,20 @@ $(document).ready(function() {
         console.log(form); //debugging
         handle_signup_form(form, "/users", function(data) {
             window.location.replace('/');
+        });
+    });
+
+    $('body').on('click', '#saveGroups', function(event) {
+        event.preventDefault();
+        form = $(this).closest('.GroupBox').find('#updateGroupsForm');
+        console.log(form); //debugging
+        handle_signup_form(form, "/subscriptions", function(data) {
+            $('#formSuccess').removeClass("Hidden");
+            $('#formError').addClass("Hidden");
+            React.renderComponent (
+                SuccessAlert({message: 'Success! We have updated your subscriptions.'}),
+                document.getElementById('formSuccess')
+            );
         });
     });
 });
@@ -93,7 +107,7 @@ function handle_signup_form(form, url, successHandler) {
                 React.renderComponent (
                     ErrorAlert({errors: data.errors}),
                     document.getElementById('formError')
-                    );
+                );
             }
         }
     });
@@ -103,8 +117,8 @@ function handle_signup_form(form, url, successHandler) {
         // # log the error to the console
         console.error(
             "The following error occured: " +
-            textStatus, errorThrown
-            );
+                textStatus, errorThrown
+        );
     });
 
     // # callback handler that will be called regardless
