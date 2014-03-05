@@ -248,7 +248,7 @@ def main():
         reload_calendar(cal_id, cal_url, extra)
 
 def generate_csv():
-    f_out = open('events.csv', 'w')
+    f_out = open('data/events.csv', 'w')
     writer = csv.DictWriter(f_out,
                             fieldnames=['title', 'event_type', 'start_at',
                                         'end_at', 'location', 'speaker',
