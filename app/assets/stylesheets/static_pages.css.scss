@@ -5,34 +5,6 @@
 /*body{background: blue}*/
 
 
-#title {
-  background-color: #004FC7;
-  color:white;
-  //padding-bottom: 20px;
-
-  a {
-    color: white;
-    &:hover {
-      color: skyblue;
-      text-decoration: none;
-    }
-    margin-right: 10px;
-  }
-
-  font-size: 20px;
-
-  #rightLinks {
-    float: right;
-    margin-top: 6px;
-  }
-
-  padding-left: 10px;
-  padding-right: 10px;
-
-  #bplan {
-    font-size: 30px;
-  }
-}
 
 .content {
   margin-top: 20px;
@@ -88,6 +60,11 @@
   border-top: solid;
   padding-top: 10px;
   margin-top: 10px;
+
+  li{
+    list-style-type: none;
+  }
+
 }
 
 .eventColumn{
@@ -124,23 +101,28 @@
 }
 
 .bigEvent{
-  border-radius: 15px;
+  border-radius: 10px;
   margin-bottom: 10px;
   text-align: left;
   padding-top: 5px;
   padding-bottom: 5px;
-  color: white;
+  color: black;
   font-size: 14px;
-  max-width: 400px;
+  //max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 
-  background-color: #0072B2;
+  //background-color: #0072B2;
+  background-color: #FDFFF0;
+  /* border-top: 2px solid white; */
+  /* border-bottom: 2px solid white; */
   padding-left: 10px;
   padding-right: 10px;
-
+  //border: 1px solid;
+  
   &:hover {
-    cursor: pointer; cursor: hand; 
+    cursor: pointer; cursor: hand;
+    background-color: #ECF2C7;
   }
 }
 /* .dateloc{ */
@@ -170,9 +152,6 @@
 
 }
 
-li{
-  list-style-type: none;
-}
 
 /* .blueEvent{ */
 /*   background-color: #0072B2; */
@@ -191,10 +170,10 @@ li{
 /* } */
 
 .ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }
 
 /*

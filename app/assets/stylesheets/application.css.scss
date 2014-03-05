@@ -16,5 +16,41 @@
 @import "bootstrap";
 
 body {
-  background-color: #D5F1F2 !important;
+  background-color: #DCFFFA !important;
+  //background-color: #323232 !important;
+  //color: white !important;
+}
+
+// header
+#title {
+  //background-color: #004FC7;
+
+  background-color: #1C2045;
+  // background-color: black;
+  color:white;
+  //padding-bottom: 20px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: skyblue;
+      text-decoration: none;
+    }
+    margin-right: 10px;
+  }
+
+  font-size: 20px;
+
+  #rightLinks {
+    float: right;
+    margin-top: 6px;
+  }
+
+  padding-left: 10px;
+  padding-right: 10px;
+
+  #bplan {
+    font-size: 30px;
+  }
 }

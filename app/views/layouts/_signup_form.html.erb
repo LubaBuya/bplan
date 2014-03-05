@@ -10,17 +10,15 @@
   </div>
   
   <%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: "Name" %>
   <br />
-  <%= f.label :email %>
-  <%= f.email_field :email, placeholder: "Username" %>
+  <%= f.email_field :email, placeholder: "Email" %>
   <br />
-  <%= f.label :password %>
   <%= f.password_field :password, placeholder: "Password" %>
   <br />
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Sign up!", class: "btn btn-large btn-primary" %>
+  <%= f.password_field :password_confirmation, placeholder: "Password confirmation" %>
   <% end %>
-</div>
+
+  <%= button_tag "Go!", class: "btn btn-large btn-primary", id: "joinButton" %>
+
+</div> 

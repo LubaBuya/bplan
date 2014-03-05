@@ -3,15 +3,14 @@
 <div class="row content">
   <div class="col-md-6 eventColumn">
     <span id="today">
-      Today
+      <%= @left_name %>
     </span>
 
     <div class="eventList">
-      <%= will_paginate @events_today, :renderer => WillPaginate::ActionView::LinkRenderer %>
-
+   
       <% for e in @events_today %>
       <li>
-       <div class="bigEvent" style="background-color: <%= e.group.color %>">
+       <div class="bigEvent" style="<%= big_event_style(e) %>">
 
         <div class="events"><%= e.title %></div>
         <div class="dateloc">
@@ -34,7 +33,6 @@
     </div>
   </li>
   <% end %>
-  <%= will_paginate @events_today, :renderer => WillPaginate::ActionView::LinkRenderer %>
 </div>
 </div>
 
@@ -46,11 +44,10 @@
 
   <div class="eventList">
 
-    <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
-
     <% for e in @events_upcoming %>
     <li>
-     <div class="bigEvent" style="background-color: <%= e.group.color %>">
+      <div class="bigEvent" style="<%= big_event_style(e) %>">
+
 
       <div class="events"><%= e.title %></div>
       <div class="dateloc">
@@ -75,7 +72,7 @@
 </li>
 <% end %>
 
-<%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
+<!-- <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %> -->
 
 </div>
 

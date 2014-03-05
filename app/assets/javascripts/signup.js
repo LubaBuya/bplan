@@ -34,7 +34,7 @@ var SuccessAlert = React.createClass({
 
 // for logging in
 $(document).ready(function() {
-    $('#loginButton').on('click', function(event) {
+    $('body').on('click', '#loginButton', function(event) {
         event.preventDefault();
         form = $(this).closest('.Login').find('#userLoginForm');
         console.log(form);
