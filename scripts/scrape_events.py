@@ -19,7 +19,7 @@ from dateutil import parser
 
 from pprint import pprint
 
-import gcal
+#import gcal
 
 tz = pytz.timezone('America/Los_Angeles')
 now = datetime.now(tz)
