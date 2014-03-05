@@ -12,7 +12,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
- // background-color: #C6E0E1;
+  // background-color: #C6E0E1;
 }
 
 
@@ -22,10 +22,11 @@
 }
 
 .alert {
-  width: 300px;
   padding: 0;
   margin: 0 auto;
   margin-bottom: 5px;
+  text-align: left;
+  
 }
 
 
@@ -33,40 +34,80 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
-  width: 400px;
+  max-width: 400px;
   text-align: center;
   font-size: 16px;
   vertical-align: middle;
   padding-bottom: 150px;
   padding-top: 100px;
-  
+
   color: white;
   border-radius: 40px;
 
   background-color: #1375B2;
 
-  
+
   input {
-    margin-bottom: 3px;
     color: black;
     width: 180px;
   }
-  
-  .Login {
-    text-align: center;
-    
-    #loginButton, #joinButton {
-      width: 180px;
-      margin-top: 5px;
-      font-size: 16px;
-      font-weight:bold;
-      border-radius: 10px;
-      color: black;
-      background-color: #A5DCFF;
-    }
+
+  .alert {
+    width: 300px;
   }
+
+  /* .Login, .Signup { */
+  /*   text-align: center; */
+  /* } */
+
+  #loginButton, #joinButton {
+    width: 180px;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight:bold;
+    border-radius: 10px;
+    color: black;
+    background-color: #A5DCFF;
+  }
+
 }
 
 .SignupBox {
-  width: 500px;
+  max-width: 500px;
+
+  .alert {
+    width: 400px;
+  }
 }
+
+
+.GroupBox {
+  margin: 0 auto;
+  width: 400px;
+  margin-top: 10px;
+  text-align: center;
+
+  .GroupName {
+    padding-left: 5px;
+    padding-right: 5px;
+    //border-radius: 3px;
+    font-size: 16px;
+  }
+
+  .GroupList {
+    text-align: left;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #saveGroups {
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  .alert {
+    width: 300px;
+  }
+}
+

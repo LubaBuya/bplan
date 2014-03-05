@@ -10,10 +10,17 @@ Bplan::Application.routes.draw do
   # sign up link
   match '/signup', to: 'users#new', via: 'get'
 
-  get '/login' => 'users#login'
+
+  get '/logout' => 'users#logout', as: :logout
+  get '/login' => 'users#login', as: :login
   post '/login' => 'users#login_post'
 
-  get '/subscriptions' => 'users#subscriptions'
+  
+  get '/subscriptions' => 'users#subscriptions', as: :groups
+  post '/subscriptions' => 'users#update_subscriptions', as: :update_groups
+
+  get '/user_groups' => 'users#user_groups'
+
   
   # Example of regular route:
   # get 'products/:id' => 'catalog#view'

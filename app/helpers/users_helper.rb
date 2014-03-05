@@ -13,5 +13,8 @@ module UsersHelper
     end
   end
 
+  def logged_in?
+    return (not current_user.blank?)
+  end
 
 end
