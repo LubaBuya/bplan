@@ -14,13 +14,18 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def logout
+    cookies.delete :current_user
+    redirect_to :root
+  end
+  
   def create
     params = user_params
     # params[:password_confirmation] = params[:password]
+
     @user = User.new(params)
     @user.save
     
-    # @user created in create_beta_user
     if @user.errors.empty?
       save_user_to_cookie(@user)
       render json: {

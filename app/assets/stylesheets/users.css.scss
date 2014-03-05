@@ -12,7 +12,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
- // background-color: #C6E0E1;
+  // background-color: #C6E0E1;
 }
 
 
@@ -22,7 +22,6 @@
 }
 
 .alert {
-  width: 300px;
   padding: 0;
   margin: 0 auto;
   margin-bottom: 5px;
@@ -33,7 +32,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
-  width: 400px;
+  max-width: 400px;
   text-align: center;
   font-size: 16px;
   vertical-align: middle;
@@ -51,22 +50,53 @@
     color: black;
     width: 180px;
   }
-  
-  .Login {
-    text-align: center;
-    
-    #loginButton, #joinButton {
-      width: 180px;
-      margin-top: 5px;
-      font-size: 16px;
-      font-weight:bold;
-      border-radius: 10px;
-      color: black;
-      background-color: #A5DCFF;
-    }
+
+  .alert {
+    width: 300px;
   }
+  
+  /* .Login, .Signup { */
+  /*   text-align: center; */
+  /* } */
+  
+  #loginButton, #joinButton {
+    width: 180px;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight:bold;
+    border-radius: 10px;
+    color: black;
+    background-color: #A5DCFF;
+  }
+
 }
 
 .SignupBox {
-  width: 500px;
+  max-width: 500px;
+
+  .alert {
+    width: 400px;
+  }
+}
+
+
+// from http://css-tricks.com/snippets/css/glowing-blue-input-highlights/
+
+input {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+}
+
+input:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
 }

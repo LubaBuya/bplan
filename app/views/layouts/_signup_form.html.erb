@@ -12,13 +12,13 @@
 
   <%= form_for @user, html: { id: 'userSignupForm' } do |f| %>
   <%= f.text_field :name, placeholder: "Name" %>
-  <br />
-  <%= f.email_field :email, placeholder: "Email" %> <br />
+  <br/>
+  <%= f.email_field :email, placeholder: "Email" %>
+  <br/>
   <%= f.password_field :password, placeholder: "Password" %>
-  <br />
+  <br/>
   <%= f.password_field :password_confirmation, placeholder: "Confirmation" %>
   <% end %>
-
   <%= button_tag "Go!", class: "btn btn-large btn-primary", id: "joinButton" %>
 
-</div> 
+</div>  

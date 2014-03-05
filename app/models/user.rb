@@ -28,20 +28,22 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
   uniqueness: { case_sensitive: false }
 
+  validates :name, presence: true
+
   def nice_messages
     out = []
     for tag, messages in errors.messages do
-      nice_name = DISPLAY_FIELDS.fetch(tag, tag.to_s.capitalize)
+      nice_name = DISPLAY_FIELDS.fetch(tag, tag.to_s)
       messages.each do |msg|
         m = "#{nice_name} #{msg}"
         m = m.sub(/\scan't\s/, " shouldn't ")
+        m = m.capitalize
         out << m
       end
     end
-    return out
+    return out.sort
   end
 
-  private
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
   end
