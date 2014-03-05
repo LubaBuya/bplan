@@ -120,6 +120,7 @@ def get_event(header, ps, base_url):
             details = s.find(attrs={'class': 'event'}).find_all('p')[8].text.strip()
         details = details.replace(' \n\r\n', '\n')
         details = re.sub('(&nbsp;|\s)+', ' ', details)
+        details = re.sub(u'[\xa0\xad ]+', ' ', details)
         
     return {
         'title': title,
