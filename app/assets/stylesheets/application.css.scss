@@ -18,6 +18,10 @@
 
 body {
   background-color: #DCFFFA !important;
+  //overflow-x: hidden;
+  //position: absolute;
+  width: 100%;	
+  //left: 0px;
   //background-color: #323232 !important;
   //color: white !important;
 }
@@ -25,7 +29,7 @@ body {
 // header
 #title {
   //background-color: #004FC7;
-
+  left: 0;
   background-color: #1C2045;
   // background-color: black;
   color:white;

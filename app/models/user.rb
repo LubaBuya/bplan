@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   before_save { create_remember_token if (self.remember_token.blank? && self.password_digest && defined?(self.password_digest)) }
   before_save { |user| user.email = email.downcase }
    
-  DISPLAY_FIELDS = {fname: "First name", lname: "Last name", name: "Name", email: "Email", password: "Password" }
+  DISPLAY_FIELDS = {fname: "First name", lname: "Last name", name: "Name",
+    email: "Email", password: "Password", password_confirmation: "Password confirmation"}
 
   # E-mail regex
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

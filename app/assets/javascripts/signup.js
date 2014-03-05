@@ -4,7 +4,7 @@ var ErrorAlertItem = React.createClass({
         return (
             React.DOM.li(null, this.props.message)
             // <li> { this.props.message } </li>
-        );
+            );
     }
 });
 
@@ -21,7 +21,7 @@ var ErrorAlert = React.createClass({
             // <ul>
             //     { errors }
             // </ul>
-        );
+            );
     }
 });
 
@@ -37,8 +37,17 @@ $(document).ready(function() {
     $('body').on('click', '#loginButton', function(event) {
         event.preventDefault();
         form = $(this).closest('.Login').find('#userLoginForm');
-        console.log(form);
+        console.log(form); //debugging
         handle_signup_form(form, "/login", function(data) {
+            window.location.replace('/');
+        });
+    });
+
+    $('body').on('click', '#joinButton', function(event) {
+        event.preventDefault();
+        form = $(this).closest('.Signup').find('#userSignupForm');
+        console.log(form); //debugging
+        handle_signup_form(form, "/users", function(data) {
             window.location.replace('/');
         });
     });
@@ -48,14 +57,11 @@ var request = false;
 
 function handle_signup_form(form, url, successHandler) {
 
-    
-    // # abort any pending request
+    // #abort any pending request
     if (request) {
         request.abort();
     }
 
-
-    
     // # setup some local variables
     // # let's select and cache all the fields
     var inputs = form.find("input, select, button, textarea");
@@ -87,7 +93,7 @@ function handle_signup_form(form, url, successHandler) {
                 React.renderComponent (
                     ErrorAlert({errors: data.errors}),
                     document.getElementById('formError')
-                );
+                    );
             }
         }
     });
@@ -97,8 +103,8 @@ function handle_signup_form(form, url, successHandler) {
         // # log the error to the console
         console.error(
             "The following error occured: " +
-                textStatus, errorThrown
-        );
+            textStatus, errorThrown
+            );
     });
 
     // # callback handler that will be called regardless

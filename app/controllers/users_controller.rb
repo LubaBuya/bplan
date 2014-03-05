@@ -22,17 +22,17 @@ class UsersController < ApplicationController
     
     # @user created in create_beta_user
     if @user.errors.empty?
-      @success = true
-      redirect_to root_path
-    else
-      @success = false
+      save_user_to_cookie(@user)
       render json: {
         errors: @user.nice_messages,
-        success: @success
+        success: true
+      }
+    else
+      render json: {
+        errors: @user.nice_messages,
+        success: false
       }
     end
-
-    save_user_to_cookie(@user) if @success
   end
 
   def login_post
