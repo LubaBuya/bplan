@@ -1,4 +1,4 @@
 pytz
 unicodecsv
 beautifulsoup4
-dateutil
+python-dateutil
