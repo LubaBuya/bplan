@@ -1,25 +1,4 @@
-#title {
-  background-color: #004FC7;
-  color:white;
-}
 
-a {
-  color: white;
-  &:hover {
-    color: skyblue;
-    text-decoration: none;
-  }
-  margin-right: 10px;
-}
-
-#rightLinks {
-  float: right;
-  margin-top: 6px;
-} 
-
-#bplan {
-  font-size: 30px;
-}
 
 .content {
   margin-top: 20px;
@@ -37,6 +16,11 @@ a {
   border-top: solid;
   padding-top: 10px;
   margin-top: 10px;
+
+  li{
+    list-style-type: none;
+  }
+
 }
 
 /**
@@ -75,28 +59,31 @@ a {
 }
 
 .bigEvent{
-  border-radius: 15px;
+  border-radius: 10px;
   margin-bottom: 10px;
   text-align: left;
-  padding: 15px;
-  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: black;
   font-size: 14px;
-  max-width: 400px;
+  //max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 
-  background-color: #0072B2;
+  //background-color: #0072B2;
+  background-color: #FDFFF0;
+  /* border-top: 2px solid white; */
+  /* border-bottom: 2px solid white; */
   padding-left: 10px;
   padding-right: 10px;
-
+  //border: 1px solid;
+  
   &:hover {
-    cursor: pointer; cursor: hand; 
+    cursor: pointer; cursor: hand;
+    background-color: #ECF2C7;
   }
 }
 
-li{
-  list-style-type: none;
-}
 
 
 
@@ -105,4 +92,21 @@ li{
   overflow: hidden;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
-} 
+}
+
+/*
+
+orange #E69F00
+
+sky blue #56B4E9
+
+bluish green #009E73
+
+yellow #F0E442
+
+blue #0072B2 
+
+vermillion #D55E00
+
+pink  #CC79A7
+*/
