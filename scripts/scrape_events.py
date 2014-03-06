@@ -19,6 +19,10 @@ from dateutil import parser
 
 from pprint import pprint
 
+import colorsys
+import random
+import json
+
 #import gcal
 
 tz = pytz.timezone('America/Los_Angeles')
@@ -56,6 +60,25 @@ cal_ids = [
     (stats_cal, stats_id, "Statistics", ''),
     (nano_cal, nano_id, "Nanosciences", ''),
     (econ_cal, econ_id, "Economics", ''),
+
+    # ('http://events.berkeley.edu/index.php/calendar/sn/sa.html', None, 'Student Affairs', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/student.html', None, 'Student Events', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/its.html', None, 'Transportation Studies', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/music.html', None, 'Music', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/chem.html', None, 'Chemistry', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/classics.html', None, 'Classics', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/psych.html', None, 'Psychology', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/astro.html', None, 'Astrophysics', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/uhs.html', None, 'Tang Center', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/math.html', None, 'Math', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/mcb.html', None, 'MCB', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/bio.html', None, 'International Office', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/ccb.html', None, 'Comp. Bio', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/bsa.html', None, 'Study Abroad', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/coe.html', None, 'Engineering', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/pubpol.html', None, 'Public Policy', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/arthistory.html', None, 'Art History', ''),
+    ('http://events.berkeley.edu/index.php/calendar/sn/polisci.html', None, 'Political Science', ''),
     
     (base_url, perform_id, "Performances", '&tab=performing_arts'),
     (base_url, sports_id, "Sports", '&tab=sports'),
@@ -275,11 +298,31 @@ def generate_csv():
             writer.writerow(event)
             
     f_out.close()
+
+def generate_group_colors():
+    groups = map(lambda x: x[2], cal_ids)
+    out = []
+    for g in groups:
+        h = random.uniform(0, 1)
+        s = 1
+        v = random.uniform(0.6, 1)
+
+        rgb = colorsys.hsv_to_rgb(h, s, v)
+        rgb = tuple(map(lambda x: round(x*255), rgb))
+        col = '#%02X%02X%02X' % rgb
         
+        out.append( (g, col) )
+
+    f = open('data/group_colors.json', 'w')
+    json.dump(out, f)
+    f.close()
+    
+            
 if __name__ == '__main__':
     #main()
     generate_csv()
-    #pass
+    #generate_group_colors()
+    # pass
     
 
 

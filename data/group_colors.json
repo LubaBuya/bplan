@@ -1,12 +1,1 @@
-[
-    ["Neuroscience", "#A6005B"],
-    ["EECS", "#0072B2"],
-    ["BioE", "#C92D2A"],
-    ["Physics", "#00446A"],
-    ["Statistics", "#009E73"],
-    ["Nanosciences", "#D55E00"],
-    ["Economics", "#326A00"],
-    ["Sports", "#8C3A0F"],
-    ["Performances", "#8C9500"],
-    ["Films", "#210073"]
-]
+[["Neuroscience", "#27B600"], ["EECS", "#F20052"], ["BioE", "#E10058"], ["Physics", "#C65000"], ["Statistics", "#BA0075"], ["Nanosciences", "#A50019"], ["Economics", "#C22B00"], ["Student Events", "#41B600"], ["Transportation Studies", "#AE003E"], ["Music", "#69A800"], ["Chemistry", "#00A98E"], ["Classics", "#00569B"], ["Psychology", "#B100FB"], ["Astrophysics", "#B84700"], ["Tang Center", "#52E500"], ["Math", "#BB7D00"], ["MCB", "#0027EF"], ["International Office", "#00D51D"], ["Comp. Bio", "#9000B3"], ["Study Abroad", "#00EFEE"], ["Engineering", "#00DB67"], ["Public Policy", "#9F0025"], ["Art History", "#009CA8"], ["Political Science", "#B87D00"], ["Performances", "#1600A4"], ["Sports", "#0078A6"], ["Films", "#C200C2"]]

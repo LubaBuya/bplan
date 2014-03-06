@@ -13,11 +13,22 @@ class StaticPagesController < ApplicationController
 
     @left_name = "Today"
 
-    
+    @user = current_user
+
+    if not @user.blank?
+      groups = Set.new(@user.groups.map(&:id))
+      @events_today.select! {|e| groups.include? e.group.id }
+    end
+
     if @events_today.count == 0
       d = (d + 1.day).at_beginning_of_day
       @events_today = Event.order(:start_at).select {|x| x.end_at > d && x.end_at <= d.at_end_of_day }
       @left_name = "Tomorrow"
+
+      if not @user.blank?
+        @events_today.select! {|e| groups.include? e.group.id }
+      end
+
     end
 
     #@events_today = @events_today.paginate(page: params[:page])
@@ -26,12 +37,7 @@ class StaticPagesController < ApplicationController
     @events_upcoming = Event.order(:start_at).select {|x| x.end_at > d.at_end_of_day }.paginate(page: params[:page])
     # @events = Event.paginate(page: params[:page])
 
-
-    @user = current_user
     if not @user.blank?
-      groups = Set.new(@user.groups.map(&:id))
-
-      @events_today.select! {|e| groups.include? e.group.id }
       @events_upcoming.select! {|e| groups.include? e.group.id }
     end
     
