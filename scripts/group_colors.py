@@ -9,7 +9,7 @@ def generate_group_colors():
     for g in groups:
         h = random.uniform(0, 1)
         s = random.uniform(0.6, 0.7)
-        v = random.uniform(0.65, 0.8)
+        v = random.uniform(0.45, 0.57)
 
         rgb = colorsys.hsv_to_rgb(h, s, v)
         rgb = tuple(map(lambda x: round(x*255), rgb))

@@ -7,6 +7,8 @@ namespace :admin do
     L = JSON.parse(open('data/group_colors.json').read)
     
     L.each do |name, color|
+      puts "%-25s %s" % [name, color]
+
       g = Group.find_by_name(name)
       if g.blank?
         Group.create(name: name, color: color)
