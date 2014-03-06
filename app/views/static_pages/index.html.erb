@@ -1,5 +1,6 @@
 <%= render 'layouts/header' %>
 
+
 <div class="content">
   <% if false %>
   <%= render 'filter' %>
@@ -25,8 +26,14 @@
             <span class="date"> 
               <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
             </span>
+
+            <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
+            <br/>
+            <% end %>
             
-            <div class="loc" style="<%= 'float: right;' %>">
+            <div class="loc"
+                 style="<%= 'float: right;' \
+                        if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
               <%= e.location  %>
             </div>
 
@@ -68,7 +75,13 @@
               <%= e.end_at.strftime('%I:%M %P') %>
             </span>
             
-            <div class="loc" style="<%= 'float: right;' %>">
+            <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
+            <br/>
+            <% end %>
+            
+            <div class="loc"
+                 style="<%= 'float: right;' \
+                        if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
               <%= e.location  %>
             </div>
 

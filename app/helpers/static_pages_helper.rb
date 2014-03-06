@@ -9,5 +9,7 @@ module StaticPagesHelper
     "border-left: 12px solid #{group.color};"
   end
 
+  # cutoff for number of letters at which we put location on new line
+  LOCATION_CUTOFF = 40
 
 end
