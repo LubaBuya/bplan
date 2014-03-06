@@ -121,19 +121,24 @@
   -o-text-overflow: ellipsis;
 }
 
-/*
+.aboutBox {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
 
-orange #E69F00
+  background-color: #FDFFF0;
 
-sky blue #56B4E9
+  border-radius: 10px;
 
-bluish green #009E73
+  h2 {
+    font-size: 25px;
+  }
+  
+}
 
-yellow #F0E442
-
-blue #0072B2 
-
-vermillion #D55E00
-
-pink  #CC79A7
-*/
+h1 {
+  text-align: center;
+}

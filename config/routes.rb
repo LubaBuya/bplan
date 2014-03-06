@@ -21,6 +21,7 @@ Bplan::Application.routes.draw do
 
   get '/user_groups' => 'users#user_groups'
 
+  get '/about' => 'static_pages#about', as: :about
   
   # Example of regular route:
   # get 'products/:id' => 'catalog#view'
