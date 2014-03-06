@@ -14,7 +14,6 @@ class Group < ActiveRecord::Base
   has_many :subscriptions
   has_many :users, through: :subscriptions
 
-  # DEFAULT_GROUPS =
-  #   []
+  # DEFAULT_GROUPS =   []
   
 end

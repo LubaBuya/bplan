@@ -14,70 +14,77 @@
 
       <% for e in @events_today %>
       <li>
-       <div class="bigEvent" style="<%= big_event_style(e) %>">
+        <div class="bigEvent" style="<%= big_event_style(e) %>">
 
-        <span class="tagger" style="background-color: <%= e.group.color %>;"> <%= e.group.name %> </span>
+          <span class="tagger" style="background-color: <%= e.group.color %>;">
+            <%= e.group.name %>
+          </span>
 
-        <div class="events"><%= e.title %></div>
-        <div class="dateloc">
-          <span class="date"><!-- <span class="eventColon">Time:</span> -->
-          <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+          <div class="events"><%= e.title %></div>
+          <div class="dateloc">
+            <span class="date"> 
+              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+            </span>
+            
+            <div class="loc" style="<%= 'float: right;' %>">
+              <%= e.location  %>
+            </div>
 
-        </span>
-        <div class="loc" style="<%= 'float: right;' %>">
-          <%= e.location  %></span> 
+            <% if not e.description.blank? %>
+            <div class="desc ellipsis itallic">
+              <span class="eventColon">Description:</span>
+              <%= e.description %>
+            </div>
+            <% end %>
+            
+          </div>
         </div>
-        
-        <% if not e.description.blank? %>
-        <div class="desc ellipsis itallic">
-          <span class="eventColon">Description:</span>
-          <%= e.description %>
-        </span>
-      </div>
+      </li>
       <% end %>
     </div>
-  </li>
-  <% end %>
-</div>
-</div>
+  </div>
 
-<div class="col-md-6 eventColumn" >
 
-  <span id="upcoming">
-    Upcoming
-  </span>
+  <div class="col-md-6 eventColumn" >
 
-  <div class="eventList">
+    <span id="upcoming">
+      Upcoming
+    </span>
 
-    <% for e in @events_upcoming %>
-    <li>
-      <div class="bigEvent" style="<%= big_event_style(e) %>">
+    <div class="eventList">
 
-        <span class="tagger" style="background-color: <%= e.group.color %>;"> <%= e.group.name %> </span>
+      <% for e in @events_upcoming %>
+      <li>
+        <div class="bigEvent" style="<%= big_event_style(e) %>">
 
-        <div class="events"><%= e.title %></div>
-        <div class="dateloc">
-          <span class="date"><!-- <span class="eventColon">Time:</span> -->
-          <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
-          <%= e.end_at.strftime('%I:%M %P') %>
+          <span class="tagger" style="background-color: <%= e.group.color %>;">
+            <%= e.group.name %>
+          </span>
 
-        </span>
-        <div class="loc" style="<%= 'float: right;' %>">
-          <!-- <span class="eventColon">Location:</span> -->
-          <%= e.location  %></span> 
+          <div class="events"><%= e.title %></div>
+          <div class="dateloc">
+            <span class="date"> 
+              <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
+              <%= e.end_at.strftime('%I:%M %P') %>
+            </span>
+            
+            <div class="loc" style="<%= 'float: right;' %>">
+              <%= e.location  %>
+            </div>
+
+            <% if not e.description.blank? %>
+            <div class="desc ellipsis itallic">
+              <span class="eventColon">Description:</span>
+              <%= e.description %>
+            </div>
+            <% end %>
+            
+          </div>
         </div>
-
-        <% if not e.description.blank? %>
-        <div class="desc ellipsis itallic">
-          <span class="eventColon">Description:</span>
-          <%= e.description %>
-        </span>
-      </div>
+      </li>
       <% end %>
+
+      <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
+
     </div>
-  </li>
-  <% end %>
-
-  <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
-
-</div> 
+  </div>
