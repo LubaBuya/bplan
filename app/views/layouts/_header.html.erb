@@ -6,6 +6,7 @@
   <!-- See all events at one place -->
   <!-- </span> -->
   <span id="rightLinks">
+    <%= link_to "about", about_path %>
     <% if logged_in? %>
     <%= link_to "groups", groups_path, id: 'groupsLink' %>
     <%= link_to "logout", logout_path %>
