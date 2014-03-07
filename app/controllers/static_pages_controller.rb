@@ -7,6 +7,8 @@ class StaticPagesController < ApplicationController
   def index
     Time.zone = 'Pacific Time (US & Canada)'
     d = Time.now.in_time_zone(Time.zone)
+
+    # EVENTS TODAY
     
     @events_today = Event.where(end_at: d..d.at_end_of_day).order(:start_at, :title)
 
@@ -18,7 +20,6 @@ class StaticPagesController < ApplicationController
       @events_today = @events_today.where(group_id: groups)
     end
 
-    #@events_today = @events_today.group(:title)
     
     if @events_today.length == 0
       d = (d + 1.day).at_beginning_of_day
@@ -29,8 +30,14 @@ class StaticPagesController < ApplicationController
         @events_today = @events_today.where(group_id: groups)
       end
 
-      #@events_today = @events_today.group(:title)
     end
+
+    #@events_today = @events_today.group(:title)
+    @events_today = @events_today.select('DISTINCT ON (events.title, events.start_at) *')
+
+
+    # UPCOMING EVENTS
+
     
     @events_upcoming = Event.where('end_at > :now', {now: d.at_end_of_day}).order(:start_at)
 
@@ -39,6 +46,7 @@ class StaticPagesController < ApplicationController
     end
 
     #@events_upcoming = @events_upcoming.group(:title)
+    @events_upcoming = @events_upcoming.select('DISTINCT ON (events.title, events.start_at) *')
 
     @events_upcoming = @events_upcoming.paginate(page: params[:page], per_page: 20)
   end
