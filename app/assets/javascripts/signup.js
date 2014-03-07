@@ -1,3 +1,4 @@
+// 
 var ErrorAlertItem = React.createClass({
     render: function() {
         console.log(this.props.message);
@@ -10,12 +11,13 @@ var ErrorAlertItem = React.createClass({
 
 var ErrorAlert = React.createClass({
     render: function() {
+        // mapping each error into ErrorAlertItem which returns a li of the prop messages
         var errors = this.props.errors.map(function(e) {
             return ErrorAlertItem({message: e});
         });
 
         console.log(errors);
-        
+        // returning a list heirarchy of erros
         return (
             React.DOM.ul(null, errors)
             // <ul>
@@ -25,6 +27,7 @@ var ErrorAlert = React.createClass({
     }
 });
 
+// a successs alert
 var SuccessAlert = React.createClass({
     render: function() {
         return( React.DOM.div(null, this.props.message));
@@ -34,12 +37,13 @@ var SuccessAlert = React.createClass({
 
 // for logging in
 $(document).ready(function() {
+    // .on -- event is click for login button, function is what to run when this event occurs
     $('body').on('click', '#loginButton', function(event) {
-        event.preventDefault();
-        form = $(this).closest('.Login').find('#userLoginForm');
+        event.preventDefault(); // prevent default behavior
+        form = $(this).closest('.Login').find('#userLoginForm'); // grab entire form
         console.log(form); //debugging
         handle_signup_form(form, "/login", function(data) {
-            window.location.replace('/');
+            window.location.replace('/'); // go back to root after logging in
         });
     });
 
@@ -69,6 +73,7 @@ $(document).ready(function() {
 
 var request = false;
 
+// this method is called when we click the button submit
 function handle_signup_form(form, url, successHandler) {
 
     // #abort any pending request
@@ -77,9 +82,9 @@ function handle_signup_form(form, url, successHandler) {
     }
 
     // # setup some local variables
-    // # let's select and cache all the fields
+    // # selecting all elements in the form
     var inputs = form.find("input, select, button, textarea");
-    // # serialize the data in the form
+    // # serialize the data in the form - logging data to the console
     var serializedData = form.serialize();
     console.log('Serialized: ' + serializedData);
 
@@ -89,14 +94,13 @@ function handle_signup_form(form, url, successHandler) {
     $('#formSuccess').addClass("Hidden");
     $('#formError').addClass("Hidden");
 
-
-    // # fire off the request to url
+    // # submitting a post request to url which calls a method in rails controller
     request = $.ajax({
         url: url,
         type: "POST",
-        data: serializedData,
+        data: serializedData, // submitting the data
         datatype: "JSON",
-        success: function(data) {
+        success: function(data) { // what is data here?
             console.log(data);
             
             if(data.success) {

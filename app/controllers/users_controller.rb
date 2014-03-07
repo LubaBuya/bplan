@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
 
   include UsersHelper
   
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     params = user_params
     # params[:password_confirmation] = params[:password]
-
+    puts params
     @user = User.new(params)
     @user.save
     
