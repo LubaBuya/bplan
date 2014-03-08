@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    if ($('.bigEvent').length == 0) {
+        return;
+    }
+    
     $('.bigEvent').unbind();
     $('.bigEvent').click(function() {
         $(this).find('.desc').toggleClass('ellipsis');

@@ -7,17 +7,35 @@ $(document).ready(function() {
 
     $('#userSignupForm').find("input").keyup(function(event) {
         if(event.keyCode == 13) {
-            $("#joinButton").click();
-            setTimeout(function() { event.target.focus(); },
-                       200);
+
+            var id = event.target.id;
+
+            if(id == "user_name") {
+                $("#user_email").focus();
+            } else if(id == "user_email") {
+                $("#user_password").focus();
+            } else if(id == "user_password") {
+                $("#user_password_confirmation").focus();
+            } else if(id == "user_password_confirmation") {
+                $("#joinButton").click();
+                setTimeout(function() { event.target.focus(); },
+                           200);
+            }
         }
     });
 
     $('#userLoginForm').find("input").keyup(function(event) {
         if(event.keyCode == 13) {
-            $("#loginButton").click();
-            setTimeout(function() { event.target.focus(); },
-                       200);
+
+            var id = event.target.id;
+
+            if(id == "user_email") {
+                $("#user_password").focus();
+            } else if(id == "user_password") {
+                $("#loginButton").click();
+                setTimeout(function() { event.target.focus(); },
+                           200);
+            }
         }
     });
 
