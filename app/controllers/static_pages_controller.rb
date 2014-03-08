@@ -20,6 +20,7 @@ class StaticPagesController < ApplicationController
       @events_today = @events_today.where(group_id: groups)
     end
 
+    @gnames, @gcols = Group.groups_hash
     
     if @events_today.length == 0
       d = (d + 1.day).at_beginning_of_day
@@ -33,9 +34,12 @@ class StaticPagesController < ApplicationController
     end
 
     #@events_today = @events_today.group(:title)
-    @events_today = @events_today.select('DISTINCT ON (events.title, events.start_at) *')
+    # @events_today = @events_today.select('DISTINCT ON (events.title, events.start_at) *')
 
+    @events_today = @events_today.group_by{|x| [x.title, x.start_at]}.values
+    @events_today = @events_today.map { |x| x.sort_by  { |x| @gnames[x.group_id] } }
 
+    
     # UPCOMING EVENTS
 
     
@@ -46,8 +50,12 @@ class StaticPagesController < ApplicationController
     end
 
     #@events_upcoming = @events_upcoming.group(:title)
-    @events_upcoming = @events_upcoming.select('DISTINCT ON (events.title, events.start_at) *')
+    #@events_upcoming = @events_upcoming.select('DISTINCT ON (events.title, events.start_at) *')
+    
+    @events_upcoming = @events_upcoming.group_by{|x| [x.title, x.start_at]}.values
+    @events_upcoming = @events_upcoming.map { |x| x.sort_by { |x| @gnames[x.group_id] } }
 
+    
     @events_upcoming = @events_upcoming.paginate(page: params[:page], per_page: 20)
   end
 

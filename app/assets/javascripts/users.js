@@ -24,7 +24,13 @@ $(document).ready(function() {
 
     $('.GroupBox').ready(function() {
 
-        $('.GroupBox').find('input[type=checkbox]').prop('disabled', true);
+        var g = $('.GroupBox');
+
+        if(g.length == 0) {
+            return;
+        }
+        
+        g.find('input[type=checkbox]').prop('disabled', true);
         
         $.ajax({
             url: '/user_groups',
