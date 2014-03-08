@@ -1,8 +1,10 @@
 $(document).ready(function() {
+    $('.bigEvent').unbind();
     $('.bigEvent').click(function() {
         $(this).find('.desc').toggleClass('ellipsis');
     });
 
+    $(window).unbind();
     $(window).scroll(function() {
         if(page === null) {
             page = urlParams.page == undefined ? '1' : urlParams.page;
