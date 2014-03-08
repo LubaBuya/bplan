@@ -12,12 +12,13 @@
 
     <div class="eventList">
 
-      <% for e in @events_today %>
+      <% for el in @events_today %>
+      <% e = el[0] %>
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
           <span class="tagger" style="background-color: <%= e.group.color %>;">
-            <%= e.group.name %>
+            <%= el.map(&:group).map(&:name).uniq.join(' / ') %>
           </span>
 
           <div class="events"><%= e.title %></div>
@@ -59,12 +60,13 @@
 
     <div class="eventList">
 
-      <% for e in @events_upcoming %>
+      <% for el in @events_upcoming %>
+      <% e = el[0] %>
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
           <span class="tagger" style="background-color: <%= e.group.color %>;">
-            <%= e.group.name %>
+            <%= el.map(&:group).map(&:name).uniq.join(' / ') %>
           </span>
 
           <div class="events"><%= e.title %></div>

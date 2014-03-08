@@ -33,9 +33,10 @@ class StaticPagesController < ApplicationController
     end
 
     #@events_today = @events_today.group(:title)
-    @events_today = @events_today.select('DISTINCT ON (events.title, events.start_at) *')
+    # @events_today = @events_today.select('DISTINCT ON (events.title, events.start_at) *')
 
-
+    @events_today = @events_today.group_by{|x| [x.title, x.start_at]}.values;
+    
     # UPCOMING EVENTS
 
     
@@ -46,8 +47,11 @@ class StaticPagesController < ApplicationController
     end
 
     #@events_upcoming = @events_upcoming.group(:title)
-    @events_upcoming = @events_upcoming.select('DISTINCT ON (events.title, events.start_at) *')
+    #@events_upcoming = @events_upcoming.select('DISTINCT ON (events.title, events.start_at) *')
+    
+    @events_upcoming = @events_upcoming.group_by{|x| [x.title, x.start_at]}.values;
 
+    
     @events_upcoming = @events_upcoming.paginate(page: params[:page], per_page: 20)
   end
 
