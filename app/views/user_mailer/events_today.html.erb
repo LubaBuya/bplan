@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"                                                  
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Events for today</title>
+    <%= stylesheet_link_tag "user_mailer" %>
+  </head>
+  <body>
+
+    <div class="eventList">
+
+      <% for el in @events_today %>
+      <% e = el[0] %>
+      <li>
+        <div class="bigEvent" style="<%= big_event_style(e) %>">
+
+          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
+          </span>
+
+          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
+          <div class="dateloc">
+            <span class="date"> 
+              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+            </span>
+
+            <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF_MAIL %>
+            <br/> 
+            <% end %>
+            
+            <div class="loc"
+                 style="<%= 'float: right;' \
+                        if e.location.length < StaticPagesHelper::LOCATION_CUTOFF_MAIL %>">
+              <%= e.location  %>
+            </div>
+
+            <% if false and not e.description.blank? %>
+            <div class="desc ellipsis">
+              <span class="eventColon">Description:</span>
+              <%= e.description %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </div>
+  </body>
+</html>      
