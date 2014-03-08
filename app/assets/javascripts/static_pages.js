@@ -4,6 +4,8 @@ $(document).ready(function() {
         $(this).find('.desc').toggleClass('ellipsis');
     });
 
+    var wait = false;
+    
     $(window).unbind();
     $(window).scroll(function() {
         if(page === null) {
@@ -12,16 +14,22 @@ $(document).ready(function() {
         }
 
         if(isBottomVisible($('#upcomingList'))) {
+            if(wait) {
+                return;
+            }
+            
             page += 1;
-            $('#loadingDiv').load('/?page=' + page + ' #upcomingList');
-            $('#upcomingList').append($('#loadingDiv').find('#upcomingList').html());
-
-            setTimeout(function()  {
+            wait = true;
+            
+            $('#loadingDiv').load('/?page=' + page + ' #upcomingList', function() {
+                $('#upcomingList').append(
+                    $('#loadingDiv').find('#upcomingList').html());
                 $('.bigEvent').unbind('click');
                 $('.bigEvent').click(function() {
                     $(this).find('.desc').toggleClass('ellipsis');
                 });
-            }, 500);
+                wait = false;
+            });
         }
 
     });
