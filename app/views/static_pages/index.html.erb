@@ -12,24 +12,25 @@
 
     <div class="eventList">
 
-      <% for e in @events_today %>
+      <% for el in @events_today %>
+      <% e = el[0] %>
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
           <div class="star"> <%= image_tag("star-pressed.png", height: "32", width: "32")  %> </div>
 
-          <span class="tagger" style="background-color: <%= e.group.color %>;">
-            <%= e.group.name %>
+          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="events"><%= e.title %></div>
+          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
             </span>
 
             <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
-            <br/>
+             <br/> 
             <% end %>
             
             <div class="loc"
@@ -39,7 +40,7 @@
             </div>
 
             <% if not e.description.blank? %>
-            <div class="desc ellipsis itallic">
+            <div class="desc ellipsis">
               <span class="eventColon">Description:</span>
               <%= e.description %>
             </div>
@@ -59,20 +60,21 @@
       Upcoming
     </span>
 
-    <div class="eventList">
+    <div class="eventList" id="upcomingList">
 
-      <% for e in @events_upcoming %>
+      <% for el in @events_upcoming %>
+      <% e = el[0] %>
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
 
           <div class="star"> <%= image_tag("yellow_star.png", height: "32", width: "32")  %> </div>
 
-          <span class="tagger" style="background-color: <%= e.group.color %>;">
-            <%= e.group.name %>
+          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="events"><%= e.title %></div>
+          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
@@ -90,7 +92,7 @@
             </div>
 
             <% if not e.description.blank? %>
-            <div class="desc ellipsis itallic">
+            <div class="desc ellipsis">
               <span class="eventColon">Description:</span>
               <%= e.description %>
             </div>
@@ -101,7 +103,12 @@
       </li>
       <% end %>
 
+      <% if false %>
       <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
-
+      <% end %>
     </div>
   </div>
+</div>
+
+<div id="loadingDiv" class="Hidden">
+</div>

@@ -4,9 +4,6 @@ class StaticPagesController < ApplicationController
 
   include UsersHelper
 
-  def combineGroups
-
-  end
 
   def index
     Time.zone = 'Pacific Time (US & Canada)'

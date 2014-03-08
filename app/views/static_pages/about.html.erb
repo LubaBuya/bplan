@@ -1,46 +1,84 @@
 <%= render 'layouts/header' %>
 
 <div class="aboutBox">
-  <h1> About </h1>
-
-  <h2> Description </h2>
-  <p>
-    <strong>ucbplan</strong> is an application that provides a more convenient and functional                 way to         view current and upcoming events at UC Berkeley.
-
-    Create an account to customize which categories you will see on the front page.
-  </p>
-
-  <p>
-    Soon, you'll be able to star events and get reminders!
-  </p>
-
-  <p>
-    We're also planning to include student organization events from     Facebook.
-  </p>
-
-  <h2>Team</h2>
-  <p>
-    <strong>Pierre Karashchuk</strong> &#8212;
-    <a href="mailto:pierre@berkeley.edu">pierre@berkeley.edu</a>
-    <br/>
+  <div id="story" class="text">
     
-    <strong>Luvsanbyamba Buyankhuu (Luba)</strong> &#8212;
-    <a href="mailto:luba.buya@berkeley.edu">luba.buya@berkeley.edu</a>
-    <br/>
-    
-    <strong>Derrick Mar</strong> &#8212;
-    <a href="mailto:derrickmar1215@berkeley.edu">derrickmar1215@berkeley.edu</a>
-  </p>    
-  
-  
-  <h2> Contact </h2>
+    <h2> Story </h2>
+    <p>
+      Pierre tends to check Berkeley <a href="http://events.berkeley.edu/index.php">events</a>                                                                   pretty often, especially the Neuroscience and EECS calendars. He was getting tired of navigating to                                                             a bunch of pages to see what was happening tomorrow. 
+    </p>
 
-  <p>
-    <strong>Email:</strong>
-    <a href="mailto:ucbplan@gmail.com">ucbplan@gmail.com</a>
-    
-    
-  </p>
-  
+    <p>
+      He mentioned the clumsy events navigation to Luba. He said he had the same issue, 
+      so together they decided to build a better website for Berkeley events.
+    </p>
+
+    <p>
+      Soon after, Derrick saw the potential and usefulness of the site, and joined the team.
+    </p>
+
+    <p>
+      The trio hopes to create a single one-stop website for all Berkeley events.
+    </p>
+
+    <p>
+      Future features:
+      <ul>
+        <li> Include student organization events from Facebook </li>
+        <li> Star interesting events </li>
+        <li> Daily (opt-in) email feeds of interesting events </li>
+        <li> Get SMS or email reminders of events </li>
+      </ul>
+    </p>
+  </div>
+
+  <div id="team" class="row">
+    <h2>Team</h2>
+
+    <div id="pierre" class="col-md-4">
+      <%= image_tag("pierre-small.png", width: '150', height: '150', :class => "img")%>
+
+      <p class="name">
+        <strong>Pierre Karashchuk</strong>
+        <br/>
+        The Hacker
+      </p>
+    </div>
+
+
+    <div id="luba" class="col-md-4">
+      <%= image_tag("luba-small.png", width: '150', height: '150', :class=> "img")%>
+
+      <p class="name">
+        <strong>Luvsanbyamba "Luba" Buyankhuu</strong>
+        <br/>
+        The Inventor
+      </p>
+
+    </div>
+
+
+    <div id="derrick" class="col-md-4">
+      <%= image_tag("derrick-small.png", width: '150', height: '150', :class=>"img")%>
+
+      <p class="name">
+        <strong>Derrick Mar</strong>
+        <br/>
+        The Enterpreneur
+      </p>
+    </div>
+  </div>
+
+  <div id="contact" class="text">
+    <h2> Contact </h2>
+
+    <p>
+      Email us questions, comments, bugs, suggestions, events, or anything interesting at:
+      <strong><a href="mailto:ucbplan@gmail.com">ucbplan@gmail.com</a><strong>
+          
+          
+    </p>
+  </div>
+
 </div> 
 

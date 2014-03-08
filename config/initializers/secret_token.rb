@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Bplan::Application.config.secret_key_base = '5ea178b11c928935fdb8952e77b21ff5946bd2ed7a5abfd5a699994999ce0df85179610930074a7346ec6fa2e2c522e4203313afeb3f53370f5a3e9c68c0eeaa'
+Bplan::Application.config.secret_token = if Rails.env.development? or Rails.env.test?
+  ('x' * 30) # meets minimum requirement of 30 chars long. Not secure, but nice for development.
+else
+  ENV['SECRET_TOKEN']
+end
+

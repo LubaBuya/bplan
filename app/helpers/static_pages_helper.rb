@@ -9,8 +9,9 @@ module StaticPagesHelper
 	    	"border-left: 12px solid #{group.color};"
 	    end
 
-	    def combineGroups
-
+	    def combineGroups(events)
+	    	events.each do |event|
+	    		
 	    end
 
   # cutoff for number of letters at which we put location on new line

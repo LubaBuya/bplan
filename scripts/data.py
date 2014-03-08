@@ -53,3 +53,8 @@ cal_ids = [
     (base_url, sports_id, "Sports", '&tab=sports'),
     (base_url, films_id, "Films", '&tab=films')
     ]
+
+# cal_ids = cal_ids[0:2]
+
+# chem and engineering, for testing
+# cal_ids = [cal_ids[10], cal_ids[20]]

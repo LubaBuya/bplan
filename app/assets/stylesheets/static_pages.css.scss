@@ -64,11 +64,11 @@
 }
 
 /**
-.sample {
-  height: 60px;
-  width: auto; 
-}
-*/
+   .sample {
+   height: 60px;
+   width: auto; 
+   }
+   */
 
 .events{
   font-size: 16px;
@@ -76,7 +76,7 @@
   //margin-bottom: -10px;
   line-height: 24px;
   text-align: center;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
 }
 
 .white {
@@ -104,7 +104,7 @@
   margin-bottom: 10px;
   text-align: left;
   padding-top: 5px;
-  padding-bottom: 17px;
+  padding-bottom: 6px;
   color: black;
   font-size: 14px;
   margin-left: auto;
@@ -124,26 +124,70 @@
   overflow: hidden;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
+  font-style: italic;
+}
+
+.desc {
+  margin-top: 6px;
 }
 
 .aboutBox {
-  width: 600px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: 10px;
+  padding-bottom: 5px;
+  padding-top: 1px;
+  margin-top: 15px;
+  margin-bottom: 50px;
 
   background-color: #FDFFF0;
+  border-radius: 20px;
 
-  border-radius: 10px;
-
-  h2 {
-    font-size: 25px;
+  h1 {
+    margin-top: 5px;
   }
   
+  h2 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .text {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+  }
+  
+  #team {
+    text-align: center;
+    display: block;
+  }
+
+
+  .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: #004FC7;
+    text-decoration: none;
+    &:hover {
+      color: #3183FF;
+      text-decoration: none;
+    }
+  }
+
+
 }
 
 h1 {
   text-align: center;
 }
+
+
