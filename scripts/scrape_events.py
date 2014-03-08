@@ -140,7 +140,7 @@ def get_events(base_url, add='?view=summary'):
         try:
             event = get_event(title, ps, base_url)
             out.append(event)
-            print(event['title'])
+            print(event['title'], file=sys.stderr)
         except ValueError:
             continue
 
@@ -148,13 +148,15 @@ def get_events(base_url, add='?view=summary'):
 
 # get all events in this calendar for current month and next 3 months
 def get_all_events(base_url, extra=''):
-    print('\nFETCHING EVENTS...')
+    print('\nFETCHING EVENTS: {0}{1}'.format(base_url, extra), file=sys.stderr)
+    print('='*100, sep='', file=sys.stderr)
+
 
     dd = datetime.now()
 
     out = []
     
-    for i in range(3):
+    for i in range(4):
         add = '?view=summary&timeframe=month&date={0}{1}'.format(
             dd.strftime('%Y-%m-%d'), extra)
         out.extend(get_events(base_url, add))
@@ -245,6 +247,7 @@ def generate_csv():
             writer.writerow(event)
             
     f_out.close()
+
 
 if __name__ == '__main__':
     #main()
