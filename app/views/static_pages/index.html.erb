@@ -16,6 +16,8 @@
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
+          <div class="star"> <%= image_tag("star-pressed.png", height: "32", width: "32")  %> </div>
+
           <span class="tagger" style="background-color: <%= e.group.color %>;">
             <%= e.group.name %>
           </span>
@@ -62,6 +64,9 @@
       <% for e in @events_upcoming %>
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
+
+
+          <div class="star"> <%= image_tag("yellow_star.png", height: "32", width: "32")  %> </div>
 
           <span class="tagger" style="background-color: <%= e.group.color %>;">
             <%= e.group.name %>

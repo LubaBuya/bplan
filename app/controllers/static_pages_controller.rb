@@ -4,6 +4,10 @@ class StaticPagesController < ApplicationController
 
   include UsersHelper
 
+  def combineGroups
+
+  end
+
   def index
     Time.zone = 'Pacific Time (US & Canada)'
     d = Time.now.in_time_zone(Time.zone)
@@ -20,11 +24,13 @@ class StaticPagesController < ApplicationController
       @events_today.select! {|e| groups.include? e.group.id }
     end
 
+    # if there are no more events today then start showing events tomorrow
     if @events_today.count == 0
       d = (d + 1.day).at_beginning_of_day
       @events_today = Event.order(:start_at).select {|x| x.end_at > d && x.end_at <= d.at_end_of_day }
-      @left_name = "Tomorrow"
+        @left_name = "Tomorrow"
 
+      # only select user subscribed groups
       if not @user.blank?
         @events_today.select! {|e| groups.include? e.group.id }
       end
