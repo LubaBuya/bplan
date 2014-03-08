@@ -32,7 +32,7 @@ now = datetime.now(tz)
 yesterday = now + timedelta(days=-1)
 
 
-p = re.compile(u'[\s\xa0]+')
+p = re.compile(u'[\s\xa0\xad]+')
 
 CURRENT_YEAR = datetime.now().year
 
@@ -70,10 +70,24 @@ def to_datetime_range(date, time_range):
     
 
 def get_event(header, ps, base_url):
-    L = map(lambda x: p.sub(' ', x.text.strip()), ps[4:])
-    L = list(L)
     title = p.sub(' ', header.text.strip())
-    event_type, date, time, location = L[0].split(' | ')
+
+    good = False
+
+    index = 4
+    while not good:
+        L = [p.sub(' ', x.text.strip()) for x in ps[index:]]
+        try:
+            event_type, date, time, location = L[0].split(' | ')
+            good = True
+        except ValueError:
+            good = False
+            index -= 1
+
+            if index < 0:
+                return None
+
+        
     speaker = L[1].partition(': ')[2]
 
     sponsor = None
@@ -89,8 +103,7 @@ def get_event(header, ps, base_url):
             s = BeautifulSoup(response.read())
             details = s.find(attrs={'class': 'event'}).find_all('p')[8].text.strip()
         details = details.replace(' \n\r\n', '\n')
-        details = re.sub('(&nbsp;|\s)+', ' ', details)
-        details = re.sub(u'[\xa0\xad ]+', ' ', details)
+        details = p.sub(' ', details.strip())
         
     return {
         'title': title,
@@ -139,6 +152,9 @@ def get_events(base_url, add='?view=summary'):
         title = e.find('h3')
         try:
             event = get_event(title, ps, base_url)
+            if event == None:
+                continue
+            
             out.append(event)
             print(event['title'], file=sys.stderr)
         except ValueError:
