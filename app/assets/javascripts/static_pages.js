@@ -2,6 +2,27 @@ $(document).ready(function() {
     $('.bigEvent').click(function() {
         $(this).find('.desc').toggleClass('ellipsis');
     });
+
+    $(window).scroll(function() {
+        if(page === null) {
+            page = urlParams.page == undefined ? '1' : urlParams.page;
+            page = parseInt(page);
+        }
+
+        if(isBottomVisible($('#upcomingList'))) {
+            page += 1;
+            $('#loadingDiv').load('/?page=' + page + ' #upcomingList');
+            $('#upcomingList').append($('#loadingDiv').find('#upcomingList').html());
+
+            setTimeout(function()  {
+                $('.bigEvent').unbind('click');
+                $('.bigEvent').click(function() {
+                    $(this).find('.desc').toggleClass('ellipsis');
+                });
+            }, 500);
+        }
+
+    });
 });
 
 function isBottomVisible(elem)
@@ -32,23 +53,4 @@ var urlParams;
 
 var page = null;
 
-$(window).scroll(function() {
-    if(page === null) {
-        page = urlParams.page == undefined ? '1' : urlParams.page;
-        page = parseInt(page);
-    }
 
-    if(isBottomVisible($('#upcomingList'))) {
-        page += 1;
-        $('#loadingDiv').load('/?page=' + page + ' #upcomingList');
-        $('#upcomingList').append($('#loadingDiv').find('#upcomingList').html());
-
-        setTimeout(function()  {
-            $('.bigEvent').unbind('click');
-            $('.bigEvent').click(function() {
-                $(this).find('.desc').toggleClass('ellipsis');
-            });
-        }, 500);
-    }
-
-})
