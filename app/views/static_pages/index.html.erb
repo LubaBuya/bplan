@@ -58,7 +58,7 @@
       Upcoming
     </span>
 
-    <div class="eventList">
+    <div class="eventList" id="upcomingList">
 
       <% for el in @events_upcoming %>
       <% e = el[0] %>
@@ -98,7 +98,12 @@
       </li>
       <% end %>
 
+      <% if false %>
       <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
-
+      <% end %>
     </div>
   </div>
+</div>
+
+<div id="loadingDiv" class="Hidden">
+</div>
