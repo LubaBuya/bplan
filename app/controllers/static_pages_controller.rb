@@ -9,6 +9,8 @@ class StaticPagesController < ApplicationController
     Time.zone = 'Pacific Time (US & Canada)'
     d = Time.now.in_time_zone(Time.zone)
     
+    @gnames, @gcols = Group.groups_hash
+
     # selecting only events that are today. First getting events that are today. Then we are sorting it by comparing each one?
     @events_today = Event.order(:start_at).select {|x| x.end_at > d && x.end_at <= d.at_end_of_day }
     
