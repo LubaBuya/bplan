@@ -17,8 +17,8 @@
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
-          <span class="tagger" style="background-color: <%= e.group.color %>;">
-            <%= el.map(&:group).map(&:name).uniq.join(' / ') %>
+          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
           <div class="events"><%= e.title %></div>
@@ -65,8 +65,8 @@
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
-          <span class="tagger" style="background-color: <%= e.group.color %>;">
-            <%= el.map(&:group).map(&:name).uniq.join(' / ') %>
+          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
           <div class="events"><%= e.title %></div>

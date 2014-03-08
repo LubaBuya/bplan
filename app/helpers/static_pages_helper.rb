@@ -1,7 +1,7 @@
 module StaticPagesHelper
 
   def big_event_style(e)
-    "border: 2px solid #{e.group.color};"
+    "border: 2px solid #{@gcols[e.group_id]};"
   end
 
   def group_style(group)

@@ -15,5 +15,16 @@ class Group < ActiveRecord::Base
   has_many :users, through: :subscriptions
 
   # DEFAULT_GROUPS =   []
+
+  def self.groups_hash
+    names = Hash.new
+    colors = Hash.new
+    
+    all.each do |g|
+      names[g.id] = g.name
+      colors[g.id] = g.color
+    end
+    return names, colors
+  end
   
 end
