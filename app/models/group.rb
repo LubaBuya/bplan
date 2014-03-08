@@ -13,6 +13,7 @@ class Group < ActiveRecord::Base
 
   has_many :subscriptions
   has_many :users, through: :subscriptions
+  has_many :events
 
   # DEFAULT_GROUPS =   []
 

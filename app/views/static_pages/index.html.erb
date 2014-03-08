@@ -21,7 +21,7 @@
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="events"><%= e.title %></div>
+          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
@@ -69,7 +69,7 @@
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="events"><%= e.title %></div>
+          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
