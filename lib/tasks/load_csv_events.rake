@@ -5,6 +5,8 @@ namespace :admin do
   desc "Populate groups from data/group_colors.json"
   task :load_groups => :environment do
     L = JSON.parse(open('data/group_colors.json').read)
+    L = L.sort_by { |x| x[0] }
+
     
     L.each do |name, color|
       puts "%-25s %s" % [name, color]
