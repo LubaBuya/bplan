@@ -10,6 +10,6 @@ module StaticPagesHelper
   end
 
   # cutoff for number of letters at which we put location on new line
-  LOCATION_CUTOFF = 40
+  LOCATION_CUTOFF = 30
 
 end
