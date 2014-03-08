@@ -1,0 +1,39 @@
+/*body{background: blue}*/
+#title {background-color: blue;
+		color:yellow;
+		margin-bottom: 0px
+			}
+
+/*#frame{background-color: yellow;
+		margin-left:auto;
+		margin-right: auto;
+	
+		}*/
+
+#today{font-size: 150%;
+		text-align: center;
+		margin-left:auto;
+		margin-right: auto;
+		background-color: white;
+		width: 50%;
+		padding-right: 180px;
+		padding-left: 180px;
+		padding-bottom: 500px;
+		text-align: center;
+		border: solid;
+	}
+#upcoming{font-size: 150%;
+text-align: center;
+		margin-left:auto;
+		margin-right: auto;
+		background-color: white;
+		width: 50%;
+		padding-right: 180px;
+		padding-left: 180px;
+		padding-bottom: 500;
+		text-align: center;
+		border: solid;
+	}
+#todayBox{text-decoration: underline;}
+
+#upcomingBox{text-decoration: underline;}

@@ -12,9 +12,6 @@ gem 'bootstrap-will_paginate', '0.0.9'
 #font gem
 gem 'font-kit-rails'
 
-gem 'pg'
-
-
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
@@ -51,6 +48,7 @@ group :doc do
 end
 
 group :production do
+  gem 'pg'
   gem 'rails_12factor'
 end
 
