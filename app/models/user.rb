@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :groups, through: :subscriptions
 
+  has_many :favorite_events
+  has_many :favorites, through: :favorite_events
+
   before_create { |user| user.groups = Group.all }
   
   before_save { create_remember_token if (self.remember_token.blank? && self.password_digest && defined?(self.password_digest)) }

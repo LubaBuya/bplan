@@ -11,6 +11,9 @@ class StaticPagesController < ApplicationController
     
     # selecting only events that are today. First getting events that are today. Then we are sorting it by comparing each one?
     @events_today = Event.order(:start_at).select {|x| x.end_at > d && x.end_at <= d.at_end_of_day }
+    
+    #testing
+    #puts @events_today
 
     @left_name = "Today"
 

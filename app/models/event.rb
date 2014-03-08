@@ -18,4 +18,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :group
 
+  has_many :favorite_events #just estabilishing the relationship between a user and this event
+  has_many :favorited_by, through: :favorite_events, source: :user 
+  # source means 
+
 end
