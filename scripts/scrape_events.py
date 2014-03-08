@@ -251,9 +251,9 @@ def generate_csv():
 
 if __name__ == '__main__':
     #main()
-    generate_csv()
+    #generate_csv()
     #generate_group_colors()
-    # pass
+     pass
     
 
 

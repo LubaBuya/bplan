@@ -60,7 +60,7 @@ namespace :admin do
 
   task :update_events => :environment do
     puts "FETCHING EVENTS..."
-    data = `python2 scripts/scrape_events.py`
+    data = `python2 scripts/json_events.py`
 
     puts "\n\n"
     puts "DELETING EVENTS FROM DATABASE..."
