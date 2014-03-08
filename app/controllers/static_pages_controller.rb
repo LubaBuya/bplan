@@ -61,6 +61,10 @@ class StaticPagesController < ApplicationController
 
 
   def about
+    # Thread.new do
+    #   UserMailer.events_today().deliver
+    # end
   end
 
+  
 end
