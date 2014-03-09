@@ -55,9 +55,7 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'JSON',
             success: function(data) {
-                console.log(data);
                 for(var i=0; i<data.groups.length; i += 1) {
-                    console.log('#group' + data[i]);
                     $('#group' + data.groups[i]).find('input[type=checkbox]').prop('checked', true);
                 }
 

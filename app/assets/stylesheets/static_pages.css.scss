@@ -20,6 +20,7 @@
   float: right;
 }
 
+
 .vertical {
   float:left;
 }
@@ -115,6 +116,36 @@
   &:hover {
     cursor: pointer; cursor: hand;
     background-color: #ECF2C7;
+  }
+
+  .topright {
+    float: right;
+  }
+
+
+  .linkIcon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-size: 18px 18px;
+  }
+  
+  .gcalLink {
+    background-image: image-url("calendar.svg");
+
+    &:hover {
+      background-image: image-url("calendar-selected.svg");
+    }
+  }
+
+  .emailLink {
+    background-image: image-url("email.svg");
+    background-size: 18px 15px;
+    height: 15px;
+  }
+
+  .smsLink {
+    background-image: image-url("sms.svg");
   }
 }
 

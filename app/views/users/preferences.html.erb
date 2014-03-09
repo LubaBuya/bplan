@@ -1,0 +1,82 @@
+<%= render 'layouts/header' %>
+
+
+<div class="GroupBox">
+
+  <div class="row">
+
+    <div id="formError" class="alert alert-danger Hidden">
+      <% # rendered using react (via signup.js) %>
+    </div>
+
+
+    <div id="formSuccess" class="alert alert-success Hidden">
+      <% # rendered using react (via signup.js) %>
+    </div>
+
+    <div class="col-md-6 col">
+      <h2>Reminders</h2>
+      <p> When would you like your reminders to trigger? </p>
+      <div class="GroupList">
+
+        <%= form_tag(update_reminders_path, id: 'updateRemindersForm') do %>
+        
+        Email:
+        <select name="reminders[email]">
+          <option value="never">Never</option>
+          <option value="1day">1 day before</option>
+          <option value="1hour">1 hour before</option>
+          <option value="30min">30 minutes before</option>
+          <option value="10min">10 minutes before</option>
+        </select> 
+
+        <br/>
+
+        SMS:
+        <select name="reminders[sms]">
+          <option value="never">Never</option>
+          <option value="1day">1 day before</option>
+          <option value="1hour">1 hour before</option>
+          <option value="30min">30 minutes before</option>
+          <option value="10min">10 minutes before</option>
+        </select>
+
+        <% end %>
+      </div>
+
+      <%= button_tag "Save", class: "btn btn-large btn-primary saveButton",
+          id: "saveReminders" %>
+    </div>
+    
+    <div class="col-md-6 col">
+      <h2> Front page </h2> 
+      <p> Choose which events will appear on your front page </p>
+
+      
+      <div class="GroupList">
+        <%= form_tag(update_groups_path, id: 'updateGroupsForm') do %>
+        
+        <% for g in Group.order(:name) %>
+
+        <div class="Group" id="group<%= g.id %>">
+          <%= check_box_tag "group_ids[]", g.id %>
+          
+          <span class="GroupName"  style="<%= group_style(g) %>">
+            <%= g.name %>
+          </span>
+        </div>
+        
+        <% end %>
+
+        <% end %>
+        
+      </div>
+
+      <%= button_tag "Save", class: "btn btn-large btn-primary saveButton",
+          id: "saveGroups" %>
+    </div>
+
+    
+  </div>
+  
+</div>   

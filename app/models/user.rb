@@ -9,6 +9,8 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  name            :string(255)
+#  remind_email    :integer
+#  remind_sms      :integer
 #
 
 class User < ActiveRecord::Base

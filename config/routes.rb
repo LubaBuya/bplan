@@ -16,8 +16,9 @@ Bplan::Application.routes.draw do
   post '/login' => 'users#login_post'
 
   
-  get '/subscriptions' => 'users#subscriptions', as: :groups
-  post '/subscriptions' => 'users#update_subscriptions', as: :update_groups
+  get '/preferences' => 'users#preferences', as: :preferences
+  post '/groups' => 'users#update_groups', as: :update_groups
+  post '/reminders' => 'users#update_reminders', as: :update_reminders
 
   get '/user_groups' => 'users#user_groups'
 

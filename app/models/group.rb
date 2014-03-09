@@ -7,6 +7,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  color      :string(255)
+#  nickname   :string(255)
 #
 
 class Group < ActiveRecord::Base
