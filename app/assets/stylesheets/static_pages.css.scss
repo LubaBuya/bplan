@@ -16,8 +16,16 @@
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
-.star {
+
+.favform {
   float: right;
+}
+
+.star{
+  width: 32px;
+  height: auto;
+  border: none;
+  padding: 0;
 }
 
 .vertical {
@@ -69,9 +77,9 @@
    }
    */
 
-.events{
-  font-size: 16px;
-  font-weight: 500;
+   .events{
+    font-size: 16px;
+    font-weight: 500;
   //margin-bottom: -10px;
   line-height: 24px;
   text-align: center;

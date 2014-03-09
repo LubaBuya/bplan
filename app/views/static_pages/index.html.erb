@@ -16,99 +16,124 @@
       <% e = el[0] %>
       <%= puts e %>
       <li>
+
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
-          <div class="star"> <%= image_tag("star-pressed.png", height: "32", width: "32")  %> </div>
 
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
-          <div class="dateloc">
-            <span class="date"> 
-              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
-            </span>
+          <% if @logged %>
 
-            <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
-            <br/> 
-            <% end %>
-            
-            <div class="loc"
-            style="<%= 'float: right;' \
-            if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
-            <%= e.location  %>
-          </div>
+            <% if @user.favorites.exists?(e.id) %>
 
-          <% if not e.description.blank? %>
-          <div class="desc ellipsis">
-            <span class="eventColon">Description:</span>
-            <%= e.description %>
-          </div>
+                <%= render 'favdeselect', e: e %>
+
+            <% else %>
+
+                <%= render 'favselect', e: e %>
+
+             <% end %>
+
           <% end %>
 
-        </div>
-      </div>
-    </li>
-    <% end %>
-  </div>
-</div>
+              <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
+              <div class="dateloc">
+                <span class="date"> 
+                  <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+                </span>
 
+                <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
+                <br/> 
+                <% end %>
 
-<div class="col-md-6 eventColumn" >
+                <div class="loc"
+                style="<%= 'float: right;' \
+                if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
+                <%= e.location  %>
+              </div>
 
-  <span id="upcoming">
-    Upcoming
-  </span>
+              <% if not e.description.blank? %>
+              <div class="desc ellipsis">
+                <span class="eventColon">Description:</span>
+                <%= e.description %>
+              </div>
+              <% end %>
 
-  <div class="eventList" id="upcomingList">
-
-    <% for el in @events_upcoming %>
-    <% e = el[0] %>
-    <li>
-      <div class="bigEvent" style="<%= big_event_style(e) %>">
-
-
-        <div class="star"> <%= image_tag("yellow_star.png", height: "32", width: "32")  %> </div>
-
-        <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
-          <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
-        </span>
-
-        <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
-        <div class="dateloc">
-          <span class="date"> 
-            <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
-            <%= e.end_at.strftime('%I:%M %P') %>
-          </span>
-
-          <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
-          <br/>
-          <% end %>
-
-          <div class="loc"
-          style="<%= 'float: right;' \
-          if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
-          <%= e.location  %>
-        </div>
-
-        <% if not e.description.blank? %>
-        <div class="desc ellipsis">
-          <span class="eventColon">Description:</span>
-          <%= e.description %>
-        </div>
+            </div>
+          </div>
+        </li>
         <% end %>
-
       </div>
     </div>
-  </li>
-  <% end %>
 
-  <% if false %>
-  <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
-  <% end %>
-</div>
-</div>
+
+    <div class="col-md-6 eventColumn" >
+
+      <span id="upcoming">
+        Upcoming
+      </span>
+
+      <div class="eventList" id="upcomingList">
+
+        <% for el in @events_upcoming %>
+        <% e = el[0] %>
+        <li>
+          <div class="bigEvent" style="<%= big_event_style(e) %>">
+
+            <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+              <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
+            </span>
+
+           <% if @logged %>
+
+            <% if @user.favorites.exists?(e.id) %>
+
+                <%= render 'favdeselect', e: e %>
+
+            <% else %>
+
+                <%= render 'favselect', e: e %>
+
+             <% end %>
+
+          <% end %>
+
+            <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
+            <div class="dateloc">
+              <span class="date"> 
+                <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
+                <%= e.end_at.strftime('%I:%M %P') %>
+              </span>
+
+              <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
+              <br/>
+              <% end %>
+
+              <div class="loc"
+              style="<%= 'float: right;' \
+              if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
+              <%= e.location  %>
+            </div>
+
+            <% if not e.description.blank? %>
+            <div class="desc ellipsis">
+              <span class="eventColon">Description:</span>
+              <%= e.description %>
+            </div>
+            <% end %>
+
+          </div>
+        </div>
+      </li>
+      <% end %>
+
+      <% if false %>
+      <%= will_paginate @events_upcoming, :renderer => WillPaginate::ActionView::LinkRenderer %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div id="loadingDiv" class="Hidden">
