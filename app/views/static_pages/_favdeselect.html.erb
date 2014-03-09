@@ -1,0 +1,5 @@
+<div id="selected" class="favform">
+<%= link_to(image_tag("yellow-star.png", class: "star"),
+	favorite_event_path(FavoriteEvent.find_by(user_id: @user.id, event_id: e.id)),
+	{method: "delete"}) %>
+</div>
