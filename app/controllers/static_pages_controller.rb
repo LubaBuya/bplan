@@ -9,18 +9,7 @@ class StaticPagesController < ApplicationController
     d = Time.now.in_time_zone(Time.zone)
 
     # EVENTS TODAY
-    
-<<<<<<< HEAD
-    @gnames, @gcols = Group.groups_hash
-
-    # selecting only events that are today. First getting events that are today. Then we are sorting it by comparing each one?
-    @events_today = Event.order(:start_at).select {|x| x.end_at > d && x.end_at <= d.at_end_of_day }
-    
-    #testing
-    #puts @events_today
-=======
     @events_today = Event.where(end_at: d..d.at_end_of_day).order(:start_at, :title)
->>>>>>> a9bf1577470f8fe4831ff87946676089161dc7e8
 
     @left_name = "Today"
     @user = current_user
@@ -46,7 +35,9 @@ class StaticPagesController < ApplicationController
     #@events_today = @events_today.group(:title)
     # @events_today = @events_today.select('DISTINCT ON (events.title, events.start_at) *')
 
+    # For duplicates: grouping events by title and start time.  @events_today is now a hash of hashes
     @events_today = @events_today.group_by{|x| [x.title, x.start_at]}.values
+    # order these inner hashes
     @events_today = @events_today.map { |x| x.sort_by  { |x| @gnames[x.group_id] } }
 
     

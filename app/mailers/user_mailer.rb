@@ -10,6 +10,7 @@ class UserMailer < ActionMailer::Base
     d = Time.now.in_time_zone(Time.zone)
     d = d.at_beginning_of_day 
 
+    # gnames is the names of the group, gcols is the color
     @gnames, @gcols = Group.groups_hash
 
     @user = User.find(1)
