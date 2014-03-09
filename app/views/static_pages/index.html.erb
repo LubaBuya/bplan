@@ -15,7 +15,10 @@
       <% for el in @events_today %>
       <% e = el[0] %>
       <li>
+
         <div class="bigEvent" style="<%= big_event_style(e) %>">
+
+          <% if false %>
 
           <div class="topright">
             <a class="gcalLink linkIcon" href="<%= gcal_link(e) %>"
@@ -26,20 +29,38 @@
             <!-- <%= image_tag("star.svg", height: "18", width: "18")  %> -->
           </div>
 
+          <% end %>
+          
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
+          <% if @logged %>
+
+
+          <% if @user.favorites.exists?(e.id) %>
+
+          <%= render 'favdeselect', e: e %>
+
+          <% else %>
+
+          <%= render 'favselect', e: e %>
+
+          <% end %>
+
+          <% end %>
+
           <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
             <span class="date"> 
-              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P')
+                                                                 %>
             </span>
 
             <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
             <br/> 
             <% end %>
-            
+
             <div class="loc"
                  style="<%= 'float: right;' \
                         if e.location.length < StaticPagesHelper::LOCATION_CUTOFF %>">
@@ -74,14 +95,23 @@
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>">
 
-
-          <div class="star">
-            <%= image_tag("star_yellow.svg", height: "18", width: "18")  %>
-          </div>
-
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
+
+          <% if @logged %>
+
+          <% if @user.favorites.exists?(e.id) %>
+
+          <%= render 'favdeselect', e: e %>
+
+          <% else %>
+
+          <%= render 'favselect', e: e %>
+
+          <% end %>
+
+          <% end %>
 
           <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">

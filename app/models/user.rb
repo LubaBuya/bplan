@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :groups, through: :subscriptions
 
   has_many :favorite_events
-  has_many :favorites, through: :favorite_events
+  has_many :favorites, through: :favorite_events, source: :event
 
   before_create { |user| user.groups = Group.all }
   

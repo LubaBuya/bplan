@@ -16,10 +16,20 @@
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
-.star {
+
+.favform {
   float: right;
 }
 
+<<<<<<< HEAD
+=======
+.star{
+  width: 32px;
+  height: auto;
+  border: none;
+  padding: 0;
+}
+>>>>>>> 098ffb5b7fa04add510b1ee35e056a67ee3990b0
 
 .vertical {
   float:left;
@@ -70,9 +80,9 @@
    }
    */
 
-.events{
-  font-size: 16px;
-  font-weight: 500;
+   .events{
+    font-size: 16px;
+    font-weight: 500;
   //margin-bottom: -10px;
   line-height: 24px;
   text-align: center;

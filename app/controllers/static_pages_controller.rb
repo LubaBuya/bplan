@@ -8,14 +8,19 @@ class StaticPagesController < ApplicationController
     Time.zone = 'Pacific Time (US & Canada)'
     d = Time.now.in_time_zone(Time.zone)
 
+    @left_name = "Today"
+    @user = current_user
+    @logged = not(@user.blank?)
+    @new_fav = FavoriteEvent.new
+
     # EVENTS TODAY
     @events_today = Event.where(end_at: d..d.at_end_of_day).order(:start_at, :title)
 
-    @left_name = "Today"
-    @user = current_user
     
-    if not @user.blank?
+    if @logged
+      # same as groups = user.groups.map{|x| x.id }
       groups = @user.groups.map(&:id)
+      # selecting only groups if the user
       @events_today = @events_today.where(group_id: groups)
     end
 

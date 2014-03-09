@@ -1,4 +1,6 @@
 Bplan::Application.routes.draw do
+  get "favorite_events/new"
+  get "favorite_events/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,10 +8,12 @@ Bplan::Application.routes.draw do
   root 'static_pages#index'
 
   resources :users
+  resources :favorite_events
 
   # sign up link
   match '/signup', to: 'users#new', via: 'get'
 
+  get '/favorite', to: 'events#favorite', via: 'post'
 
   get '/logout' => 'users#logout', as: :logout
   get '/login' => 'users#login', as: :login
