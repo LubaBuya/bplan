@@ -151,7 +151,7 @@
 
       @user.save
 
-      @user.phone = params[:phone]
+      @user.phone_number = params[:phone]
       @user.save
       
       render json: {
