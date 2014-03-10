@@ -60,4 +60,11 @@ namespace :admin do
     end
   end
 
+  desc "Remind people by sms and email"
+  task :remind_all => :environment do
+    Rake::Task["admin:remind_sms"].invoke
+    Rake::Task["admin:remind_emails"].invoke
+  end
+  
+
 end
