@@ -89,6 +89,17 @@ $(document).ready(function() {
         $('#formSuccess').removeClass("Hidden");
         $('#formError').addClass("Hidden");
     });
-    
+
+
+    $('#allGroups').unbind();
+    $('#allGroups').click(function() {
+        $('input[type=checkbox]').prop('checked', true);
+    });
+
+    $('#noGroups').unbind();
+    $('#noGroups').click(function() {
+        $('input[type=checkbox]').prop('checked', false);
+    });
+
 });
 

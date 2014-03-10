@@ -134,6 +134,19 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .allOrNone {
+    text-align: center;
+    margin: 0 auto;
+    &:hover {
+      cursor: pointer; cursor: hand;
+    }
+
+    a {
+    padding-left: 6px;
+    padding-right: 6px;
+    }
+  }
 }
 
 .ReminderBox {

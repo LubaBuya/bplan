@@ -30,7 +30,7 @@
         <%= select("reminders", "sms", @reminder_choices, selected: @remind_sms) %>
 
         <br/>
-          
+        
         Phone:
         <%= text_field_tag("phone", @user.phone_number, placeholder: "Phone number") %>
 
@@ -59,6 +59,11 @@
 
       
       <div class="GroupList">
+        <div class="allOrNone">
+          <a id="allGroups">All</a>
+          <a id="noGroups">None</a>
+        </div>
+        
         <%= form_tag(update_groups_path, id: 'updateGroupsForm') do %>
         
         <% for g in Group.order(:name) %>
@@ -84,4 +89,4 @@
     
   </div>
   
-</div>     
+</div>       
