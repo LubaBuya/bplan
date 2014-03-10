@@ -56,7 +56,7 @@
     end
   end
 
-  def subscriptions
+  def preferences
     @user = current_user
     if @user.blank?
       redirect_to :root
@@ -67,10 +67,19 @@
     p @user_groups
   end
 
-  def update_subscriptions
+  def update_groups
     ids = Set.new(params[:group_ids].map(&:to_i))
 
     @user = current_user
+    if @user.blank?
+      render json: {
+        success: false,
+        errors: ["nobody is logged in"]
+      }
+      return
+    end
+
+    
     groups = Set.new(@user.groups.map(&:id))
 
     to_remove = groups.difference(ids)
@@ -91,6 +100,42 @@
     }
   end
 
+  REMINDER_TIMES =  {
+    "never" => 0,
+    "1day" => 1.day,
+    "1hour" => 1.hour,
+    "30min" => 30.minutes,
+    "10min" => 10.minutes
+  }
+
+    
+  
+  def update_reminders
+    puts params
+
+    @user = current_user
+    if @user.blank?
+      render json: {
+        success: false,
+        errors: ["nobody is logged in"]
+      }
+      return
+    end
+
+    email = params[:reminders][:email]
+    sms = params[:reminders][:sms]
+
+    @user.remind_email = REMINDER_TIMES.fetch(email, 0)
+    @user.remind_sms = REMINDER_TIMES.fetch(sms, 0)
+
+    @user.save
+    
+    render json: {
+      success: true,
+      errors: []
+    }
+  end
+
   def user_groups
     user = current_user
     if user.blank?
@@ -103,7 +148,7 @@
       }
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)

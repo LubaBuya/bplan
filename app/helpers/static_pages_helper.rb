@@ -9,6 +9,16 @@ module StaticPagesHelper
     "border-left: 12px solid #{group.color};"
   end
 
+  def gcal_link(e)
+    s = [e.title, e.start_at.in_time_zone("UTC").iso8601.gsub(/[-:]/, ''),
+         e.end_at.in_time_zone("UTC").iso8601.gsub(/[-:]/, ''),
+         e.location, e.description || '']
+    
+    s = s.map {|x| URI.escape(x) }
+    
+    'http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s&location=%s&details=%s' % s
+  end
+  
   # cutoff for number of letters at which we put location on new line
   LOCATION_CUTOFF = 30
   LOCATION_CUTOFF_MAIL = 25

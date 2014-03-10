@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20140310032530) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.string   "name"
+    t.integer  "remind_email"
+    t.integer  "remind_sms"
   end
 
 end

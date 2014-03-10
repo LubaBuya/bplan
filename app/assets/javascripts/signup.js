@@ -41,8 +41,7 @@ $(document).ready(function() {
     $('body').on('click', '#loginButton', function(event) {
         event.preventDefault(); // prevent default behavior
         form = $(this).closest('.Login').find('#userLoginForm'); // grab entire form
-        console.log(form); //debugging
-        handle_signup_form(form, "/login", function(data) {
+        handle_signup_form(form, function(data) {
             window.location.replace('/'); // go back to root after logging in
         });
     });
@@ -50,8 +49,7 @@ $(document).ready(function() {
     $('body').on('click', '#joinButton', function(event) {
         event.preventDefault();
         form = $(this).closest('.Signup').find('#userSignupForm');
-        console.log(form); //debugging
-        handle_signup_form(form, "/users", function(data) {
+        handle_signup_form(form, function(data) {
             window.location.replace('/');
         });
     });
@@ -59,12 +57,24 @@ $(document).ready(function() {
     $('body').on('click', '#saveGroups', function(event) {
         event.preventDefault();
         form = $(this).closest('.GroupBox').find('#updateGroupsForm');
-        console.log(form); //debugging
-        handle_signup_form(form, "/subscriptions", function(data) {
+        handle_signup_form(form, function(data) {
             $('#formSuccess').removeClass("Hidden");
             $('#formError').addClass("Hidden");
             React.renderComponent (
                 SuccessAlert({message: 'Success! We have updated your subscriptions.'}),
+                document.getElementById('formSuccess')
+            );
+        });
+    });
+
+    $('body').on('click', '#saveReminders', function(event) {
+        event.preventDefault();
+        form = $(this).closest('.GroupBox').find('#updateRemindersForm');
+        handle_signup_form(form, function(data) {
+            $('#formSuccess').removeClass("Hidden");
+            $('#formError').addClass("Hidden");
+            React.renderComponent (
+                SuccessAlert({message: 'Success! We have updated your reminders.'}),
                 document.getElementById('formSuccess')
             );
         });
@@ -74,12 +84,14 @@ $(document).ready(function() {
 var request = false;
 
 // this method is called when we click the button submit
-function handle_signup_form(form, url, successHandler) {
+function handle_signup_form(form, successHandler) {
 
     // #abort any pending request
     if (request) {
         request.abort();
     }
+
+    var url = form.attr('action');
 
     // # setup some local variables
     // # selecting all elements in the form
