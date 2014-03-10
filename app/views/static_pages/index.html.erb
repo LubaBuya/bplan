@@ -12,24 +12,23 @@
 
     <div class="eventList">
 
-      <% for el in @events_today %>
+      <% for el, favs in @events_today %>
       <% e = el[0] %>
+      <% f = favs[0] %>
+      <% f = FavoriteEvent.new(event_id: e.id) if f.blank? %>
       <li>
 
-        <div class="bigEvent" style="<%= big_event_style(e) %>">
+        <div class="bigEvent" style="<%= big_event_style(e) %>"
+             data-id="<%= f.id %>">
 
-          <% if false %>
 
           <div class="topright">
             <a class="gcalLink linkIcon" href="<%= gcal_link(e) %>"
                title="Add to Google Calendar"></a>
-            <a class="emailLink linkIcon"></a>
             <a class="smsLink linkIcon"></a>
-            <!-- <%= image_tag("sms.svg", height: "18", width: "18")  %> -->
-            <!-- <%= image_tag("star.svg", height: "18", width: "18")  %> -->
+            <a class="emailLink linkIcon"></a>
           </div>
 
-          <% end %>
           
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
@@ -53,8 +52,8 @@
           <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
             <span class="date"> 
-              <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P')
-                                                                 %>
+              <%= e.start_at.strftime('%I:%M %P') %> &#8212;
+              <%= e.end_at.strftime('%I:%M %P')  %>
             </span>
 
             <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF %>
@@ -70,7 +69,7 @@
             <% if not e.description.blank? %>
             <div class="desc ellipsis">
               <span class="eventColon">Description:</span>
-              <%= e.description %>
+              <%= simple_format(e.description, {}, wrapper_tag: "span") %>
             </div>
             <% end %>
 
@@ -90,15 +89,25 @@
 
     <div class="eventList" id="upcomingList">
 
-      <% for el in @events_upcoming %>
+      <% for el, favs in @events_upcoming %>
       <% e = el[0] %>
+      <% f = favs[0] %>
+      <% f = FavoriteEvent.new(event_id: e.id) if f.blank? %>
       <li>
-        <div class="bigEvent" style="<%= big_event_style(e) %>">
+        <div class="bigEvent" style="<%= big_event_style(e) %>"
+             data-id="<%= f.id %>">
 
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
+          <div class="topright">
+            <a class="gcalLink linkIcon Hidden" href="<%= gcal_link(e) %>"
+               title="Add to google calendar"></a>
+            <a class="smsLink linkIcon Hidden"></a>
+            <a class="emailLink linkIcon Hidden"></a>
+          </div>
+          
           <% if @logged %>
 
           <% if @user.favorites.exists?(e.id) %>
@@ -133,7 +142,7 @@
             <% if not e.description.blank? %>
             <div class="desc ellipsis">
               <span class="eventColon">Description:</span>
-              <%= e.description %>
+              <%= simple_format(e.description, {}, wrapper_tag: "span") %>
             </div>
             <% end %>
 

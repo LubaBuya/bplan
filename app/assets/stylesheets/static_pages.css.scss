@@ -21,15 +21,12 @@
   float: right;
 }
 
-<<<<<<< HEAD
-=======
 .star{
   width: 32px;
   height: auto;
   border: none;
   padding: 0;
 }
->>>>>>> 098ffb5b7fa04add510b1ee35e056a67ee3990b0
 
 .vertical {
   float:left;
@@ -80,9 +77,9 @@
    }
    */
 
-   .events{
-    font-size: 16px;
-    font-weight: 500;
+.events{
+  font-size: 16px;
+  font-weight: 500;
   //margin-bottom: -10px;
   line-height: 24px;
   text-align: center;
@@ -130,6 +127,8 @@
 
   .topright {
     float: right;
+    display: flex;
+    // opacity: 0;
   }
 
 
@@ -138,6 +137,7 @@
     height: 18px;
     display: inline-block;
     background-size: 18px 18px;
+    margin-left: 5px;
   }
   
   .gcalLink {
@@ -148,20 +148,39 @@
     }
   }
 
-  .emailLink {
-    background-image: image-url("email.svg");
+  .emailLink, .emailLinkChosen {
     background-size: 18px 15px;
     height: 15px;
+    margin-top: 2px;
+
+    &:hover {
+      background-image: image-url("email-selected.svg");
+    }
   }
 
+  .emailLink {
+    background-image: image-url("email.svg");
+  }
+
+  .emailLinkChosen {
+    background-image: image-url("email-chosen.svg");
+    opacity: 1;
+  }
+
+  
   .smsLink {
     background-image: image-url("sms.svg");
+
+    &:hover {
+      background-image: image-url("sms-selected.svg");
+    }
   }
 }
 
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
+  height: 1.5em;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   font-style: italic;
@@ -228,6 +247,11 @@
 
 h1 {
   text-align: center;
+}
+
+.Hidden {
+  opacity: 0;
+  display: none;
 }
 
 

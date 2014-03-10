@@ -32,7 +32,8 @@ now = datetime.now(tz)
 yesterday = now + timedelta(days=-1)
 
 
-p = re.compile(u'[\s\xa0\xad]+')
+p = re.compile(u'[\s\xa0\xad\xc2]+')
+pn = re.compile(u'[ \t\xa0\xad\xc2]+')
 
 CURRENT_YEAR = datetime.now().year
 
@@ -69,13 +70,17 @@ def to_datetime_range(date, time_range):
     return (t1, t2)
     
 
-def get_event(header, ps, base_url):
+def get_event(header, ps, base_url, recursed=False):
     title = p.sub(' ', header.text.strip())
 
     good = False
 
-    index = 4
+    index = 6
     while not good:
+        if len(ps) <= index:
+            index -= 1
+            continue
+        
         L = [p.sub(' ', x.text.strip()) for x in ps[index:]]
         try:
             event_type, date, time, location = L[0].split(' | ')
@@ -85,25 +90,33 @@ def get_event(header, ps, base_url):
             index -= 1
 
             if index < 0:
+                print("BAD:", title)
                 return None
 
-        
-    speaker = L[1].partition(': ')[2]
 
+    speaker = None
     sponsor = None
-    if len(L) >= 3:
-        sponsor = L[2].partition(': ')[2]
+    details = ''
+
+    for line in ps[index:][1:]:
+        line = line.text.strip()
         
-    details = None
-    if len(L) >= 4:
-        details = L[3].strip()
-        if details.find('More >') != -1:
-            link = header.find('a').attrs['href']
-            response = urlopen(base_url + link)
-            s = BeautifulSoup(response.read())
-            details = s.find(attrs={'class': 'event'}).find_all('p')[8].text.strip()
+        if line.find('Speaker:') != -1:
+            speaker = line.partition(': ')[2]
+        elif line.find('Sponsor:') != -1:
+            sponsor = line.partition(': ')[2]
+        else:
+            details += line + '\n'
+            
+    if details.find('More >') != -1 and not recursed:
+        link = header.find('a').attrs['href']
+        response = urlopen(base_url + link)
+        s = BeautifulSoup(response.read())
+        ps = s.find(attrs={'class': 'event'}).find_all('p')
+        return get_event(header, ps, base_url, True)
+    else:
         details = details.replace(' \n\r\n', '\n')
-        details = p.sub(' ', details.strip())
+        details = pn.sub(' ', details.strip())
         
     return {
         'title': title,

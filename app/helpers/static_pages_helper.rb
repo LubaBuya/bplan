@@ -12,7 +12,8 @@ module StaticPagesHelper
   def gcal_link(e)
     s = [e.title, e.start_at.in_time_zone("UTC").iso8601.gsub(/[-:]/, ''),
          e.end_at.in_time_zone("UTC").iso8601.gsub(/[-:]/, ''),
-         e.location, e.description || '']
+         e.location,
+         (e.description || '')[0..500]]
     
     s = s.map {|x| URI.escape(x) }
     
