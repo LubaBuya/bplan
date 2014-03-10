@@ -8,7 +8,9 @@ Bplan::Application.routes.draw do
   root 'static_pages#index'
 
   resources :users
-  resources :favorite_events
+  resources :favorite_events do
+    get 'redefine', on: :collection
+  end
 
   # sign up link
   match '/signup', to: 'users#new', via: 'get'
