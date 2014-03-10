@@ -217,9 +217,9 @@
                     location: "Soda hall", group_id: g.id,
                     description: "This is just a test event. Seems like you got it!")
 
-      Thread.new do
-        UserMailer.event_reminder(e, u).deliver
-      end
+
+      UserMailer.event_reminder(e, u).deliver
+
 
       render json: {
         success: true
