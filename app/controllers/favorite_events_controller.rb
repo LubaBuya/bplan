@@ -4,14 +4,14 @@ class FavoriteEventsController < ApplicationController
 		@fav_event = FavoriteEvent.new(fav_params)
 		@fav_event.save
 		redirect_to root_path
-		# if @fav_event.save
-		# 	respond_to do |format|
-		# 		format.html { redirect_to root_path }
-		# 		format.js
-		# 	end
-		# else
-		# 	render "Something is wrong. Sorry."
-		# end
+		if @fav_event.save
+			respond_to do |format|
+				format.html { redirect_to root_path }
+				format.js
+			end
+		else
+			render "Something is wrong. Sorry."
+		end
 	end
 
 	def destroy
