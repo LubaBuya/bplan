@@ -11,7 +11,7 @@ namespace :admin do
     
     events = favs.map {|x| [x.event, x.user]}
     
-    events2 = events.select {|event, user|
+    events = events.select {|event, user|
       user.remind_email > 0 &&
       d > event.start_at - user.remind_email - 30.seconds &&
       d < event.start_at - user.remind_email + 10.minutes
@@ -33,7 +33,7 @@ namespace :admin do
     
     events = favs.map {|x| [x.event, x.user]}
     
-    events2 = events.select {|event, user|
+    events = events.select {|event, user|
       user.remind_sms > 0 &&
       d > event.start_at - user.remind_sms - 30.seconds &&
       d < event.start_at - user.remind_sms + 10.minutes &&
