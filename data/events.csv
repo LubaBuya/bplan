@@ -8216,3 +8216,27 @@ Tickets required: $5.50 BAM/PFA member; Cal Student, Staff, Faculty, and retiree
 Event Contact: bampfapress@berkeley.edu, 510-642-0808",Films
 "SFJFF Film Screening: Portrait of Wally, 2012, 90 min.",Film - Feature,2014-05-01T19:00:00,2014-05-01T21:00:00,Magnes Collection of Jewish Art and Life (2121 Allston Way),,Berkeley Law and SFJFF,"The film traces the history of Egon Schieles iconic 1912 painting from its origins as a gesture of affection toward his young lover to the theft of the painting from Lea Bondi to its surprise resurfacing when it turns up at Museum of Modern Art in Manhattan in 1997. The screening will be followed by a conversation between David D'Arcy, the films producer and screenwriter, and Berkeley Law adjunct faculty Carla Shapreau, an international authority on reclaimed cultural property from the Holocaust.
 Event Contact: atonkin@berkeley.edu, 510-643-2526",Films
+H@B: BIG HACK,,2014-04-05T13:00:00-0700,2014-04-06T13:00:00-0700,Stanford University,,Hackers @ Berkeley,"You destroyed BearHack, you learned at HackJam, you're a veteran of mega-hackathons, or you're just looking to make your first hack, well now it's time, for BIG HACK.
+
+Come join H@B and travel to Stanford for camaraderie, competition, and HACKING!
+
+Time and place tentative.
+Buses provided, details coming soon! 
+
+WHERE: STANFORD UNIVERSITY
+WHEN: APRIL 5-6 (time TBA)
+WHO: EVERYBODY
+WHY: BEAT STANFORD (or just have some fun)",Hackers @ Berkeley
+H@B: Concurrent Data Structures,,2014-03-14T18:00:00-0700,2014-03-14T20:00:00-0700,420 Soda,,Hackers @ Berkeley,"As modern systems tend to optimize for increasingly multithreaded environments, the need for high-performance concurrent data structures is growing rapidly. A large part of systems research nowadays involves developing faster and more resource-efficient data structures for concurrent programs.
+
+In this workshop, we'll turn some common data structures into their concurrent counterparts, benchmarking them to show how different methods of designing these data structures impacts performance.
+
+Prerequisites:
+
+- Knowledge of basic single-threaded data structures (linked lists, hash tables, etc).
+
+- Familiarity with concurrency. You don't have to know how to write correct multithreaded programs, but you should understand how and why concurrent programs are different from single-threaded programs.
+
+- Solid understanding of C or C++. I'll be writing all the code in C++, but if you know C as well as object oriented programming, you shouldn't have a problem following along.
+
+Note: These are hard prerequisites. If you are unfamiliar with any of the above topics, we unfortunately won't have enough time to explain them in a lot of detail.",Hackers @ Berkeley
