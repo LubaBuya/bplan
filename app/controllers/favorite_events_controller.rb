@@ -16,9 +16,8 @@ class FavoriteEventsController < ApplicationController
 	end
 
 	def update
-		puts params
 		@fav_event = FavoriteEvent.find(params[:id])
-		@fav_event.update_attribute(params)
+		@fav_event.update_attribute(params[:type], params[:boolean])
 		redirect_to root_path
 	end
 
