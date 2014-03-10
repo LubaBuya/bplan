@@ -211,7 +211,7 @@
       e = Event.new(title: "ucbplan Email Test Event",
                     start_at: Time.now,
                     end_at: Time.now + 1.hour,
-                    location: "Soda hall", group_id: g.id,
+                    location: "275 Soda", group_id: g.id,
                     description: "This is just a test event. Seems like you got it!")
 
 
@@ -240,7 +240,7 @@
       e = Event.new(title: "ucbplan SMS Test Event",
                     start_at: Time.now,
                     end_at: Time.now + 1.hour,
-                    location: "Soda hall", group_id: g.id,
+                    location: "275 Soda", group_id: g.id,
                     description: "This is just a test event. Seems like you got it!")
 
       Thread.new do
