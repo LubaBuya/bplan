@@ -39,7 +39,8 @@ class UserMailer < ActionMailer::Base
     p u
     
     mail(:to => u.email,
-         :subject => "Event at %s: %s" % [e.start_at.in_time_zone(Time.zone).strftime('%I:%M %P'),
+         :subject => "Event at %s: %s" % [e.start_at.in_time_zone(Time.zone)
+                                            .strftime('%I:%M %P'),
                                           e.title])
     
   end
