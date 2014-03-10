@@ -16,7 +16,7 @@
       <% e = el[0] %>
       
       <% if not @user.blank? %>
-      <% f = FavoriteEvent.where(event_id: el.map(&:id), user_id: @user.id)[0] %>
+      <% f = el.map {|x| @favorites[x.id]}.find{|x| not x.blank?} %>
       <% f ||= FavoriteEvent.new(event_id: e.id, user_id: @user.id) %>
       <% end %>
 
@@ -49,7 +49,7 @@
             
             <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
                       linkIcon Hidden"
-               title="Remind me by Email"></a>
+               title="Remind me by email"></a>
             
           </div>
           <% end %>
@@ -104,7 +104,7 @@
       <% e = el[0] %>
 
       <% if not @user.blank? %>
-      <% f = FavoriteEvent.where(event_id: el.map(&:id), user_id: @user.id)[0] %>
+      <% f = el.map {|x| @favorites[x.id]}.find{|x| not x.blank?} %>
       <% f ||= FavoriteEvent.new(event_id: e.id, user_id: @user.id) %>
       <% end %>
 
@@ -137,7 +137,7 @@
             
             <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
                       linkIcon Hidden"
-               title="Remind me by Email"></a>
+               title="Remind me by email"></a>
             
           </div>
           <% end %>

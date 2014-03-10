@@ -10,7 +10,6 @@ class StaticPagesController < ApplicationController
 
     @left_name = "Today"
     @user = current_user
-    @new_fav = FavoriteEvent.new
 
     # EVENTS TODAY
     @events_today = Event.where(end_at: d..d.at_end_of_day).order(:start_at, :title)
@@ -63,6 +62,14 @@ class StaticPagesController < ApplicationController
     
     @events_upcoming = @events_upcoming.paginate(page: params[:page], per_page: 20)
 
+
+    @favorites = Hash.new
+    
+    if not @user.blank?
+      FavoriteEvent.where(user_id: @user.id).each do |f|
+        @favorites[f.event_id] = f
+      end
+    end
   end
 
 
