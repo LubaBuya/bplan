@@ -3,6 +3,7 @@ require 'twilio-ruby'
 namespace :admin do
   desc "Remind people by email"
   task :remind_emails => :environment do
+    Time.zone = 'Pacific Time (US & Canada)'
     d = Time.now
     favs = FavoriteEvent.where(email: true)
     if favs.blank?
@@ -25,6 +26,7 @@ namespace :admin do
 
   desc "Remind people by sms"
   task :remind_sms => :environment do
+    Time.zone = 'Pacific Time (US & Canada)'
     d = Time.now
     favs = FavoriteEvent.where(sms: true)
     if favs.blank?
@@ -45,7 +47,8 @@ namespace :admin do
 
     events.each do |e, u|
       puts "Reminding %s of %s" % [u.phone_number, e.title]
-      body = "Event at %s in %s:\n%s" % [ e.start_at.strftime('%I:%M %P'),
+      body = "Event at %s in %s:\n%s" % [ e.start_at.in_time_zone(Time.zone)
+                                            .strftime('%I:%M %P'),
                                           e.location,
                                           e.title ]
 
