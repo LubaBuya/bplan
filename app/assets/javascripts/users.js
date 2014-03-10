@@ -71,6 +71,23 @@ $(document).ready(function() {
 
         });
 
+
+    });
+
+    $('#sendTestSMS').unbind();
+    $('#sendTestSMS').click(function() {
+        $('#formSuccess').html("Sent a test SMS. Check your phone!");
+        
+        $('#formSuccess').removeClass("Hidden");
+        $('#formError').addClass("Hidden");
+    });
+
+    $('#sendTestEmail').unbind();
+    $('#sendTestEmail').click(function() {
+        $('#formSuccess').html("Sent a test email. Check your email!");
+        
+        $('#formSuccess').removeClass("Hidden");
+        $('#formError').addClass("Hidden");
     });
     
 });

@@ -31,6 +31,9 @@ Bplan::Application.routes.draw do
   get '/user_groups' => 'users#user_groups'
 
   get '/about' => 'static_pages#about', as: :about
+
+  post '/test_email' => 'users#test_email', as: :test_email
+  post '/test_sms' => 'users#test_sms', as: :test_sms
   
   # Example of regular route:
   # get 'products/:id' => 'catalog#view'

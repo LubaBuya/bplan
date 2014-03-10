@@ -142,3 +142,20 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+input#phone {
+  max-width: 120px;
+}
+
+#sendTestSMS, #sendTestEmail {
+  padding: 0;
+  border-radius: 5px;
+  background-color: #3576AB;
+  color: white;
+  font-weight: 300;
+  padding: 5px 5px 5px 5px;
+
+  &:hover {
+    background-color: #356082;
+  }
+}

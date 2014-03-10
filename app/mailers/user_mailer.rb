@@ -29,11 +29,15 @@ class UserMailer < ActionMailer::Base
 
   def event_reminder(e, u)
 
+
+    Time.zone = 'Pacific Time (US & Canada)'
+    
     @gnames, @gcols = Group.groups_hash
     @event = e
 
     mail(:to => u.email,
-         :subject => "Event at %s: %s" % [e.start_at.strftime('%I:%M %P'), e.title])
+         :subject => "Event at %s: %s" % [e.start_at.in_time_zone(Time.zone).strftime('%I:%M %P'),
+                                          e.title])
     
   end
 

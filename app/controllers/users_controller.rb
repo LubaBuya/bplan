@@ -150,6 +150,9 @@
       @user.remind_sms = REMINDER_TIMES.fetch(sms, 0)
 
       @user.save
+
+      @user.phone = params[:phone]
+      @user.save
       
       render json: {
         success: true,
@@ -191,6 +194,78 @@
           remind_sms: TIMES_REMINDER.fetch(user.remind_sms, "never")
         }
       end
+    end
+
+    def test_sms
+    end
+
+    def test_email
+      u = current_user
+      if u.blank?
+        render json: {
+          success: false
+        }
+        return
+      end
+      g = Group.find_by_name("EECS")
+
+      Time.zone = 'Pacific Time (US & Canada)'
+      
+      e = Event.new(title: "ucbplan Email Test Event",
+                    start_at: Time.now,
+                    end_at: Time.now + 1.hour,
+                    location: "Soda hall", group_id: g.id,
+                    description: "This is just a test event. Seems like you got it!")
+
+      Thread.new do
+        UserMailer.event_reminder(e, u).deliver
+      end
+
+      render json: {
+        success: true
+      }
+
+    end
+
+    def test_sms
+      u = current_user
+      if u.blank?
+        render json: {
+          success: false
+        }
+        return
+      end
+      g = Group.find_by_name("EECS")
+
+      Time.zone = 'Pacific Time (US & Canada)'
+      
+      e = Event.new(title: "ucbplan SMS Test Event",
+                    start_at: Time.now,
+                    end_at: Time.now + 1.hour,
+                    location: "Soda hall", group_id: g.id,
+                    description: "This is just a test event. Seems like you got it!")
+
+      Thread.new do
+        @client = Twilio::REST::Client.new(Bplan::Application.config.twilio_sid,
+                                           Bplan::Application.config.twilio_token)
+
+        body = "Event at %s in %s:\n%s" % [ e.start_at.strftime('%I:%M %P'),
+                                            e.location,
+                                            e.title ]
+
+        @client.account.messages
+          .create(
+                  {
+                    :from => Bplan::Application.config.twilio_phone_number,
+                    :to => u.phone_number,
+                    :body => body
+                  })
+      end
+
+      render json: {
+        success: true
+      }
+
     end
 
     private

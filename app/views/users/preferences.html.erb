@@ -29,11 +29,28 @@
         SMS:
         <%= select("reminders", "sms", @reminder_choices, selected: @remind_sms) %>
 
+        <br/>
+          
+        Phone:
+        <%= text_field_tag("phone", @user.phone_number, placeholder: "Phone number") %>
+
+        
         <% end %>
       </div>
 
+      
       <%= button_tag "Save", class: "btn btn-large btn-primary saveButton",
           id: "saveReminders" %>
+
+
+      <br/> <br/>
+      <%= link_to "Send test SMS", test_sms_path, remote: true, method: :post,
+          class: "btn saveButton", id: "sendTestSMS" %>
+
+      <%= link_to "Send test email", test_email_path, remote: true, method: :post,
+          class: "btn saveButton", id: "sendTestEmail" %>
+
+      
     </div>
     
     <div class="col-md-6 col">
@@ -67,4 +84,4 @@
     
   </div>
   
-</div>    
+</div>     
