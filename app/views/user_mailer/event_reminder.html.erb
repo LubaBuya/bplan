@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title><%= e.title %></title>
+    <title><%= @event.title %></title>
     <%= stylesheet_link_tag "user_mailer" %>
   </head>
   <body>
@@ -12,7 +12,7 @@
 
       <% e = @event %>
 
-      <div class="bigEvent" style="">
+      <div class="bigEvent">
 
         <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
           <%= e.group.name %>
