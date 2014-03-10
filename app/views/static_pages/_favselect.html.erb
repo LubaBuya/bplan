@@ -1,5 +1,5 @@
  <!-- deleted remote: true -->
-<%= form_for(@new_fav, html: {class: "favform"}) do |f| %>
+<%= form_for(@new_fav, html: {class: "favform"}, remote: true) do |f| %>
 <%= f.hidden_field :user_id, value:@user.id %>
 <%= f.hidden_field :event_id, value:e.id %>
 <%= image_submit_tag("star-deselected.png",

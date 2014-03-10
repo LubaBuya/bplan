@@ -1,6 +1,4 @@
 Bplan::Application.routes.draw do
-  get "favorite_events/new"
-  get "favorite_events/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,7 +6,9 @@ Bplan::Application.routes.draw do
   root 'static_pages#index'
 
   resources :users
-  resources :favorite_events
+  resources :favorite_events do
+    get 'redefine', on: :collection
+  end
 
   # sign up link
   match '/signup', to: 'users#new', via: 'get'
@@ -24,6 +24,8 @@ Bplan::Application.routes.draw do
   post '/groups' => 'users#update_groups', as: :update_groups
   post '/reminders' => 'users#update_reminders', as: :update_reminders
 
+  post '/favorite_events/update' => 'favorite_events#update', as: :update_favs
+  
   get '/user_groups' => 'users#user_groups'
 
   get '/about' => 'static_pages#about', as: :about

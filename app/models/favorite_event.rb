@@ -7,9 +7,27 @@
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  calendar   :boolean
+#  sms        :boolean
+#  email      :boolean
 #
 
 class FavoriteEvent < ActiveRecord::Base
-	belongs_to :event
-	belongs_to :user
+  before_save :default_values
+
+  validates :calendar, presence: true
+  validates :sms, presence: true
+  validates :email, presence: true
+
+  belongs_to :event
+  belongs_to :user
+
+  def default_values
+    self.calendar ||= false
+    self.sms ||= false
+    self.email ||= false
+
+    return true
+  end
+
 end
