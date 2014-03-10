@@ -196,9 +196,6 @@
       end
     end
 
-    def test_sms
-    end
-
     def test_email
       u = current_user
       if u.blank?
@@ -218,8 +215,9 @@
                     description: "This is just a test event. Seems like you got it!")
 
 
-      UserMailer.event_reminder(e, u).deliver
-
+      Thread.new do
+        UserMailer.event_reminder(e, u).deliver
+      end
 
       render json: {
         success: true
