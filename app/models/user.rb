@@ -11,6 +11,7 @@
 #  name            :string(255)
 #  remind_email    :integer
 #  remind_sms      :integer
+#  phone_number    :string(255)
 #
 
 class User < ActiveRecord::Base

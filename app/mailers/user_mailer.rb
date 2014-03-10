@@ -27,6 +27,16 @@ class UserMailer < ActionMailer::Base
          :subject => "Events for today")
   end
 
+  def event_reminder(e, u)
+
+    @gnames, @gcols = Group.groups_hash
+    @event = e
+
+    mail(:to => u.email,
+         :subject => "Event at %s: %s" % [e.start_at.strftime('%I:%M %P'), e.title])
+    
+  end
+
   helper StaticPagesHelper
   
 end

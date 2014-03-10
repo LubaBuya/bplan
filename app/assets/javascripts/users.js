@@ -49,6 +49,7 @@ $(document).ready(function() {
         }
         
         g.find('input[type=checkbox]').prop('disabled', true);
+        g.find('select').prop('disabled', true);
         
         $.ajax({
             url: '/user_groups',
@@ -59,8 +60,13 @@ $(document).ready(function() {
                     $('#group' + data.groups[i]).find('input[type=checkbox]').prop('checked', true);
                 }
 
-                $('.GroupBox').find('input[type=checkbox]').prop('disabled', false);
-                
+                console.log(data.remind_email);
+
+                g.find('#reminders_email').val(data.remind_email);
+                g.find('#reminders_sms').val(data.remind_sms);
+
+                g.find('input[type=checkbox]').prop('disabled', false);
+                g.find('select').prop('disabled', false);
             }
 
         });

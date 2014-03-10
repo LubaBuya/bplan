@@ -18,7 +18,8 @@ function setupHandlers() {
             $(this).find('.linkIcon').removeClass('Hidden');
         },
         function() {
-            if($(this).find('.desc').hasClass('ellipsis')) {
+            if($(this).find('.desc').length == 0 ||
+               $(this).find('.desc').hasClass('ellipsis')) {
                 $(this).find('.linkIcon').addClass('Hidden');
             }
         }

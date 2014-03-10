@@ -13,7 +13,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'font-kit-rails'
 
 gem 'pg'
-
+gem 'annotate'
 
 # Use sqlite3 as the database for Active Record
 group :development do
@@ -46,6 +46,9 @@ gem 'jquery-turbolinks'
 gem 'premailer-rails'
 gem 'nokogiri'
 
+# for sms
+gem 'twilio-ruby'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -70,4 +73,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'annotate'
+

@@ -22,24 +22,12 @@
         <%= form_tag(update_reminders_path, id: 'updateRemindersForm') do %>
         
         Email:
-        <select name="reminders[email]">
-          <option value="never">Never</option>
-          <option value="1day">1 day before</option>
-          <option value="1hour">1 hour before</option>
-          <option value="30min">30 minutes before</option>
-          <option value="10min">10 minutes before</option>
-        </select> 
+        <%= select("reminders", "email", @reminder_choices, selected: @remind_email) %>
 
         <br/>
 
         SMS:
-        <select name="reminders[sms]">
-          <option value="never">Never</option>
-          <option value="1day">1 day before</option>
-          <option value="1hour">1 hour before</option>
-          <option value="30min">30 minutes before</option>
-          <option value="10min">10 minutes before</option>
-        </select>
+        <%= select("reminders", "sms", @reminder_choices, selected: @remind_sms) %>
 
         <% end %>
       </div>
@@ -79,4 +67,4 @@
     
   </div>
   
-</div>   
+</div>    

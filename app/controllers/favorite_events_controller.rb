@@ -22,6 +22,10 @@ class FavoriteEventsController < ApplicationController
     f.update_attribute(params[:type], params[:set] == "true")
     f.save
 
+    if not (f.email || f.gcal || f.sms)
+      f.delete
+    end
+
     render json: {
       success: true
     }

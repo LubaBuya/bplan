@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"                                                  
+          "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Events for today</title>
+    <%= stylesheet_link_tag "user_mailer" %>
+  </head>
+  <body>
+
+    <div class="eventList">
+
+      <% e = @event %>
+
+      <div class="bigEvent" style="">
+
+        <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+          <%= e.group.name %>
+        </span>
+
+        <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
+        <div class="dateloc">
+          <span class="date"> 
+            <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+          </span>
+
+          <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF_MAIL %>
+          <br/> 
+          <% end %>
+          
+          <div class="loc"
+               style="<%= 'float: right;' \
+                      if e.location.length < StaticPagesHelper::LOCATION_CUTOFF_MAIL %>">
+            <%= e.location  %>
+          </div>
+
+          <div class="desc">
+            <span class="eventColon">Description:</span>
+            <%= e.description %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>       
