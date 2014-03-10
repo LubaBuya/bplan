@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Events for today</title>
+    <title><%= e.title %></title>
     <%= stylesheet_link_tag "user_mailer" %>
   </head>
   <body>
@@ -21,7 +21,8 @@
         <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
         <div class="dateloc">
           <span class="date"> 
-            <%= e.start_at.strftime('%I:%M %P') %> &#8212; <%= e.end_at.strftime('%I:%M %P') %>
+            <%= e.start_at.strftime('%I:%M %P') %> &#8212;
+            <%= e.end_at.strftime('%I:%M %P') %>
           </span>
 
           <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF_MAIL %>

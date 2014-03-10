@@ -35,6 +35,9 @@ class UserMailer < ActionMailer::Base
     @gnames, @gcols = Group.groups_hash
     @event = e
 
+    p e
+    p u
+    
     mail(:to => u.email,
          :subject => "Event at %s: %s" % [e.start_at.in_time_zone(Time.zone).strftime('%I:%M %P'),
                                           e.title])
