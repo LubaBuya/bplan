@@ -21,8 +21,8 @@
         <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
         <div class="dateloc">
           <span class="date"> 
-            <%= e.start_at.strftime('%I:%M %P') %> &#8212;
-            <%= e.end_at.strftime('%I:%M %P') %>
+            <%= e.start_at.in_time_zone(@zone).strftime('%I:%M %P') %> &#8212;
+            <%= e.end_at.in_time_zone(@zone).strftime('%I:%M %P') %>
           </span>
 
           <% if e.location.length >= StaticPagesHelper::LOCATION_CUTOFF_MAIL %>
@@ -44,4 +44,4 @@
 
     </div>
   </body>
-</html>        
+</html>         

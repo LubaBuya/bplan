@@ -31,7 +31,8 @@ class UserMailer < ActionMailer::Base
 
 
     Time.zone = 'Pacific Time (US & Canada)'
-    
+
+    @zone = Time.zone
     @gnames, @gcols = Group.groups_hash
     @event = e
 
