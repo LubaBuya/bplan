@@ -3,9 +3,14 @@ class FavoriteEventsController < ApplicationController
   include UsersHelper
   
   def update
-    puts params
-    
     user = current_user
+    if user.blank?
+      render json: {
+        success: false
+      }
+      return
+    end
+    
     favs = FavoriteEvent.where(event_id: params[:event_ids], user_id: user.id)
 
     if favs.length == 0

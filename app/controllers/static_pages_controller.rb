@@ -10,14 +10,13 @@ class StaticPagesController < ApplicationController
 
     @left_name = "Today"
     @user = current_user
-    @logged = not(@user.blank?)
     @new_fav = FavoriteEvent.new
 
     # EVENTS TODAY
     @events_today = Event.where(end_at: d..d.at_end_of_day).order(:start_at, :title)
 
     
-    if @logged
+    if not @user.blank?
       # same as groups = user.groups.map{|x| x.id }
       groups = @user.groups.map(&:id)
       # selecting only groups if the user
@@ -64,7 +63,6 @@ class StaticPagesController < ApplicationController
     
     @events_upcoming = @events_upcoming.paginate(page: params[:page], per_page: 20)
 
-    @logged = false
   end
 
 

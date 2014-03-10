@@ -9,6 +9,7 @@ function setupHandlers() {
         
         if(!(y < 40 && x < 70)) {
             $(this).find('.desc').toggleClass('ellipsis');
+            $(this).find('.linkIcon').removeClass('Hidden');
         }
     });
 
@@ -17,7 +18,9 @@ function setupHandlers() {
             $(this).find('.linkIcon').removeClass('Hidden');
         },
         function() {
-            $(this).find('.linkIcon').addClass('Hidden');
+            if($(this).find('.desc').hasClass('ellipsis')) {
+                $(this).find('.linkIcon').addClass('Hidden');
+            }
         }
     );
 
@@ -68,11 +71,11 @@ function setupHandlers() {
     $('.smsLink, .smsLinkChosen').unbind();
     $('.smsLink, .smsLinkChosen').click(make_click_func('sms'));
 
-    $('.gcalLink, .gcalLinkChosen').unbind();
-    $('.gcalLink, .gcalLinkChosen').click(
-        make_click_func('gcal', true, function(clicked) {
-            window.location = clicked.data('link');
-        }));
+    // $('.gcalLink, .gcalLinkChosen').unbind();
+    // $('.gcalLink, .gcalLinkChosen').click(
+    //     make_click_func('gcal', true, function(clicked) {
+    //         window.location = clicked.data('link');
+    //     }));
 
 }
 

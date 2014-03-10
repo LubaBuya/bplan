@@ -136,6 +136,12 @@
     }
   end
 
+  def reminders
+    @user = current_user
+    @events = FavoriteEvent.where(user_id: @user.id).map(&:event).sort_by {|x| x.start_at }
+    
+  end
+  
   def user_groups
     user = current_user
     if user.blank?

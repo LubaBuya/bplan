@@ -15,9 +15,8 @@
 class FavoriteEvent < ActiveRecord::Base
   before_save :default_values
 
-  validates :gcal, presence: true
-  validates :sms, presence: true
-  validates :email, presence: true
+  validates :event_id, presence: true
+  validates :user_id, presence: true
 
   belongs_to :event
   belongs_to :user

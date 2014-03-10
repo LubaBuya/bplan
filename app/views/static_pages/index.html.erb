@@ -14,21 +14,34 @@
 
       <% for el in @events_today %>
       <% e = el[0] %>
+      
+      <% if not @user.blank? %>
       <% f = FavoriteEvent.where(event_id: el.map(&:id), user_id: @user.id)[0] %>
       <% f ||= FavoriteEvent.new(event_id: e.id, user_id: @user.id) %>
+      <% end %>
+
       <li>
+        <% if @user.blank? %>
+        <div class="bigEvent" style="<%= big_event_style(e) %>" >
+          <% else %>
+          
+          <div class="bigEvent" style="<%= big_event_style(e) %>"
+               data-ids="<%= el.map(&:id) %>"
+               data-cal="<%= f.gcal || false %>"
+               data-email="<%= f.email || false %>"
+               data-sms="<%= f.sms || false %>" >
 
-        <div class="bigEvent" style="<%= big_event_style(e) %>"
-             data-ids="<%= el.map(&:id) %>"
-             data-cal="<%= f.gcal || false %>"
-             data-email="<%= f.email || false %>"
-             data-sms="<%= f.sms || false %>" >
+            <% if false %>
+          </div>
+          <% end %>
+          
+          <% end %>
 
-
+          <% if not @user.blank? %>
           <div class="topright">
-            <a class="<%= if f.gcal then 'gcalLinkChosen' else 'gcalLink' end %>
+            <a class="gcalLink
                       linkIcon Hidden"
-               data-link="<%= gcal_link(e) %>"
+               href="<%= gcal_link(e) %>"
                title="Add to Google Calendar" ></a>
 
             <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
@@ -40,26 +53,13 @@
                title="Remind me by Email"></a>
             
           </div>
+          <% end %>
 
           
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <% if @logged %>
-
-
-          <% if @user.favorites.exists?(e.id) %>
-
-          <%= render 'favdeselect', e: e %>
-
-          <% else %>
-
-          <%= render 'favselect', e: e %>
-
-          <% end %>
-
-          <% end %>
 
           <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
@@ -103,20 +103,34 @@
 
       <% for el in @events_upcoming %>
       <% e = el[0] %>
+
+      <% if not @user.blank? %>
       <% f = FavoriteEvent.where(event_id: el.map(&:id), user_id: @user.id)[0] %>
       <% f ||= FavoriteEvent.new(event_id: e.id, user_id: @user.id) %>
+      <% end %>
+
       <li>
-        <div class="bigEvent" style="<%= big_event_style(e) %>"
-             data-ids="<%= el.map(&:id) %>"
-             data-cal="<%= f.gcal || false %>"
-             data-email="<%= f.email || false %>"
-             data-sms="<%= f.sms || false %>" >
+        <% if @user.blank? %>
+        <div class="bigEvent" style="<%= big_event_style(e) %>" >
+          <% else %>
+          
+          <div class="bigEvent" style="<%= big_event_style(e) %>"
+               data-ids="<%= el.map(&:id) %>"
+               data-cal="<%= f.gcal || false %>"
+               data-email="<%= f.email || false %>"
+               data-sms="<%= f.sms || false %>" >
 
+            <% if false %>
+          </div>
+          <% end %>
+          
+          <% end %>
 
+          <% if not @user.blank? %>
           <div class="topright">
-            <a class="<%= if f.gcal then 'gcalLinkChosen' else 'gcalLink' end %>
+            <a class="gcalLink
                       linkIcon Hidden"
-               data-link="<%= gcal_link(e) %>"
+               href="<%= gcal_link(e) %>"
                title="Add to Google Calendar" ></a>
 
             <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
@@ -128,24 +142,11 @@
                title="Remind me by Email"></a>
             
           </div>
-
+          <% end %>
+          
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
-
-          <% if @logged %>
-
-          <% if @user.favorites.exists?(e.id) %>
-
-          <%= render 'favdeselect', e: e %>
-
-          <% else %>
-
-          <%= render 'favselect', e: e %>
-
-          <% end %>
-
-          <% end %>
 
           <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
           <div class="dateloc">
