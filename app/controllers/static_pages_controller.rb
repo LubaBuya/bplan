@@ -43,12 +43,9 @@ class StaticPagesController < ApplicationController
     # For duplicates: grouping events by title and start time.  @events_today is now a hash of hashes
     @events_today = @events_today.group_by{|x| [x.title, x.start_at]}.values
     # order these inner hashes
-    @events_today = @events_today.map { |x|
-      [x.sort_by  { |y| @gnames[y.group_id] }, 
-       FavoriteEvent.where(event_id: x.map(&:id))]
-    }
+    @events_today = @events_today.map { |x| x.sort_by { |x| @gnames[x.group_id] } }
 
-   
+    
     # UPCOMING EVENTS
 
     
@@ -62,11 +59,7 @@ class StaticPagesController < ApplicationController
     #@events_upcoming = @events_upcoming.select('DISTINCT ON (events.title, events.start_at) *')
     
     @events_upcoming = @events_upcoming.group_by{|x| [x.title, x.start_at]}.values
-    @events_upcoming = @events_upcoming.map { |x|
-      [x.sort_by  { |y| @gnames[y.group_id] }, 
-       FavoriteEvent.where(event_id: x.map(&:id))]
-    }
-    # @events_upcoming = @events_upcoming.map { |x| x.sort_by { |x| @gnames[x.group_id] } }
+    @events_upcoming = @events_upcoming.map { |x| x.sort_by { |x| @gnames[x.group_id] } }
 
     
     @events_upcoming = @events_upcoming.paginate(page: params[:page], per_page: 20)

@@ -12,21 +12,33 @@
 
     <div class="eventList">
 
-      <% for el, favs in @events_today %>
+      <% for el in @events_today %>
       <% e = el[0] %>
-      <% f = favs[0] %>
-      <% f = FavoriteEvent.new(event_id: e.id) if f.blank? %>
+      <% f = FavoriteEvent.where(event_id: el.map(&:id), user_id: @user.id)[0] %>
+      <% f ||= FavoriteEvent.new(event_id: e.id, user_id: @user.id) %>
       <li>
 
         <div class="bigEvent" style="<%= big_event_style(e) %>"
-             data-id="<%= f.id %>">
+             data-ids="<%= el.map(&:id) %>"
+             data-cal="<%= f.gcal || false %>"
+             data-email="<%= f.email || false %>"
+             data-sms="<%= f.sms || false %>" >
 
 
           <div class="topright">
-            <a class="gcalLink linkIcon Hidden" href="<%= gcal_link(e) %>"
-               title="Add to Google Calendar Hidden"></a>
-            <a class="smsLink linkIcon Hidden"></a>
-            <a class="emailLink linkIcon Hidden"></a>
+            <a class="<%= if f.gcal then 'gcalLinkChosen' else 'gcalLink' end %>
+                      linkIcon Hidden"
+               data-link="<%= gcal_link(e) %>"
+               title="Add to Google Calendar" ></a>
+
+            <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
+                      linkIcon Hidden"
+               title="Remind me by SMS"></a>
+            
+            <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
+                      linkIcon Hidden"
+               title="Remind me by Email"></a>
+            
           </div>
 
           
@@ -89,25 +101,38 @@
 
     <div class="eventList" id="upcomingList">
 
-      <% for el, favs in @events_upcoming %>
+      <% for el in @events_upcoming %>
       <% e = el[0] %>
-      <% f = favs[0] %>
-      <% f = FavoriteEvent.new(event_id: e.id) if f.blank? %>
+      <% f = FavoriteEvent.where(event_id: el.map(&:id), user_id: @user.id)[0] %>
+      <% f ||= FavoriteEvent.new(event_id: e.id, user_id: @user.id) %>
       <li>
         <div class="bigEvent" style="<%= big_event_style(e) %>"
-             data-id="<%= f.id %>">
+             data-ids="<%= el.map(&:id) %>"
+             data-cal="<%= f.gcal || false %>"
+             data-email="<%= f.email || false %>"
+             data-sms="<%= f.sms || false %>" >
+
+
+          <div class="topright">
+            <a class="<%= if f.gcal then 'gcalLinkChosen' else 'gcalLink' end %>
+                      linkIcon Hidden"
+               data-link="<%= gcal_link(e) %>"
+               title="Add to Google Calendar" ></a>
+
+            <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
+                      linkIcon Hidden"
+               title="Remind me by SMS"></a>
+            
+            <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
+                      linkIcon Hidden"
+               title="Remind me by Email"></a>
+            
+          </div>
 
           <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="topright">
-            <a class="gcalLink linkIcon Hidden" href="<%= gcal_link(e) %>"
-               title="Add to google calendar"></a>
-            <a class="smsLink linkIcon Hidden"></a>
-            <a class="emailLink linkIcon Hidden"></a>
-          </div>
-          
           <% if @logged %>
 
           <% if @user.favorites.exists?(e.id) %>

@@ -24,7 +24,7 @@ Bplan::Application.routes.draw do
   post '/groups' => 'users#update_groups', as: :update_groups
   post '/reminders' => 'users#update_reminders', as: :update_reminders
 
-  post '/favorite_events/update' => 'favorite_events#update', as: :update_favs
+  post '/update_favs' => 'favorite_events#update', as: :update_favs
   
   get '/user_groups' => 'users#user_groups'
 

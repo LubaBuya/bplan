@@ -1,31 +1,25 @@
 class FavoriteEventsController < ApplicationController
 
-  # not needed right now
-  def create
-    @fav_event = FavoriteEvent.new(fav_params)
-    @fav_event.save
-    redirect_to root_path
-    # if @fav_event.save
-    # 	respond_to do |format|
-    # 		format.html { redirect_to root_path }
-    # 		format.js
-    # 	end
-    # else
-    # 	render "Something is wrong. Sorry."
-    # end
-  end
-
+  include UsersHelper
+  
   def update
+    puts params
+    
     user = current_user
-    favs = FavoriteEvent.where(event_id: params[:event_id], user_id: user.id)
+    favs = FavoriteEvent.where(event_id: params[:event_ids], user_id: user.id)
 
     if favs.length == 0
-      f = FavoriteEvent.new(event_id: params[:event_id], user_id: user.id)
+      f = FavoriteEvent.create(event_id: params[:event_ids].sort[0].to_i, user_id: user.id)
     else
       f = favs[0]
     end
-    
-    f.update_attribute(params[:type], params[:set])
+
+    f.update_attribute(params[:type], params[:set] == "true")
+    f.save
+
+    render json: {
+      success: true
+    }
 
   end
 

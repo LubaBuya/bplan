@@ -3,12 +3,9 @@ function setupHandlers() {
 
     $('.bigEvent').click(function(e) {
         var offset = $(this).offset();
-        console.log(e);
-        console.log(offset);
+
         var x = $(this).width() + offset.left - e.pageX;
         var y = e.pageY - offset.top;
-
-        console.log("x:" + x + "  y:" + y);
         
         if(!(y < 40 && x < 70)) {
             $(this).find('.desc').toggleClass('ellipsis');
@@ -24,14 +21,59 @@ function setupHandlers() {
         }
     );
 
-    $('.emailLink').unbind();
-    $('.emailLink').click(function(e) {
-        
-        $(e.target).removeClass('emailLink');
-        $(e.target).addClass('emailLinkChosen');
+    var favs_url = '/update_favs';
 
-        
-    });
+    function make_click_func(name, force_set, success) {
+        function f(e) {
+            var clicked = $(this);
+            var event = clicked.closest('.bigEvent');
+            var event_ids = event.data('ids');
+            var set = event.data(name);
+            set = !set;
+
+            if(force_set) {
+                set = true;
+            }
+
+            console.log(set);
+            
+            $.ajax({
+                url: favs_url,
+                type: 'POST',
+                data: { type: name, event_ids: event_ids, set: set },
+                datatype: "JSON",
+                success: function(data) {
+                    if(set) {
+                        $(e.target).removeClass(name + 'Link');
+                        $(e.target).addClass(name + 'LinkChosen');
+                        event.data(name, true);
+                        if(!(success === undefined)) {
+                            success(clicked);
+                        }
+                    } else {
+                        $(e.target).removeClass(name + 'LinkChosen');
+                        $(e.target).addClass(name + 'Link');
+                        event.data(name, false);
+                    }
+                }
+            });
+        }
+
+        return f;
+    }
+    
+    $('.emailLink').unbind();
+    $('.emailLink, .emailLinkChosen').click(make_click_func('email'));
+
+    $('.smsLink, .smsLinkChosen').unbind();
+    $('.smsLink, .smsLinkChosen').click(make_click_func('sms'));
+
+    $('.gcalLink, .gcalLinkChosen').unbind();
+    $('.gcalLink, .gcalLinkChosen').click(
+        make_click_func('gcal', true, function(clicked) {
+            window.location = clicked.data('link');
+        }));
+
 }
 
 $(document).ready(function() {

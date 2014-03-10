@@ -140,12 +140,19 @@
     margin-left: 5px;
   }
   
-  .gcalLink {
-    background-image: image-url("calendar.svg");
-
+  .gcalLink, .gcalLinkChosen {
     &:hover {
       background-image: image-url("calendar-selected.svg");
     }
+  }
+
+  .gcalLink {
+    background-image: image-url("calendar.svg");
+  }
+  
+  .gcalLinkChosen {
+    background-image: image-url("calendar-chosen.svg");
+    opacity: 1;
   }
 
   .emailLink, .emailLinkChosen {
@@ -168,12 +175,19 @@
   }
 
   
-  .smsLink {
-    background-image: image-url("sms.svg");
-
+  .smsLink, .smsLinkChosen {
     &:hover {
       background-image: image-url("sms-selected.svg");
     }
+  }
+
+  .smsLink {
+    background-image: image-url("sms.svg");
+  }
+
+  .smsLinkChosen {
+    background-image: image-url("sms-chosen.svg");
+    opacity: 1;
   }
 }
 
