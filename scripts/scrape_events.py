@@ -105,6 +105,14 @@ def get_event(header, ps, base_url, recursed=False):
             speaker = line.partition(': ')[2]
         elif line.find('Sponsor:') != -1:
             sponsor = line.partition(': ')[2]
+        elif line.strip().lower().find('remind me') != -1:
+            continue
+        elif line.strip().lower().find('tell a friend') != -1:
+            continue
+        elif line.strip().lower().find('add to my google calendar') != -1:
+            continue
+        elif line.strip().lower().find('download to my calendar') != -1:
+            continue
         else:
             details += line + '\n'
             
