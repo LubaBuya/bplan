@@ -9,6 +9,10 @@ function setupHandlers() {
         
         if(!(y < 40 && x < 70)) {
             $(this).find('.desc').toggleClass('ellipsis');
+            
+            $(this).find('.descShort').toggleClass('Hidden');
+            $(this).find('.descLong').toggleClass('Hidden');
+            
             $(this).find('.linkIcon').removeClass('Hidden');
         }
     });

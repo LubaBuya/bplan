@@ -202,6 +202,15 @@
 
 .desc {
   margin-top: 6px;
+
+  .descShort {
+    display: inline;
+  }
+
+  .Hidden {
+    display: none;
+  }
+  
 }
 
 .aboutBox {
