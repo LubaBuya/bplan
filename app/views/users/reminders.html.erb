@@ -24,7 +24,8 @@
             <a class="gcalLink
                       linkIcon Hidden"
                href="<%= gcal_link(e) %>"
-               title="Add to Google Calendar" ></a>
+               title="Add to Google Calendar"
+               target="_blank"></a>
 
             <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
                       linkIcon Hidden"
@@ -61,7 +62,12 @@
             <% if not e.description.blank? %>
             <div class="desc ellipsis">
               <span class="eventColon">Description:</span>
-              <%= simple_format(e.description, {}, wrapper_tag: "span") %>
+              <div class="descShort">
+                <%= e.description[0..200] %>
+              </div>
+              <div class="descLong Hidden">
+                <%= simple_format(e.description.strip, {}, wrapper_tag: "p") %>
+              </div>
             </div>
             <% end %>
 
@@ -76,4 +82,4 @@
     </div>
   </div>
 
-</div>  
+</div>   
