@@ -136,57 +136,63 @@
     width: 18px;
     height: 18px;
     display: inline-block;
-    background-size: 18px 18px;
+    
     margin-left: 5px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-image: image-url("icons.png");
   }
   
   .gcalLink, .gcalLinkChosen {
     &:hover {
-      background-image: image-url("calendar-selected.svg");
+      background-position: -22px -2px
     }
   }
 
   .gcalLink {
-    background-image: image-url("calendar.svg");
+    background-position: -42px -2px;
   }
   
   .gcalLinkChosen {
-    background-image: image-url("calendar-chosen.svg");
+    background-position: -2px -2px;
     opacity: 1;
   }
 
   .emailLink, .emailLinkChosen {
-    background-size: 18px 15px;
-    height: 15px;
+    width: 18px;
+    height: 12px;
     margin-top: 2px;
 
     &:hover {
-      background-image: image-url("email-selected.svg");
+      background-position: -83px -2px;
     }
   }
 
   .emailLink {
-    background-image: image-url("email.svg");
+    background-position: -103px -2px;
   }
 
   .emailLinkChosen {
-    background-image: image-url("email-chosen.svg");
     opacity: 1;
+    width: 19px;
+    background-position: -62px -2px;
   }
 
   
   .smsLink, .smsLinkChosen {
     &:hover {
-      background-image: image-url("sms-selected.svg");
+      background-position: -143px -2px;
     }
   }
 
   .smsLink {
-    background-image: image-url("sms.svg");
+    //background-image: image-url("icons/sms.png");
+    background-position: -163px -2px;
   }
 
   .smsLinkChosen {
-    background-image: image-url("sms-chosen.svg");
+    //background-image: image-url("icons/sms-chosen.png");
+    background-position: -123px -2px;
     opacity: 1;
   }
 }
