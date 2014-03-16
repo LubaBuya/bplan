@@ -98,7 +98,7 @@ function handle_signup_form(form, successHandler) {
     var inputs = form.find("input, select, button, textarea");
     // # serialize the data in the form - logging data to the console
     var serializedData = form.serialize();
-    console.log('Serialized: ' + serializedData);
+    //console.log('Serialized: ' + serializedData);
 
     // # let's disable the inputs for the duration of the ajax request
     inputs.prop("disabled", true);
@@ -113,7 +113,7 @@ function handle_signup_form(form, successHandler) {
         data: serializedData, // submitting the data
         datatype: "JSON",
         success: function(data) { // what is data here?
-            console.log(data);
+            //console.log(data);
             
             if(data.success) {
                 successHandler(data);
