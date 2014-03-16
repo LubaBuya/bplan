@@ -1,19 +1,40 @@
 function setupHandlers() {
     $('.bigEvent').unbind();
 
-    $('.bigEvent').click(function(e) {
-        var offset = $(this).offset();
+    $('.descShort').unbind();
+    $('.hideDesc').unbind();
+    
+    $('.descShort').click(function(e) {
+        var event = $(this).closest('.bigEvent');
+        var offset = event.offset();
 
-        var x = $(this).width() + offset.left - e.pageX;
+        var x = event.width() + offset.left - e.pageX;
         var y = e.pageY - offset.top;
         
         if(!(y < 40 && x < 70)) {
-            $(this).find('.desc').toggleClass('ellipsis');
+            event.find('.desc').toggleClass('ellipsis');
             
-            $(this).find('.descShort').toggleClass('Hidden');
-            $(this).find('.descLong').toggleClass('Hidden');
+            event.find('.descShort').toggleClass('Hidden');
+            event.find('.descLong').toggleClass('Hidden');
             
-            $(this).find('.linkIcon').removeClass('Hidden');
+            event.find('.linkIcon').removeClass('Hidden');
+        }
+    });
+
+    $('.hideDesc').click(function(e) {
+        var event = $(this).closest('.bigEvent');
+        var offset = event.offset();
+
+        var x = event.width() + offset.left - e.pageX;
+        var y = e.pageY - offset.top;
+        
+        if(!(y < 40 && x < 70)) {
+            event.find('.desc').toggleClass('ellipsis');
+            
+            event.find('.descShort').toggleClass('Hidden');
+            event.find('.descLong').toggleClass('Hidden');
+            
+            event.find('.linkIcon').removeClass('Hidden');
         }
     });
 

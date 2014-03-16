@@ -77,15 +77,6 @@
    }
    */
 
-.events{
-  font-size: 16px;
-  font-weight: 500;
-  //margin-bottom: -10px;
-  line-height: 24px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .white {
   background-color: white;
   width: auto;
@@ -102,10 +93,6 @@
 }
 
 
-.eventColon {
-  font-weight: bold;
-}
-
 .bigEvent{
   border-radius: 10px;
   margin-bottom: 10px;
@@ -121,8 +108,8 @@
   padding-right: 10px;
   
   &:hover {
-    cursor: pointer; cursor: hand;
-    background-color: #ECF2C7;
+  /* cursor: pointer; cursor: hand; */
+  /* background-color: #ECF2C7; */
   }
 
   .topright {
@@ -131,6 +118,23 @@
     // opacity: 0;
   }
 
+
+
+  .eventTitle {
+    font-size: 16px;
+    font-weight: 500;
+    //margin-bottom: -10px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+    //text-decoration: underline;
+    color: black;
+    display: block;
+    &:hover {
+      color: #004FC7;
+      //text-decoration: underline;
+    }
+  }
 
   .linkIcon {
     width: 18px;
@@ -186,14 +190,59 @@
   }
 
   .smsLink {
-    //background-image: image-url("icons/sms.png");
     background-position: -163px -2px;
   }
 
   .smsLinkChosen {
-    //background-image: image-url("icons/sms-chosen.png");
     background-position: -123px -2px;
     opacity: 1;
+  }
+
+  .outLink {
+    background-image: image-url('icons/outlink.png');
+
+    &:hover {
+      background-image: image-url('icons/outlink-selected.png');
+    }
+  }
+
+  a {
+    color: #0376C7;
+    text-decoration: none;
+    &:hover {
+      color: #00258A;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .descLink {
+    font-weight: bold;
+    //cursor: pointer;
+  }
+
+  
+  .desc {
+    margin-top: 6px;
+
+    .descShort {
+      display: inline;
+      font-style: italic;
+      &:hover {
+        color: #004FC7;
+        cursor: pointer;
+      }
+    }
+
+    .Hidden {
+      display: none;
+    }
+
+    .hideDesc {
+      font-weight: normal;
+      font-style: italic;
+    }
+    
   }
 }
 
@@ -203,21 +252,8 @@
   height: 1.5em;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
-  font-style: italic;
 }
 
-.desc {
-  margin-top: 6px;
-
-  .descShort {
-    display: inline;
-  }
-
-  .Hidden {
-    display: none;
-  }
-  
-}
 
 .aboutBox {
   max-width: 650px;

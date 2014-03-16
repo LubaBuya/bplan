@@ -12,6 +12,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  group_id    :integer
+#  url         :string(2048)
 #
 
 class Event < ActiveRecord::Base

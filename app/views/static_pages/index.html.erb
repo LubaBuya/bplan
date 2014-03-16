@@ -37,6 +37,12 @@
           <% end %>
 
           <div class="topright">
+
+            <a class="outLink linkIcon Hidden"
+               href="<%= e.url %>"
+               title="External link to event"
+               target="_blank"></a>
+
             <a class="gcalLink
                       linkIcon Hidden"
                href="<%= gcal_link(e) %>"
@@ -62,7 +68,10 @@
           </span>
 
 
-          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
+          <a class="eventTitle" href="<%= show_event_path(e.id) %>">
+            <%= CGI.unescapeHTML(e.title) %>
+          </a>
+          
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%I:%M %P') %> &#8212;
@@ -79,10 +88,12 @@
               <%= e.location  %>
             </div>
 
-           
+            
             <% if not e.description.blank? %>
             <div class="desc ellipsis">
-              <span class="eventColon">Description:</span>
+              <span class="descLink">Description:
+                <a class="descLong hideDesc Hidden">Hide description</a>
+              </span>
               <div class="descShort">
                 <%= e.description[0..200] %>
               </div>
@@ -133,6 +144,12 @@
           <% end %>
 
           <div class="topright">
+
+            <a class="outLink linkIcon Hidden"
+               href="<%= e.url %>"
+               title="External link to event"
+               target="_blank"></a>
+
             <a class="gcalLink
                       linkIcon Hidden"
                href="<%= gcal_link(e) %>"
@@ -155,7 +172,10 @@
             <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
           </span>
 
-          <div class="events"><%= CGI.unescapeHTML(e.title) %></div>
+          <a class="eventTitle" href="<%= show_event_path(e.id) %>">
+            <%= CGI.unescapeHTML(e.title) %>
+          </a>
+
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
@@ -174,7 +194,9 @@
 
             <% if not e.description.blank? %>
             <div class="desc ellipsis">
-              <span class="eventColon">Description:</span>
+              <span class="descLink">Description:
+                <a class="descLong hideDesc Hidden">Hide description</a>
+              </span>
               <div class="descShort">
                 <%= e.description[0..200] %>
               </div>

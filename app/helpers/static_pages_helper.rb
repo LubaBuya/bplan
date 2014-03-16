@@ -13,7 +13,7 @@ module StaticPagesHelper
     s = [e.title, e.start_at.in_time_zone("UTC").iso8601.gsub(/[-:]/, ''),
          e.end_at.in_time_zone("UTC").iso8601.gsub(/[-:]/, ''),
          e.location,
-         (e.description || '')[0..500]]
+         (e.description || '')[0..1000]]
     
     s = s.map {|x| URI.escape(x) }
     

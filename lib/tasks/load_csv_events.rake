@@ -52,7 +52,8 @@ namespace :admin do
         end_at: Time.parse(e['end_at'] + '-0800').in_time_zone(Time.zone),
         location: e['location'],
         description: e['details'],
-        group_id: group.id
+        group_id: group.id,
+        url: e['url']
       }
       Event.create(v)
     end

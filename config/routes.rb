@@ -34,6 +34,8 @@ Bplan::Application.routes.draw do
 
   post '/test_email' => 'users#test_email', as: :test_email
   post '/test_sms' => 'users#test_sms', as: :test_sms
+
+  get '/events/:id' => 'events#show', as: :show_event
   
   # Example of regular route:
   # get 'products/:id' => 'catalog#view'

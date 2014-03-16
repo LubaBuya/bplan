@@ -134,7 +134,8 @@ def get_event(header, ps, base_url, recursed=False):
         'location': location,
         'speaker': speaker,
         'sponsor': sponsor,
-        'details': details
+        'details': details,
+        'url': base_url + header.find('a').attrs['href']
         }
 
 def format_event(event):
@@ -263,7 +264,7 @@ def generate_csv():
     writer = csv.DictWriter(f_out,
                             fieldnames=['title', 'event_type', 'start_at',
                                         'end_at', 'location', 'speaker',
-                                        'sponsor', 'details', 'group'])
+                                        'sponsor', 'details', 'url', 'group'])
 
     writer.writeheader()
     

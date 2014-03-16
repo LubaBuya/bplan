@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :favorite_events
   has_many :favorites, through: :favorite_events, source: :event
 
-  before_create { |user| user.groups = Group.all }
+  after_initialize :init
   
   before_save { create_remember_token if (self.remember_token.blank? && self.password_digest && defined?(self.password_digest)) }
   before_save { |user| user.email = email.downcase }
@@ -54,6 +54,12 @@ class User < ActiveRecord::Base
 
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64
+  end
+
+  def init
+    self.remind_email ||= 1.day
+    self.remind_sms ||= 30.minutes
+    self.groups ||= Group.all
   end
 
 end

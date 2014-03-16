@@ -60,6 +60,8 @@
     REMINDER_TIMES =  {
       "never" => 0,
       "1day" => 1.day,
+      "12hour" => 12.hours,
+      "6hour" => 6.hours,
       "1hour" => 1.hour,
       "30min" => 30.minutes,
       "15min" => 15.minutes
@@ -69,6 +71,8 @@
     TIMES_REMINDER =  {
       0 => "never",
       1.day.to_i => "1day",
+      12.hour.to_i => "12hour",
+      6.hour.to_i => "6hour",
       1.hour.to_i => "1hour",
       30.minutes.to_i => "30min",
       15.minutes.to_i => "15min"
@@ -85,6 +89,7 @@
 
       @reminder_choices = [["Never", "never"],
                            ["1 day before", "1day"],
+                           ["12 hours before", "12hour"],
                            ["1 hour before", "1hour"],
                            ["30 minutes before", "30min"],
                            ["15 minutes before", "15min"]]
