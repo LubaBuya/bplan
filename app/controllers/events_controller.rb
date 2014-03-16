@@ -3,6 +3,9 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.where(id: params[:id])[0]
+
+    Time.zone = 'Pacific Time (US & Canada)'
+    
     if @event.blank?
       redirect_to :root
       return
