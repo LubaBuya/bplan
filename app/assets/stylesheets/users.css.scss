@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "custom";
+
+
 .Hidden {
   display: none;
 }
@@ -36,7 +39,6 @@
   margin-top: 50px;
   max-width: 400px;
   text-align: center;
-  font-size: 16px;
   vertical-align: middle;
   padding-bottom: 150px;
   padding-top: 100px;
@@ -83,6 +85,7 @@
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 14px;
   }
 }
 
@@ -107,15 +110,20 @@
   }
 
   .GroupList {
-    text-align: left;
     width: 220px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  #updateGroupsForm {
+    text-align: left;
+  }
+
   .saveButton {
-    margin: 0 auto;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    @include transition(background-color, 300ms, ease-in-out);
   }
 
   .alert {
@@ -143,8 +151,8 @@
     }
 
     a {
-    padding-left: 6px;
-    padding-right: 6px;
+      padding-left: 6px;
+      padding-right: 6px;
     }
   }
 }
@@ -165,10 +173,13 @@ input#phone {
   border-radius: 5px;
   background-color: #3576AB;
   color: white;
-  font-weight: 300;
+  font-weight: 500;
   padding: 5px 5px 5px 5px;
 
+  @include transition(background-color, 300ms, ease-in-out);
+  
   &:hover {
     background-color: #356082;
+
   }
 }

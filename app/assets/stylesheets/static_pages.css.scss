@@ -137,10 +137,11 @@
     //color: black;
     color: inherit;
     display: block;
-    transition: color 300ms ease-out 0s;
+    transition: color 200ms ease-out 0s;
     
     &:hover {
-      color: #00258A; //      color: #004FC7;
+      //color: #00258A; //
+      color: #004FC7;
       //text-decoration: underline;
     }
   }
@@ -164,16 +165,16 @@
 
   .gcalLink, .gcalLinkChosen {
     &:hover {
-      background-position: -22px -2px
+      background-position: -3px -23px
     }
   }
 
   .gcalLink {
-    background-position: -42px -2px;
+    background-position: -3px -43px;
   }
 
   .gcalLinkChosen {
-    background-position: -2px -2px;
+    background-position: -3px -3px;
     opacity: 1;
   }
 
@@ -183,41 +184,41 @@
     margin-top: 2px;
 
     &:hover {
-      background-position: -83px -2px;
+      background-position: -3px -77px;
     }
   }
 
   .emailLink {
-    background-position: -103px -2px;
+    background-position: -3px -91px;
   }
 
   .emailLinkChosen {
     opacity: 1;
     width: 19px;
-    background-position: -62px -2px;
+    background-position: -3px -63px;
   }
 
 
   .smsLink, .smsLinkChosen {
     &:hover {
-      background-position: -143px -2px;
+      background-position: -3px -165px;
     }
   }
 
   .smsLink {
-    background-position: -163px -2px;
+    background-position: -3px -185px;
   }
 
   .smsLinkChosen {
-    background-position: -123px -2px;
+    background-position: -3px -145px;
     opacity: 1;
   }
 
   .outLink {
-    background-image: image-url('icons/outlink.png');
+    background-position: -3px -125px;
 
     &:hover {
-      background-image: image-url('icons/outlink-selected.png');
+      background-position: -3px -105px;
     }
   }
 
@@ -249,7 +250,8 @@
       transition: color 300ms ease-out 0s;
 
       &:hover {
-        color: #00258A;
+        color: #004FC7;
+        //color: #00258A;
         cursor: pointer;
       }
 
