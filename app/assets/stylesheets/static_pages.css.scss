@@ -34,7 +34,7 @@
 
 .tagger {
   position: relative;
-  top: -6px;
+  top: -5px;
   left: -12px;
   border-top-left-radius: inherit;
   border-bottom-right-radius: inherit;
@@ -106,10 +106,12 @@
   font-size: 14px;
   margin-left: auto;
   margin-right: auto;
-  //background-color: #FDFFF0;
-  background-color: white;
+  background-color: #FDFFF0;
+  //background-color: white;
   padding-left: 10px;
   padding-right: 10px;
+  color: black;
+  //background-color: rgba(0,0,0, 0.);
 
   &:hover {
   /* cursor: pointer; cursor: hand; */
@@ -126,16 +128,19 @@
 
   .eventTitle {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: semi-bold;
     //margin-bottom: -10px;
     line-height: 24px;
     text-align: center;
     margin-bottom: 10px;
     //text-decoration: underline;
-    color: black;
+    //color: black;
+    color: inherit;
     display: block;
+    transition: color 300ms ease-out 0s;
+    
     &:hover {
-      color: #004FC7;
+      color: #00258A; //      color: #004FC7;
       //text-decoration: underline;
     }
   }
@@ -149,6 +154,12 @@
     overflow: hidden;
     background-repeat: no-repeat;
     background-image: image-url("icons.png");
+
+    -webkit-transition: background-image 0.2s ease-in-out;
+    -moz-transition: background-image 0.2s ease-in-out;
+    -ms-transition: background-image 0.2s ease-in-out;
+    -o-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
   }
 
   .gcalLink, .gcalLinkChosen {
@@ -213,6 +224,7 @@
   a {
     color: #0376C7;
     text-decoration: none;
+
     &:hover {
       color: #00258A;
       text-decoration: none;
@@ -234,6 +246,7 @@
       display: inline;
       font-style: italic;
       font-weight: normal;
+      transition: color 300ms ease-out 0s;
 
       &:hover {
         color: #00258A;
@@ -252,6 +265,10 @@
       margin-right: auto;
     }
     
+  }
+
+  .dateloc {
+    font-size: 13px;
   }
 }
 

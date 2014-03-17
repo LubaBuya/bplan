@@ -3,7 +3,7 @@ module StaticPagesHelper
   def big_event_style(e)
     #"border: 2px solid #{@gcols[e.group_id]};"
     "border: 1px solid #{@gcols[e.group_id]};
-border-left: 4px solid #{@gcols[e.group_id]};"
+border-left: 2px solid #{@gcols[e.group_id]};"
   end
 
   def group_style(group)
