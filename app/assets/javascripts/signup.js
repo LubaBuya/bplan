@@ -1,4 +1,6 @@
-// 
+//= require react_stuff
+
+/*
 var ErrorAlertItem = React.createClass({
     render: function() {
         console.log(this.props.message);
@@ -33,7 +35,7 @@ var SuccessAlert = React.createClass({
         return( React.DOM.div(null, this.props.message));
     }
 });
-
+*/
 
 // for logging in
 $(document).ready(function() {
