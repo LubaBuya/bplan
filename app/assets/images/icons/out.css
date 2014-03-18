@@ -1,0 +1,33 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:fd581ccce247fc2be76d8bfaef241f5f$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(out.png);}
+
+.calendar {width:18px; height:18px; background-position: -62px -2px}
+.calendar-chosen {width:18px; height:18px; background-position: -2px -2px}
+.calendar-selected {width:18px; height:18px; background-position: -22px -2px}
+.calendar-white {width:18px; height:18px; background-position: -42px -2px}
+.email {width:18px; height:12px; background-position: -163px -2px}
+.email-chosen {width:19px; height:12px; background-position: -82px -2px}
+.email-selected {width:18px; height:12px; background-position: -103px -2px}
+.email-white {width:18px; height:12px; background-position: -123px -2px}
+.email-yellow {width:18px; height:12px; background-position: -143px -2px}
+.outlink {width:18px; height:18px; background-position: -223px -2px}
+.outlink-selected {width:18px; height:18px; background-position: -183px -2px}
+.outlink-white {width:18px; height:18px; background-position: -203px -2px}
+.sms {width:18px; height:18px; background-position: -323px -2px}
+.sms-chosen {width:18px; height:18px; background-position: -243px -2px}
+.sms-selected {width:18px; height:18px; background-position: -263px -2px}
+.sms-white {width:18px; height:18px; background-position: -283px -2px}
+.sms-yellow {width:18px; height:18px; background-position: -303px -2px}
+.star {width:18px; height:18px; background-position: -343px -2px}
+.star_yellow {width:18px; height:18px; background-position: -363px -2px}

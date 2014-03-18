@@ -167,65 +167,68 @@
     overflow: hidden;
     background-repeat: no-repeat;
     background-image: image-url("icons.png");
-  }
 
-  .gcalLink, .gcalLinkChosen {
     &:hover {
-      background-position: -3px -23px
+      opacity: 0.5 !important;
     }
   }
 
+  /* .gcalLink, .gcalLinkChosen { */
+  /*   &:hover { */
+  /*     background-position: -3px -23px */
+  /*   } */
+  /* } */
+
   .gcalLink {
-    background-position: -3px -43px;
+    background-position: -42px -2px;
   }
 
-  .gcalLinkChosen {
-    background-position: -3px -3px;
-    opacity: 1;
-  }
+  /* .gcalLinkChosen { */
+  /*   background-position: -22px -3px; */
+  /*   opacity: 1; */
+  /* } */
 
   .emailLink, .emailLinkChosen {
     width: 18px;
     height: 12px;
     margin-top: 2px;
 
-    &:hover {
-      background-position: -3px -77px;
-    }
+    /* &:hover { */
+    /*   background-position: -3px -77px; */
+    /* } */
   }
 
   .emailLink {
-    background-position: -3px -91px;
+    background-position: -123px -2px;
   }
 
   .emailLinkChosen {
     opacity: 1;
-    width: 19px;
-    background-position: -3px -63px;
+    background-position: -143px -2px;
   }
 
 
-  .smsLink, .smsLinkChosen {
-    &:hover {
-      background-position: -3px -165px;
-    }
-  }
+  /* .smsLink, .smsLinkChosen { */
+  /*   &:hover { */
+  /*     background-position: -3px -165px; */
+  /*   } */
+  /* } */
 
   .smsLink {
-    background-position: -3px -185px;
+    background-position: -283px -2px;
   }
 
   .smsLinkChosen {
-    background-position: -3px -145px;
+    background-position: -303px -2px;
     opacity: 1;
   }
 
   .outLink {
-    background-position: -3px -125px;
+    background-position: -203px -2px;
 
-    &:hover {
-      background-position: -3px -105px;
-    }
+    /* &:hover { */
+    /*   background-position: -3px -105px; */
+    /* } */
   }
 
   a {
