@@ -117,19 +117,19 @@
     /* position: relative; */
     /* top: -5px; */
     /* left: -12px; */
-    border-top-left-radius: inherit;
-    border-bottom-right-radius: inherit;
+    /* border-top-left-radius: inherit; */
+    /* border-bottom-right-radius: inherit; */
     //border-radius: inherit;
     //border-radius: 10px;
     width: 100%;
-    padding: 3px 6px;
+    //padding: 3px 6px;
     font-size: 12px;
     color: white;
   }
 
   .coloredTop {
     padding-top: 3px;
-    padding-bottom: 3px;
+    padding-bottom: 2px;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -279,6 +279,7 @@
     font-size: 13px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 2px;
     opacity: 1;
   }
 }
