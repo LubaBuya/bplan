@@ -12,10 +12,17 @@ function setupHandlers() {
         var y = e.pageY - offset.top;
         
         if(!(y < 40 && x < 70)) {
-            event.find('.desc').toggleClass('ellipsis');
+            event.find('.desc').removeClass('ellipsis');
             
-            event.find('.descShort').toggleClass('Hidden');
-            event.find('.descLong').toggleClass('Hidden');
+            // event.find('.descShort').toggleClass('Hidden');
+            // event.find('.descLong').toggleClass('Hidden');
+
+            event.find('.descLong').slideDown({start: function() {
+                event.find('.descLong').removeClass("Hidden");
+            }});
+            
+            event.find('.descShort').addClass("Hidden");
+
             
             event.find('.linkIcon').removeClass('Hidden');
         }
@@ -29,10 +36,23 @@ function setupHandlers() {
         var y = e.pageY - offset.top;
         
         if(!(y < 40 && x < 70)) {
-            event.find('.desc').toggleClass('ellipsis');
             
-            event.find('.descShort').toggleClass('Hidden');
-            event.find('.descLong').toggleClass('Hidden');
+            // event.find('.descShort').toggleClass('Hidden');
+            // event.find('.descLong').toggleClass('Hidden');
+
+            event.find('.descLong').first().slideUp({
+                progress: function(anim, progress, remaining) {
+                    if(remaining < 90) {
+                        event.find('.descShort').removeClass("Hidden");
+                        event.find('.desc').addClass('ellipsis');
+                        event.find('.descLong').addClass("Hidden");
+                    }
+                },
+                complete: function() {
+                    event.find('.descLong').addClass("Hidden");
+                    event.find('.desc').addClass('ellipsis');
+            }});
+            
             
             event.find('.linkIcon').removeClass('Hidden');
         }

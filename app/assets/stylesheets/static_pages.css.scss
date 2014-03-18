@@ -32,18 +32,6 @@
   float:left;
 }
 
-.tagger {
-  position: relative;
-  top: -5px;
-  left: -12px;
-  border-top-left-radius: inherit;
-  border-bottom-right-radius: inherit;
-  //border-radius: inherit;
-  //border-radius: 10px;
-  padding: 3px 6px;
-  font-size: 12px;
-  color: white
-}
 
 .itallic {
   font-style: italic;
@@ -98,20 +86,21 @@
 .bigEvent{
 
   border-radius: 3px;
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
   text-align: left;
-  padding-top: 5px;
-  padding-bottom: 6px;
+  /* padding-top: 5px; */
+  padding-bottom: 10px;
   color: black;
   font-size: 14px;
   margin-left: auto;
   margin-right: auto;
   background-color: #FDFFF0;
   //background-color: white;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
   color: black;
   //background-color: rgba(0,0,0, 0.);
+  opacity: 0.9;
 
   &:hover {
   /* cursor: pointer; cursor: hand; */
@@ -124,25 +113,48 @@
     // opacity: 0;
   }
 
+  .tagger {
+    /* position: relative; */
+    /* top: -5px; */
+    /* left: -12px; */
+    border-top-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    //border-radius: inherit;
+    //border-radius: 10px;
+    width: 100%;
+    padding: 3px 6px;
+    font-size: 12px;
+    color: white;
+  }
 
-
+  .coloredTop {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
   .eventTitle {
     font-size: 16px;
-    font-weight: semi-bold;
+    font-weight: 600;
     //margin-bottom: -10px;
     line-height: 24px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    //margin-bottom: 10px;
     //text-decoration: underline;
     //color: black;
-    color: inherit;
     display: block;
     transition: color 200ms ease-out 0s;
+    color: white;
+    opacity: 1;
     
     &:hover {
+      text-decoration: underline;
       //color: #00258A; //
-      color: #004FC7;
-      //text-decoration: underline;
+      //color: #004FC7;
+      color: white;
     }
   }
 
@@ -155,12 +167,6 @@
     overflow: hidden;
     background-repeat: no-repeat;
     background-image: image-url("icons.png");
-
-    -webkit-transition: background-image 0.2s ease-in-out;
-    -moz-transition: background-image 0.2s ease-in-out;
-    -ms-transition: background-image 0.2s ease-in-out;
-    -o-transition: background-image 0.2s ease-in-out;
-    transition: background-image 0.2s ease-in-out;
   }
 
   .gcalLink, .gcalLinkChosen {
@@ -271,6 +277,9 @@
 
   .dateloc {
     font-size: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    opacity: 1;
   }
 }
 

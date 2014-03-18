@@ -23,41 +23,44 @@
     
     <% end %>
 
-    <div class="topright">
-      <a class="outLink linkIcon"
-         href="<%= e.url %>"
-         title="External link to event"
-         target="_blank"></a>
+    <div class="coloredTop"
+         style="background-color: <%= @gcols[e.group_id] %>;">
 
-      <a class="gcalLink
-                linkIcon"
-         href="<%= gcal_link(e) %>"
-         title="Add to Google Calendar"
-         target="_blank"></a>
+      <a class="eventTitle" href="<%= show_event_path(e.id) %>">
+        <%= CGI.unescapeHTML(e.title) %>
+      </a>
+      <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+        <%= @gnames[e.group_id] %>
+      </span>
 
-      <% if not @user.blank? %>
-      <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
-                linkIcon"
-         title="Remind me by SMS"></a>
-      
-      <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
-                linkIcon"
-         title="Remind me by email"></a>
-      <% end %>
-      
+
+
+      <div class="topright">
+        <a class="outLink linkIcon"
+           href="<%= e.url %>"
+           title="External link to event"
+           target="_blank"></a>
+
+        <a class="gcalLink
+                  linkIcon"
+           href="<%= gcal_link(e) %>"
+           title="Add to Google Calendar"
+           target="_blank"></a>
+
+        <% if not @user.blank? %>
+        <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
+                  linkIcon"
+           title="Remind me by SMS"></a>
+        
+        <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
+                  linkIcon"
+           title="Remind me by email"></a>
+        <% end %>
+        
+      </div>
+
     </div>
 
-
-    
-    <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
-      <%= @gnames[e.group_id] %>
-    </span>
-
-
-    <a class="eventTitle" href="<%= show_event_path(e.id) %>">
-      <%= CGI.unescapeHTML(e.title) %>
-    </a>
-    
     <div class="dateloc">
       <span class="date"> 
         <%= e.start_at.strftime('%I:%M %P') %> &#8212;
@@ -87,4 +90,4 @@
     </div>
   </div>
 
-</div>     
+</div>      

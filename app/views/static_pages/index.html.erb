@@ -36,41 +36,49 @@
           
           <% end %>
 
-          <div class="topright">
 
-            <a class="outLink linkIcon Hidden"
-               href="<%= e.url %>"
-               title="External link to event"
-               target="_blank"></a>
+          <div class="coloredTop"
+               style="background-color: <%= @gcols[e.group_id] %>;">
 
-            <a class="gcalLink
-                      linkIcon Hidden"
-               href="<%= gcal_link(e) %>"
-               title="Add to Google Calendar"
-               target="_blank"></a>
-
-            <% if not @user.blank? %>
-            <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
-                      linkIcon Hidden"
-               title="Remind me by SMS"></a>
             
-            <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
-                      linkIcon Hidden"
-               title="Remind me by email"></a>
-            <% end %>
+            <a class="eventTitle" href="<%= show_event_path(e.id) %>">
+              <%= CGI.unescapeHTML(e.title) %>
+            </a>
+
             
+            <span class="tagger">
+              <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
+            </span>
+
+
+            <div class="topright">
+
+              <a class="outLink linkIcon Hidden"
+                 href="<%= e.url %>"
+                 title="External link to event"
+                 target="_blank"></a>
+
+              <a class="gcalLink
+                        linkIcon Hidden"
+                 href="<%= gcal_link(e) %>"
+                 title="Add to Google Calendar"
+                 target="_blank"></a>
+
+              <% if not @user.blank? %>
+              <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
+                        linkIcon Hidden"
+                 title="Remind me by SMS"></a>
+              
+              <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
+                        linkIcon Hidden"
+                 title="Remind me by email"></a>
+              <% end %>
+              
+            </div>
+
+            
+
           </div>
-
-
-          
-          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
-            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
-          </span>
-
-
-          <a class="eventTitle" href="<%= show_event_path(e.id) %>">
-            <%= CGI.unescapeHTML(e.title) %>
-          </a>
           
           <div class="dateloc">
             <span class="date"> 
@@ -144,39 +152,44 @@
           
           <% end %>
 
-          <div class="topright">
+          <div class="coloredTop"
+               style="background-color: <%= @gcols[e.group_id] %>;">
 
-            <a class="outLink linkIcon Hidden"
-               href="<%= e.url %>"
-               title="External link to event"
-               target="_blank"></a>
+            <a class="eventTitle" href="<%= show_event_path(e.id) %>">
+              <%= CGI.unescapeHTML(e.title) %>
+            </a>
 
-            <a class="gcalLink
-                      linkIcon Hidden"
-               href="<%= gcal_link(e) %>"
-               title="Add to Google Calendar"
-               target="_blank"></a>
 
-            <% if not @user.blank? %>
-            <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
-                      linkIcon Hidden"
-               title="Remind me by SMS"></a>
-            
-            <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
-                      linkIcon Hidden"
-               title="Remind me by email"></a>
-            <% end %>
-            
+            <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
+              <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
+            </span>
+
+            <div class="topright">
+
+              <a class="outLink linkIcon Hidden"
+                 href="<%= e.url %>"
+                 title="External link to event"
+                 target="_blank"></a>
+
+              <a class="gcalLink
+                        linkIcon Hidden"
+                 href="<%= gcal_link(e) %>"
+                 title="Add to Google Calendar"
+                 target="_blank"></a>
+
+              <% if not @user.blank? %>
+              <a class="<%= if f.sms then 'smsLinkChosen' else 'smsLink' end %>
+                        linkIcon Hidden"
+                 title="Remind me by SMS"></a>
+              
+              <a class="<%= if f.email then 'emailLinkChosen' else 'emailLink' end %>
+                        linkIcon Hidden"
+                 title="Remind me by email"></a>
+              <% end %>
+              
+            </div>
           </div>
           
-          <span class="tagger" style="background-color: <%= @gcols[e.group_id] %>;">
-            <%= el.map { |x| @gnames[x.group_id] }.uniq.join(' / ') %>
-          </span>
-
-          <a class="eventTitle" href="<%= show_event_path(e.id) %>">
-            <%= CGI.unescapeHTML(e.title) %>
-          </a>
-
           <div class="dateloc">
             <span class="date"> 
               <%= e.start_at.strftime('%a %b %e | %I:%M %P') %> &#8212;
