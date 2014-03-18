@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 gem 'bootstrap-sass' 
-gem 'react-rails', :git => 'git://github.com/reactjs/react-rails.git'
+gem 'react-rails', '~> 0.9'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 
