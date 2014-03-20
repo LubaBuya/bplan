@@ -51,7 +51,7 @@ function setupHandlers() {
                 complete: function() {
                     event.find('.descLong').addClass("Hidden");
                     event.find('.desc').addClass('ellipsis');
-            }});
+                }});
             
             
             event.find('.linkIcon').removeClass('Hidden');
@@ -125,13 +125,35 @@ function setupHandlers() {
 
 }
 
+var e1 = {
+    title: 'Hello World',
+    color: "#2A4973",
+    groups: 'EECS / Neuroscience',
+    page: '/events/1000',
+    date_range: 'Now - Never',
+    location: 'Somewhere',
+    descShort: 'Short short short',
+    descLong: '<p>Long long long</p>'
+};
+
+var e2 = {
+    title: 'Another world!',
+    color: "#742A4F",
+    groups: 'Statistics',
+    page: '/events/100',
+    date_range: 'Now - Sometime',
+    location: 'Here',
+    descShort: 'Short short short 222',
+    descLong: '<p>Long long long</p>'
+};
+
+var el = EventList({});
+
 $(document).ready(function() {
     if ($('.bigEvent').length == 0) {
         return;
     }
     
-    setupHandlers();
-
 
     // from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
     var urlParams;
@@ -174,6 +196,15 @@ $(document).ready(function() {
         }
 
     });
+
+
+    
+    
+    React.renderComponent(el, $('#today')[0]);
+
+    el.setState({events: [e1, e2]});
+
+    setupHandlers();
 });
 
 function isBottomVisible(elem) {
