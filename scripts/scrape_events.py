@@ -125,7 +125,12 @@ def get_event(header, ps, base_url, recursed=False):
     else:
         details = details.replace(' \n\r\n', '\n')
         details = pn.sub(' ', details.strip())
-        
+
+
+    url = base_url + header.find('a').attrs['href']
+
+    queries = parse_qs(urlparse(url).query)
+    
     return {
         'title': title,
         'event_type': event_type,
@@ -135,7 +140,8 @@ def get_event(header, ps, base_url, recursed=False):
         'speaker': speaker,
         'sponsor': sponsor,
         'details': details,
-        'url': base_url + header.find('a').attrs['href']
+        'url': url,
+        'externalID': queries['event_ID']
         }
 
 def format_event(event):
@@ -264,7 +270,8 @@ def generate_csv():
     writer = csv.DictWriter(f_out,
                             fieldnames=['title', 'event_type', 'start_at',
                                         'end_at', 'location', 'speaker',
-                                        'sponsor', 'details', 'url', 'group'])
+                                        'sponsor', 'details', 'url', 'group',
+                                        'externalID'])
 
     writer.writeheader()
     
