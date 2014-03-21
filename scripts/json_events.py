@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from scrape_events import *
 import json
 
