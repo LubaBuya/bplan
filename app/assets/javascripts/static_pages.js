@@ -197,12 +197,8 @@ $(document).ready(function() {
 
     });
 
-
-    
-    
-    React.renderComponent(el, $('#today')[0]);
-
-    el.setState({events: [e1, e2]});
+    // React.renderComponent(el, $('#today')[0]);
+    // el.setState({events: [e1, e2]});
 
     setupHandlers();
 });
