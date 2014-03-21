@@ -67,8 +67,10 @@ def to_datetime_range(date, time_range):
             t2 = datetime.strptime(L[1], '%I %p')
                 
             
-    t1 = t1.replace(year=CURRENT_YEAR, month=dt_date.month, day=dt_date.day)
-    t2 = t2.replace(year=CURRENT_YEAR, month=dt_date.month, day=dt_date.day)
+    t1 = t1.replace(year=CURRENT_YEAR, month=dt_date.month, day=dt_date.day,
+                    tzinfo=tz)
+    t2 = t2.replace(year=CURRENT_YEAR, month=dt_date.month, day=dt_date.day,
+                    tzinfo=tz)
     return (t1, t2)
     
 
@@ -92,7 +94,7 @@ def get_event(header, ps, base_url, recursed=False):
             index -= 1
 
             if index < 0:
-                print("BAD:", title, file=sys.stderr)
+                #print("BAD:", title, file=sys.stderr)
                 return None
 
 
@@ -186,7 +188,7 @@ def get_events(base_url, add='?view=summary'):
                 continue
             
             out.append(event)
-            print(event['title'], file=sys.stderr)
+            #print(event['title'], file=sys.stderr)
         except ValueError:
             continue
 
@@ -194,8 +196,8 @@ def get_events(base_url, add='?view=summary'):
 
 # get all events in this calendar for current month and next 3 months
 def get_all_events(base_url, extra=''):
-    print('\nFETCHING EVENTS: {0}{1}'.format(base_url, extra), file=sys.stderr)
-    print('='*100, sep='', file=sys.stderr)
+    #print('{0}{1}'.format(base_url, extra), file=sys.stderr)
+    #print('='*100, sep='', file=sys.stderr)
 
 
     dd = datetime.now()
@@ -203,6 +205,7 @@ def get_all_events(base_url, extra=''):
     out = []
     
     for i in range(4):
+        print('.', end='', file=sys.stderr)
         add = '?view=summary&timeframe=month&date={0}{1}'.format(
             dd.strftime('%Y-%m-%d'), extra)
         out.extend(get_events(base_url, add))
@@ -277,9 +280,16 @@ def generate_csv():
                                         'externalID'])
 
     writer.writeheader()
+
+    i = 1
+    total = len(cal_ids)
     
     for cal_url, cal_id, name, extra in cal_ids:
+        print('%02d/%d%30s ' % (i, total, name), end='', file=sys.stderr)
+        sys.stdout.flush()
         events = get_all_events(cal_url, extra)
+        print()
+        
         for event in events:
             date = event.pop('date')
             time = event.pop('time')
@@ -288,11 +298,12 @@ def generate_csv():
             except:
                 continue
 
-            event['start_at'] = d1.isoformat()
-            event['end_at'] = d2.isoformat()
+            event['start_at'] = d1.astimezone(pytz.utc).isoformat()
+            event['end_at'] = d2.astimezone(pytz.utc).isoformat()
             event['group'] = name
             
             writer.writerow(event)
+        i += 1
             
     f_out.close()
 

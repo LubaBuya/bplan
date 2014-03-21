@@ -52,26 +52,33 @@ namespace :admin do
       if e['details'].blank?
         e['details'] = nil
       end
-      
-      Time.zone = 'Pacific Time (US & Canada)' 
 
+      tz = Time.zone = 'America/Los_Angeles'
+
+      t1 = Time.zone.parse(e['start_at'])
+      t2 = Time.zone.parse(e['end_at'])
+      if t1.dst?
+        t1 -= 1.hour
+        t2 -= 1.hour
+      end
+      
       v = {
         title: e['title'],
         event_type: e['event_type'],
-        start_at: Time.parse(e['start_at'] + '-0800').in_time_zone(Time.zone),
-        end_at: Time.parse(e['end_at'] + '-0800').in_time_zone(Time.zone),
+        start_at: t1,
+        end_at: t2,
         location: e['location'],
         description: e['details'],
         group_id: group.id,
         url: e['url'],
         externalID: e['externalID']
       }
-      Event.create(v)
-
+      ev = Event.create(v)
+      
       i += 1
     end
 
-    puts "Updating reminders..."
+    puts "\nUpdating reminders..."
 
     fs.each do |f, eid|
       e = Event.where(externalID: eid)[0]
@@ -112,20 +119,28 @@ namespace :admin do
       if e['details'].blank?
         e['details'] = nil
       end
-      
-      Time.zone = 'Pacific Time (US & Canada)' 
+
+      tz = Time.zone = 'America/Los_Angeles'
+
+      t1 = Time.zone.parse(e['start_at'])
+      t2 = Time.zone.parse(e['end_at'])
+      if t1.dst?
+        t1 -= 1.hour
+        t2 -= 1.hour
+      end
       
       v = {
         title: e['title'],
         event_type: e['event_type'],
-        start_at: Time.parse(e['start_at'] + '-0800').in_time_zone(Time.zone),
-        end_at: Time.parse(e['end_at'] + '-0800').in_time_zone(Time.zone),
+        start_at: t1,
+        end_at: t2,
         location: e['location'],
         description: e['details'],
         group_id: group.id,
+        url: e['url'],
         externalID: e['externalID']
       }
-      Event.create(v)
+      ev = Event.create(v)
 
       i += 1
     end

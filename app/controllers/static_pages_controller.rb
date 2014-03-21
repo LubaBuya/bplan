@@ -5,8 +5,8 @@ class StaticPagesController < ApplicationController
   include UsersHelper
 
   def index
-    Time.zone = 'Pacific Time (US & Canada)'
-    d = Time.now.in_time_zone(Time.zone)
+    @tz = Time.zone = 'America/Los_Angeles'
+    d = Time.now.in_time_zone(@tz)
 
     @left_name = "Today"
     @user = current_user

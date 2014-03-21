@@ -27,5 +27,7 @@ module Bplan
 
     # config.time_zone = 'Pacific Time (US & Canada)'
     # config.active_record.default_timezone = 'Pacific Time (US & Canada)'
+
+    config.time_zone = "America/Los_Angeles"
   end
 end

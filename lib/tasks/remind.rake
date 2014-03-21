@@ -3,7 +3,7 @@ require 'twilio-ruby'
 namespace :admin do
   desc "Remind people by email"
   task :remind_emails => :environment do
-    Time.zone = 'Pacific Time (US & Canada)'
+    Time.zone = 'America/Los_Angeles'
     d = Time.now
     favs = FavoriteEvent.where(email: true)
     if favs.blank?
@@ -26,7 +26,7 @@ namespace :admin do
 
   desc "Remind people by sms"
   task :remind_sms => :environment do
-    Time.zone = 'Pacific Time (US & Canada)'
+    Time.zone = 'America/Los_Angeles'
     d = Time.now
     favs = FavoriteEvent.where(sms: true)
     if favs.blank?
