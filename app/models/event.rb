@@ -13,6 +13,7 @@
 #  updated_at  :datetime
 #  group_id    :integer
 #  url         :string(2048)
+#  externalID  :string(255)
 #
 
 class Event < ActiveRecord::Base

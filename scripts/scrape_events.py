@@ -23,6 +23,8 @@ import colorsys
 import random
 import json
 
+from urlparse import urlparse, parse_qs
+
 from data import *
 
 #import gcal
@@ -90,7 +92,7 @@ def get_event(header, ps, base_url, recursed=False):
             index -= 1
 
             if index < 0:
-                print("BAD:", title)
+                print("BAD:", title, file=sys.stderr)
                 return None
 
 
@@ -141,7 +143,7 @@ def get_event(header, ps, base_url, recursed=False):
         'sponsor': sponsor,
         'details': details,
         'url': url,
-        'externalID': queries['event_ID']
+        'externalID': queries['event_ID'][0]
         }
 
 def format_event(event):
@@ -211,7 +213,7 @@ def get_all_events(base_url, extra=''):
     return out
     
 def clear_calendar(id):
-    print('\nDELETING EVENTS...')
+    print('\nDELETING EVENTS...', file=sys.stderr)
     page_token = None
     while True:
         events = gcal.service.events().list(calendarId=id,
@@ -221,7 +223,8 @@ def clear_calendar(id):
             if d < yesterday:
                 continue
 
-            print(event['summary'], '--', event['start']['dateTime'])
+            print(event['summary'], '--', event['start']['dateTime'],
+                  file=sys.stderr)
             
             gcal.service.events().delete(calendarId=id,
                                         eventId=event['id']).execute()
@@ -232,7 +235,7 @@ def clear_calendar(id):
             break
 
 def add_events(calendar_id, events):
-    print('\nADDING EVENTS...')
+    print('\nADDING EVENTS...', file=sys.stderr)
     for event in events:
         if event == None:
             continue
@@ -244,7 +247,7 @@ def add_events(calendar_id, events):
         if d < yesterday:
             continue
         
-        print(event['summary'], '--', event['start']['dateTime'])
+        print(event['summary'], '--', event['start']['dateTime'], file=sys.stderr)
 
         gcal.service.events().insert(calendarId=calendar_id, body=event).execute()
     
