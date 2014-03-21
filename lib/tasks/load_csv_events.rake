@@ -28,7 +28,7 @@ namespace :admin do
     Rake::Task["admin:load_groups"].invoke
     
 
-    fs = FavoriteEvent.all.map { |f|  [f, f.event.url] }
+    fs = FavoriteEvent.all.map { |f|  [f, f.event.externalID] }
 
     #deleting all events previously in db. Map is a function
     #for an enumerable. This is Event.all.map {|x| x.delete }
@@ -74,7 +74,7 @@ namespace :admin do
     puts "Updating reminders..."
 
     fs.each do |f, eid|
-      e = Event.where(url: eid)[0]
+      e = Event.where(externalID: eid)[0]
       if e.blank?
         f.delete
       else
@@ -91,7 +91,7 @@ namespace :admin do
     puts "FETCHING EVENTS..."
     data = `python2 scripts/json_events.py`
 
-    fs = FavoriteEvent.all.map { |f|  [f, f.event.url] }
+    fs = FavoriteEvent.all.map { |f|  [f, f.event.externalID] }
     
     puts "\n\n"
     puts "DELETING EVENTS FROM DATABASE..."
@@ -133,7 +133,7 @@ namespace :admin do
     puts "\nUPDATING REMINDERS..."
 
     fs.each do |f, eid|
-      e = Event.where(url: eid)[0]
+      e = Event.where(externalID: eid)[0]
       if e.blank?
         f.delete
       else
