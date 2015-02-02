@@ -11,9 +11,10 @@ def generate_json():
     
     for cal_url, cal_id, name, extra in cal_ids:
         print('%02d/%d%30s ' % (i, total, name), end='', file=sys.stderr)
-        sys.stdout.flush()
+        sys.stderr.flush()
         events = get_all_events(cal_url, extra)
-        print('')
+        print('', file=sys.stderr)
+        sys.stderr.flush()
         
         for event in events:
             date = event.pop('date')
