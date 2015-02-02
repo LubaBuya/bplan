@@ -31,7 +31,7 @@ cal_ids = [
     (econ_cal, econ_id, "Economics", ''),
 
     # ('http://events.berkeley.edu/index.php/calendar/sn/sa.html', None, 'Student Affairs', ''),
-    ('http://events.berkeley.edu/index.php/calendar/sn/student.html', None, 'Student Events', ''),
+    # ('http://events.berkeley.edu/index.php/calendar/sn/student.html', None, 'Student Events', ''),
     ('http://events.berkeley.edu/index.php/calendar/sn/its.html', None, 'Transportation Studies', ''),
     ('http://events.berkeley.edu/index.php/calendar/sn/music.html', None, 'Music', ''),
     ('http://events.berkeley.edu/index.php/calendar/sn/chem.html', None, 'Chemistry', ''),
