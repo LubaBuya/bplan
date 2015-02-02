@@ -46,7 +46,7 @@ namespace :admin do
     CSV.foreach('data/events.csv', headers: true) do |row|
 
       e = row.to_hash
-      p e
+
       group = Group.find_by_name(e['group'])
 
       print "\rLoading event %d..." % i
@@ -119,7 +119,6 @@ namespace :admin do
     parsed.each do |e|
       group = Group.find_by_name(e['group'])
 
-      p e
       print "\rLoading event %d..." % i
       $stdout.flush
       #puts "%s %s" % [e['group'], e['title']]
