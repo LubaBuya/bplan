@@ -26,10 +26,13 @@ namespace :admin do
   desc "Populate events from data/events.csv"
   task :load_events => :environment do
     Rake::Task["admin:load_groups"].invoke
+
+    # clean up favorite events
+    FavoriteEvent.all.map { |f|  f.delete if f.event.blank? }
     
-
+    # get favorite events, better to get it now, before deleting events
     fs = FavoriteEvent.all.map { |f|  [f, f.event.externalID] }
-
+    
     #deleting all events previously in db. Map is a function
     #for an enumerable. This is Event.all.map {|x| x.delete }
 
@@ -98,6 +101,10 @@ namespace :admin do
     puts "FETCHING EVENTS..."
     data = `python2 scripts/json_events.py`
 
+    # clean up favorite events
+    FavoriteEvent.all.map { |f|  f.delete if f.event.blank? }
+
+    # get favorite events, better to get it now, before deleting events
     fs = FavoriteEvent.all.map { |f|  [f, f.event.externalID] }
     
     puts "\n\n"
