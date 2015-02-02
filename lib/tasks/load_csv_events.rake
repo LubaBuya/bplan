@@ -43,7 +43,7 @@ namespace :admin do
     CSV.foreach('data/events.csv', headers: true) do |row|
 
       e = row.to_hash
-
+      print e
       group = Group.find_by_name(e['group'])
 
       print "\rLoading event %d..." % i

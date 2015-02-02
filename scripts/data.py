@@ -58,4 +58,4 @@ cal_ids = [
 # cal_ids = cal_ids[-1:]
 
 # chem and engineering, for testing
-# cal_ids = [cal_ids[10], cal_ids[20]]
+cal_ids = [cal_ids[9], cal_ids[19]]
